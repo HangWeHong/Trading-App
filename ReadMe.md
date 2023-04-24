@@ -35,7 +35,7 @@ git clone https://github.com/HangWeHong/Trading-App.git
 
 ![](Image/ReadMe1.png)
 
-Then, checkout to a new branch using(i wanted to say any branch name but to be easier to identify who did what lets all put all name as the branch name,for me maybe i'll put hwhDS):
+Then, checkout to a new branch using(i wanted to say any branch name but to be easier to identify who did what , lets all put our name as the branch name,for me maybe i'll put hwhDS):
 
 ```shell
 git checkout -b <branch-name>
@@ -43,7 +43,7 @@ git checkout -b <branch-name>
 
 As an example,
 
-![](docs/readme02.PNG)
+![](Image/ReadMe2.png)
 
 
 ### Add files
@@ -52,16 +52,17 @@ As an example,
 git add <the name of the files u wanted to add or simply . which means all>/*
 ```
 
-![](docs/readme03.PNG)
+![](Image/ReadMe3.png)
 
-For this tutorial, I have added two files `a random file.txt` and `put your files here.txt`.
+For this example, I have added one file `testAdd.txt` .
+
 To verify that the files are added successfully, you may use the command:
 
 ```shell
 git status
 ```
 
-![](docs/readme04.PNG)
+![](Image/ReadMe4.png)
 
 ### Commit (Save) files
 
@@ -71,7 +72,7 @@ You can then commit the files using:
 git commit -m "<commit-message>"
 ```
 
-![](docs/readme05.PNG)
+![](Image/ReadMe5.png)
 
 To verify that you made a commit, you may use the Git log to check the commit history:
 
@@ -79,34 +80,30 @@ To verify that you made a commit, you may use the Git log to check the commit hi
 git log
 ```
 
-![](docs/readme06.PNG)
+![](Image/ReadMe6.png)
 
 Note: use the `q` key to quit from commit history.
 
 ### Push (Upload) commits
 
-Now you can push your changes to GitLab by:
+Now you can push your changes to GitHub by:
 
 ```shell
 git push origin <branch-name>
 ```
 
-![](docs/readme07.PNG)
+![](Image/ReadMe7.png)
 
-You should be able to view your pushed branch in the GitLab repository now.
+You should be able to view your pushed branch in the GitHub repository now.
 
-![](docs/readme08.PNG)
+![](Image/ReadMe8.png)
 
-### Create merge request
+### Create pull/merge request
 
-Obviously, click the `Create merge request`. In the next page, press the `Create merge request` button again.
-You can also review your commits and changes using the tabs below.
+Obviously, click the `Compare & Pull Request`. In the next page, press the `Create Pull Request` button again.
 
-![](docs/readme09.PNG)
 
 ### Congratulations 🎉
 
-After completing all these steps, you can just sit back, relax, and wait for the administrators to merge your branch.
-Meanwhile, you can check if they comment on your merge request through:
+After completing all these steps, you can just sit back, relax, and wait for the me(for checking the pull request in case something happens) to merge your branch.
 
-![](docs/readme10.PNG)
