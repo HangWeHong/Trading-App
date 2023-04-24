@@ -12,7 +12,7 @@ public class Teamwork {
 
 ## How to use
 
-For those who are not familliar with github,you might wanna try to watch this [tutorial video](https://www.youtube.com/watch?v=RGOj5yH7evk),and u can make the playback speed x2 so this video will only take about half an hour for you to learn all the git commands and basic knowledge! Gamabateh!! But anyway i will still put some steps that those who are unfamilliar with git can follow.
+For those who are unfamilliar with github,you might wanna try to watch this [tutorial video](https://www.youtube.com/watch?v=RGOj5yH7evk) ,and u can make the playback speed x2 so this video will only take about half an hour for you to learn all the git commands and basic knowledge! Gamabateh!! But anyway i will still put some steps that those who are still new with git to follow.
 
 ## Add your files
 Before doing anything ,make sure you downloaded [git](https://www.atlassian.com/git/tutorials/install-git?section=git-for-mac-installer)
@@ -33,9 +33,9 @@ You can clone this project by running the following command:
 git clone https://github.com/HangWeHong/Trading-App.git
 ```
 
-![](https://www.dropbox.com/s/to3ww3z0sp1aihb/Screenshot%202023-04-24%20213618.png?dl=0)
+![](Image/ReadMe1.png)
 
-Then, checkout to a new branch using:
+Then, checkout to a new branch using(i wanted to say any branch name but to be easier to identify who did what lets all put all name as the branch name,for me maybe i'll put hwhDS):
 
 ```shell
 git checkout -b <branch-name>
@@ -45,14 +45,11 @@ As an example,
 
 ![](docs/readme02.PNG)
 
-After that, create a directory named `matricNo_name` and store your files within it.
-You can now add the files to the repository:
 
 ### Add files
 
 ```shell
-makedir <matricNo_name>
-git add <matricNo_name>/*
+git add <the name of the files u wanted to add or simply . which means all>/*
 ```
 
 ![](docs/readme03.PNG)
