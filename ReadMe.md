@@ -1,6 +1,6 @@
 # Group10
 
-This is a repository of Data Strcuture Assignment for Group 10 students ❤❤
+This is a repository of Data Structure Assignment for Group 10 students ❤❤
 
 ```java
 public class Teamwork {
@@ -12,7 +12,7 @@ public class Teamwork {
 
 ## How to use
 
-For those who are not familliar with github,you might wanna try to watch this [tutorial video](https://www.youtube.com/watch?v=RGOj5yH7evk),and u can make the playback speed x2 so this video will only take about half an hour for you to learn all the git commands and basic knowledge!Gamabateh!!But anyway i will still put some steps that those who are unfamilliar with git can follow.
+For those who are not familliar with github,you might wanna try to watch this [tutorial video](https://www.youtube.com/watch?v=RGOj5yH7evk),and u can make the playback speed x2 so this video will only take about half an hour for you to learn all the git commands and basic knowledge! Gamabateh!! But anyway i will still put some steps that those who are unfamilliar with git can follow.
 
 ## Add your files
 Before doing anything ,make sure you downloaded [git](https://www.atlassian.com/git/tutorials/install-git?section=git-for-mac-installer)
@@ -20,7 +20,7 @@ Before doing anything ,make sure you downloaded [git](https://www.atlassian.com/
 You can add your files by:
 
 - Create or upload files using github
-- Add files using the command line when you have learned all the [git commands](https://gist.github.com/gwenf/19e5748a5391929e8e938a22c8a4b3f2)
+- Add files using the command line when you have learned all the [git commands](https://gist.github.com/gwenf/19e5748a5391929e8e938a22c8a4b3f2),only a few lah easy peesy
 
 
 ## Git Tutorial
@@ -33,7 +33,7 @@ You can clone this project by running the following command:
 git clone https://github.com/HangWeHong/Trading-App.git
 ```
 
-![](image.png)
+![](https://www.dropbox.com/s/to3ww3z0sp1aihb/Screenshot%202023-04-24%20213618.png?dl=0)
 
 Then, checkout to a new branch using:
 
