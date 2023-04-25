@@ -105,5 +105,5 @@ Obviously, click the `Compare & Pull Request`. In the next page, press the `Crea
 
 ### Congratulations 🎉
 
-After completing all these steps, you can just sit back, relax, and wait for the me(for checking the pull request in case something happens) to merge your branch.
+After completing all these steps, you can just sit back, relax, and wait for the me(to check the pull request in case something happens) to merge your branch.
 
