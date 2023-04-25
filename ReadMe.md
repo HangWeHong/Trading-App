@@ -98,10 +98,14 @@ You should be able to view your pushed branch in the GitHub repository now.
 
 ![](Image/ReadMe8.png)
 
+
 ### Create pull/merge request
 
 Obviously, click the `Compare & Pull Request`. In the next page, press the `Create Pull Request` button again.
 
+**If it does not shows any pop up like the image above,you can just simply go to `Pull requests` ,then `New pull request`, select your own branch and compare with the master branch,then finally `Create pull request`
+
+![](Image/ReadMe9.png)
 
 ### Congratulations 🎉
 
