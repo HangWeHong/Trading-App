@@ -12,7 +12,7 @@ public class Teamwork {
 
 ## How to use
 
-For those who are unfamilliar with github,you might wanna try to watch this [tutorial video](https://www.youtube.com/watch?v=RGOj5yH7evk) ,and u can make the playback speed x2 so this video will only take about half an hour for you to learn all the git commands and basic knowledge!(can skip the ssh part tho cuz we'll just use the https) Gamabateh!! But anyway i will still put some steps that those who are still new with git to follow.
+For those who are unfamilliar with github,you might wanna try to watch this [tutorial video](https://www.youtube.com/watch?v=RGOj5yH7evk) ,and u can make the playback speed x2 so this video will only take about half an hour for you to learn all the git commands and basic knowledge!(can skip the ssh part tho cuz we'll just use the https) Gamabateh!! But anyway i will still put some steps for those who are still new with git to follow.
 
 ## Add your files
 Before doing anything ,make sure you downloaded [git](https://www.atlassian.com/git/tutorials/install-git?section=git-for-mac-installer)
