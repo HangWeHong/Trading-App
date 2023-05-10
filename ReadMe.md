@@ -12,7 +12,7 @@ public class Teamwork {
 
 ## How to use
 
-For those who are unfamilliar with github,you might wanna try to watch this [tutorial video](https://www.youtube.com/watch?v=RGOj5yH7evk) ,and u can make the playback speed x2 so this video will only take about half an hour for you to learn all the git commands and basic knowledge!(can skip the ssh part tho cuz we'll just use the https) Gamabateh!! But anyway i will still put some steps that those who are still new with git to follow.
+For those who are unfamilliar with github,you might wanna try to watch this [tutorial video](https://www.youtube.com/watch?v=RGOj5yH7evk) ,and u can make the playback speed x2 so this video will only take about half an hour for you to learn all the git commands and basic knowledge!(can skip the ssh part tho cuz we'll just use the https) Gamabateh!! But anyway i will still put some steps for those who are still new with git to follow.
 
 ## Add your files
 Before doing anything ,make sure you downloaded [git](https://www.atlassian.com/git/tutorials/install-git?section=git-for-mac-installer)
@@ -103,11 +103,11 @@ You should be able to view your pushed branch in the GitHub repository now.
 
 Obviously, click the `Compare & Pull Request`. In the next page, press the `Create Pull Request` button again.
 
-**If it does not shows any pop up like the image above,you can just simply go to `Pull requests` ,then `New pull request`, select your own branch and compare with the master branch,then finally `Create pull request`
+**If it does not show any pop up like the image above,you can simply go to `Pull requests` ,then `New pull request`, select your own branch and compare with the master branch,then finally `Create pull request`
 
 ![](Image/ReadMe9.png)
 
 ### Congratulations 🎉
 
-After completing all these steps, you can just sit back, relax, and wait for the me(to check the pull request in case something happens) to merge your branch.
+After completing all these steps, you can just sit back, relax, and wait for me(to check the pull request in case something happens) to merge your branch.
 
