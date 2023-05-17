@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="54.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TradeHistoryController">
+   <children>
+      <Label fx:id="orderNo" alignment="CENTER" prefHeight="55.0" prefWidth="128.0" text="1">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="50.0" />
+         </font>
+      </Label>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="2.0" styleClass="line-color" stylesheets="@../resources/stylesheet.css">
+         <HBox.margin>
+            <Insets top="12.0" />
+         </HBox.margin>
+      </Pane>
+      <Label fx:id="stockName" alignment="CENTER" prefHeight="55.0" prefWidth="242.0" text="Google">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="50.0" />
+         </font>
+      </Label>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="2.0" styleClass="line-color" stylesheets="@../resources/stylesheet.css">
+         <HBox.margin>
+            <Insets top="12.0" />
+         </HBox.margin>
+      </Pane>
+      <Label fx:id="shares" alignment="CENTER" prefHeight="55.0" prefWidth="183.0" text="500">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="50.0" />
+         </font>
+      </Label>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="2.0" styleClass="line-color" stylesheets="@../resources/stylesheet.css">
+         <HBox.margin>
+            <Insets top="12.0" />
+         </HBox.margin>
+      </Pane>
+      <Label fx:id="price" alignment="CENTER" prefHeight="55.0" prefWidth="168.0" text="200">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="50.0" />
+         </font>
+      </Label>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="2.0" styleClass="line-color" stylesheets="@../resources/stylesheet.css">
+         <HBox.margin>
+            <Insets top="12.0" />
+         </HBox.margin>
+      </Pane>
+      <Label fx:id="time" alignment="CENTER" prefHeight="55.0" prefWidth="229.0" text="20:00:00">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="50.0" />
+         </font>
+      </Label>
+   </children>
+</HBox>

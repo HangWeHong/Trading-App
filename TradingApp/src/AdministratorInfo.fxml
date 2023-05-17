@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="gradient-background-admin" stylesheets="@../resources/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdministratorInfoController">
+   <children>
+      <AnchorPane layoutX="3.0" layoutY="169.0" prefHeight="721.0" prefWidth="433.0" stylesheets="@../resources/stylesheet.css">
+         <children>
+            <Pane layoutX="63.0" layoutY="14.0" />
+            <AnchorPane layoutX="70.0" layoutY="52.0" />
+            <HBox layoutX="51.0" layoutY="48.0" />
+            <HBox alignment="CENTER" layoutX="4.0" layoutY="318.0" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Image/Icon/pngwing.com.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="45.0" prefWidth="232.0" text=" User Management" textFill="#000000ee">
+                     <font>
+                        <Font name="Cambria" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutY="490.0" onMouseClicked="#clickedSettings" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Image/Icon/settings.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="66.0" prefWidth="135.0" text=" Settings" textFill="#000000ee">
+                     <font>
+                        <Font name="Cambria" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label alignment="CENTER" layoutX="122.0" layoutY="21.0" prefHeight="54.0" prefWidth="163.0" styleClass="labbtnt-sidebar-title" stylesheets="@../resources/stylesheet.css" text="Admin Panel" textAlignment="CENTER">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+            </Label>
+            <VBox layoutX="101.0" layoutY="98.0" prefHeight="86.0" prefWidth="205.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="210.0" text="Hang We Hong" textFill="WHITE">
+                     <font>
+                        <Font name="Tw Cen MT Condensed" size="40.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="209.0" text="Administrator" textFill="#ffffffc1">
+                     <font>
+                        <Font name="Tw Cen MT Condensed" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" layoutY="236.0" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Image/Icon/icons8-info-50.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="-10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="47.0" prefWidth="146.0" text=" Admin Info" textFill="#000000ee">
+                     <font>
+                        <Font name="Cambria" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="7.0" layoutY="404.0" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Image/Icon/1pngwing.com.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="143.0" text=" History" textFill="#000000ee">
+                     <font>
+                        <Font name="Cambria" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <VBox layoutX="442.0" layoutY="169.0" prefHeight="721.0" prefWidth="874.0" styleClass="labbtn-background" stylesheets="@../resources/stylesheet.css">
+         <children>
+            <HBox prefHeight="68.0" prefWidth="869.0">
+               <children>
+                  <Label prefHeight="77.0" prefWidth="302.0" text="    Contact Information" textAlignment="CENTER">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="7.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="1.0" prefWidth="491.0" styleClass="line-color-admin" stylesheets="@../resources/stylesheet.css" />
+            <HBox prefHeight="35.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="131.0" text="Name" textFill="#00000066">
+                     <font>
+                        <Font name="Microsoft Himalaya" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="250.0" text="Hang We Hong">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="57.0" prefWidth="121.0" text="Email" textFill="#00000066">
+                     <font>
+                        <Font name="Microsoft Himalaya" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="77.0" prefWidth="327.0" text="natsuhang@gmail.com">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="245.0" text="Notification Language" textFill="#00000066">
+                     <font>
+                        <Font name="Microsoft Himalaya" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="153.0" text="English">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="163.0" text="Department" textFill="#00000066">
+                     <font>
+                        <Font name="Microsoft Himalaya" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="325.0" text="Marketing Department">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="128.0" text="Phone" textFill="#00000066">
+                     <font>
+                        <Font name="Microsoft Himalaya" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="218.0" text="0167417172">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="150.0" text="Country" textFill="#00000066">
+                     <font>
+                        <Font name="Microsoft Himalaya" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="92.0" prefWidth="182.0" text="Malaysia">
+                     <font>
+                        <Font size="25.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="442.0" layoutY="67.0" prefHeight="77.0" prefWidth="285.0" styleClass="labbtn-Title" stylesheets="@../resources/stylesheet.css" text="Administrator Information" textFill="#0009ffe6">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
