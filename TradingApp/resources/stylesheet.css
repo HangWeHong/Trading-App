@@ -1,0 +1,115 @@
+.sidebar-admin{
+    -fx-background-color: rgba(255,255,255,0.4);
+    -fx-background-radius: 0px 50px 0px 0px;
+}
+.sidebar-user{
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-background-radius: 10;
+}
+.labbtnt-sidebar-title{
+    -fx-text-fill: #2262C6;
+    -fx-background-color: #FEFFFD;
+    -fx-background-radius: 100px;
+}
+.labbtnt-logout{
+    -fx-text-fill: #2262C6;
+    -fx-background-color: #FEFFFD;
+    -fx-background-radius: 100px;
+}
+.labbtnt-logout:hover{
+    -fx-background-color: #FEFFFD;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #6747CD;
+    -fx-border-color: transparent;
+    -fx-border-width: 3px;
+    -fx-border-style: solid;
+    -fx-border-radius: 10px;
+}
+.gradient-background-user{
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#d807b5,#eee4e0);
+}
+.gradient-background-sign-up-page{
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#eae0eb,#e740d1);
+}
+.line-color{
+    -fx-background-color: #F3ABB5;
+}
+.line-color-admin{
+    -fx-background-color: #4bf3b3;
+}
+.gradient-background-admin{
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#1f9ed9,#8eff4c);
+}
+.labbtn-Title{
+    -fx-text-fill: #ffffff;
+    -fx-background-color: rgba(255,255,255,0.5);
+    -fx-background-radius: 100px;
+}
+.labbtn-text{
+    -fx-text-fill: #000000;
+    -fx-background-color: #06e8f8;
+    -fx-background-radius: 100px;
+}
+.labbtn-background{
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 10;
+} 
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.2),10.0, 0.0, 0.0, 10.0)
+}
+
+.shadow:hover{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.2),10.0, 0.0, 0.0, 10.0);
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;    /*to make a curly edges*/
+    -fx-text-fill: #f515d7;
+    -fx-border-color: transparent;  /*border colour*/
+    -fx-border-width: 3px;
+    -fx-border-style: solid;    /*to have pup up effect*/
+    -fx-border-radius: 10px;
+}
+.gradient-background-signinpageleft{
+    -fx-background-color: rgba(133, 0, 241, 0.918);
+}
+
+.forgetBtn{
+    -fx-text-fill: #00000070;
+}
+.forgetBtn:hover{
+    -fx-text-fill: #6747CD;
+    -fx-underline: true;      
+}
+
+.loginBtn{
+    -fx-background-color: #6747CD;
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 10px;
+}
+.loginBtn:hover{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #6747CD;
+    -fx-border-color: #6747CD;
+    -fx-border-width: 3px;
+    -fx-border-style: solid;
+    -fx-border-radius: 10px;
+}
+.sign-up-Btn{
+    -fx-text-fill: #6747CD;
+}
+.sign-up-Btn:hover{                 /*have effect when mouse is there*/
+    -fx-text-fill: #6744d8;
+    -fx-underline: true;        /*to have underlined when mouse clicked*/
+}
+.sidebar-options-admin:hover{
+}
+.sidebar-options-admin:hover{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.2),10.0, 0.0, 0.0, 10.0);
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #6747CD;
+    -fx-border-color: transparent;
+    -fx-border-width: 3px;
+    -fx-border-style: solid;
+    -fx-border-radius: 10px;
+}
