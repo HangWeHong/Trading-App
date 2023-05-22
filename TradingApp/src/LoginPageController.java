@@ -4,18 +4,26 @@ import javafx.scene.input.MouseEvent;
 
 public class LoginPageController {
     
+
     @FXML
     private TextField inputUsername;
 
     @FXML
     private TextField inputPassword;
 
+    
 
     @FXML
     void clickedLogin(MouseEvent event) {
-        App.setRoot("TradingDashboard.fxml");
-        System.out.println(inputUsername.getText());
-        System.out.println(inputPassword.getText());
+        User user=new User(null, null, null, null, 0, 0); 
+        user.checkUser(inputUsername.getText(), inputPassword.getText());
+        if(user.getRole().equals("Admin")){
+            App.setRoot("AdministratorInfo.fxml");
+        }else if(user.getRole().equals("User")){
+            App.setRoot("TradingDashboard.fxml");
+        }else{
+            App.setRoot("ErrorFound.fxml");
+        }
         
     }
     @FXML
