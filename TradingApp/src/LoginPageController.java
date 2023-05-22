@@ -1,15 +1,24 @@
+import Model.User;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class LoginPageController {
-    
 
+     
+    @FXML
+    private Label invalid;
+
+    
     @FXML
     private TextField inputUsername;
 
     @FXML
     private TextField inputPassword;
+
+    
+    public static User user;
 
     
 
@@ -24,8 +33,11 @@ public class LoginPageController {
         }else{
             App.setRoot("ErrorFound.fxml");
         }
+
         
+       
     }
+
     @FXML
     void clickedSignUp(MouseEvent event) {
         App.setRoot("RegistrationForm.fxml");
@@ -34,6 +46,10 @@ public class LoginPageController {
     @FXML
     void clickedForgotPassword(MouseEvent event) {
         App.setRoot("ForgotPassword.fxml");
+    }
+    @FXML
+    void clickedExit(MouseEvent event) {
+       System.exit(0);
     }
 
 
