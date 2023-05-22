@@ -25,7 +25,7 @@ public class LoginPageController {
         }else if(user.getRole().equals("User")){
             App.setRoot("TradingDashboard.fxml");
         }else{
-            invalid.setText("Invalid Username or Password");
+            invalid.setText("Invalid Username or Password!");
         }
     }
     @FXML
