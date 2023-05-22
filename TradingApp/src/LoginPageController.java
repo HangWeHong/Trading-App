@@ -1,22 +1,32 @@
+import Model.User;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class LoginPageController {
-    
+     
+    @FXML
+    private Label invalid;
     @FXML
     private TextField inputUsername;
 
     @FXML
     private TextField inputPassword;
-
+    
+    public static User user;
 
     @FXML
     void clickedLogin(MouseEvent event) {
-        App.setRoot("TradingDashboard.fxml");
-        System.out.println(inputUsername.getText());
-        System.out.println(inputPassword.getText());
         
+        user.checkUser(inputUsername.getText(), inputPassword.getText());
+        if(user.getRole().equals("Admin")){
+            App.setRoot("AdministratorInfo.fxml");
+        }else if(user.getRole().equals("User")){
+            App.setRoot("TradingDashboard.fxml");
+        }else{
+            invalid.setText("Invalid Username or Password");
+        }
     }
     @FXML
     void clickedSignUp(MouseEvent event) {
@@ -26,6 +36,10 @@ public class LoginPageController {
     @FXML
     void clickedForgotPassword(MouseEvent event) {
         App.setRoot("ForgotPassword.fxml");
+    }
+    @FXML
+    void clickedExit(MouseEvent event) {
+       System.exit(0);
     }
 
 

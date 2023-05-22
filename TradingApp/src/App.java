@@ -22,6 +22,12 @@ public class App extends Application {
       Scene scene = new Scene(root);
       
       primaryStage.initStyle(StageStyle.UNDECORATED);
+      root.setOnMousePressed(pressEvent -> {
+        root.setOnMouseDragged(dragEvent -> {
+            primaryStage.setX(dragEvent.getScreenX() - pressEvent.getSceneX());
+            primaryStage.setY(dragEvent.getScreenY() - pressEvent.getSceneY());
+        });
+    });
       primaryStage.setScene(scene);
       primaryStage.setTitle("Trading App");
         primaryStage.show();
