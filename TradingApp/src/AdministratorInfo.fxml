@@ -58,7 +58,7 @@
             </Label>
             <VBox layoutX="101.0" layoutY="98.0" prefHeight="86.0" prefWidth="205.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="210.0" text="Hang We Hong" textFill="WHITE">
+                  <Label fx:id="username" alignment="CENTER" prefHeight="25.0" prefWidth="210.0" textFill="WHITE">
                      <font>
                         <Font name="Tw Cen MT Condensed" size="40.0" />
                      </font>
@@ -123,7 +123,7 @@
             <HBox prefHeight="1.0" prefWidth="491.0" styleClass="line-color-admin" stylesheets="@../resources/stylesheet.css" />
             <HBox prefHeight="35.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="131.0" text="Name" textFill="#00000066">
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="117.0" text="Name" textFill="#00000066">
                      <font>
                         <Font name="Microsoft Himalaya" size="29.0" />
                      </font>
@@ -132,7 +132,7 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="250.0" text="Hang We Hong">
+                  <Label fx:id="name" alignment="CENTER" prefHeight="70.0" prefWidth="242.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -149,7 +149,7 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="77.0" prefWidth="327.0" text="natsuhang@gmail.com">
+                  <Label fx:id="email" alignment="CENTER" prefHeight="77.0" prefWidth="327.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -166,7 +166,7 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="153.0" text="English">
+                  <Label fx:id="notificationLanguage" alignment="CENTER" prefHeight="70.0" prefWidth="153.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -183,7 +183,7 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="325.0" text="Marketing Department">
+                  <Label fx:id="department" alignment="CENTER" prefHeight="70.0" prefWidth="325.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -200,7 +200,7 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="218.0" text="0167417172">
+                  <Label fx:id="phoneNum" alignment="CENTER" prefHeight="70.0" prefWidth="218.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -208,7 +208,7 @@
             </HBox>
             <HBox prefHeight="35.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="150.0" text="Country" textFill="#00000066">
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="170.0" text="Nationality" textFill="#00000066">
                      <font>
                         <Font name="Microsoft Himalaya" size="29.0" />
                      </font>
@@ -217,7 +217,7 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="92.0" prefWidth="182.0" text="Malaysia">
+                  <Label fx:id="nationality" alignment="CENTER" prefHeight="70.0" prefWidth="196.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>

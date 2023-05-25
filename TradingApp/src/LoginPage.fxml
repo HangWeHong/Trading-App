@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" stylesheets="@../resources/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginPageController">
    <children>
-      <VBox layoutX="1.0" layoutY="-2.0" prefHeight="897.0" prefWidth="670.0" styleClass="gradient-background-signinpageleft" stylesheets="@../resources/stylesheet.css">
+      <VBox layoutX="-6.0" layoutY="-2.0" prefHeight="899.0" prefWidth="677.0" styleClass="gradient-background-signinpageleft" stylesheets="@../resources/stylesheet.css">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -55,7 +56,6 @@
                </font>
             </Label>
             <TextField fx:id="inputUsername" layoutX="175.0" layoutY="399.0" prefHeight="40.0" prefWidth="292.0" promptText="Username" />
-            <TextField fx:id="inputPassword" layoutX="175.0" layoutY="445.0" prefHeight="40.0" prefWidth="292.0" promptText="Password" />
             <Label alignment="CENTER" layoutX="338.0" layoutY="483.0" onMouseClicked="#clickedForgotPassword" prefHeight="21.0" prefWidth="161.0" styleClass="forgetBtn" stylesheets="@../resources/stylesheet.css" text="Forgot Password?" textFill="#00000070">
                <font>
                   <Font name="Microsoft Himalaya" size="20.0" />
@@ -86,6 +86,7 @@
                   <Font name="Microsoft Himalaya" size="20.0" />
                </font>
             </Label>
+            <PasswordField fx:id="inputPassword" layoutX="175.0" layoutY="444.0" prefHeight="40.0" prefWidth="292.0" promptText="Password" />
          </children>
       </Pane>
    </children>
