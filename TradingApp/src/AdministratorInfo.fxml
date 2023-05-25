@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="gradient-background-admin" stylesheets="@../resources/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdministratorInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="gradient-background-admin" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdministratorInfoController">
    <children>
       <AnchorPane layoutX="3.0" layoutY="169.0" prefHeight="721.0" prefWidth="433.0" stylesheets="@../resources/stylesheet.css">
          <children>
             <Pane layoutX="63.0" layoutY="14.0" />
             <AnchorPane layoutX="70.0" layoutY="52.0" />
             <HBox layoutX="51.0" layoutY="48.0" />
-            <HBox alignment="CENTER" layoutX="4.0" layoutY="318.0" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+            <HBox alignment="CENTER" layoutX="4.0" layoutY="318.0" onMouseClicked="#clickedUserManagement" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -132,7 +132,8 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label fx:id="name" alignment="CENTER" prefHeight="70.0" prefWidth="242.0">
+                  <HBox prefHeight="70.0" prefWidth="36.0" />
+                  <Label fx:id="name" prefHeight="70.0" prefWidth="234.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -149,7 +150,8 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label fx:id="email" alignment="CENTER" prefHeight="77.0" prefWidth="327.0">
+                  <HBox prefHeight="70.0" prefWidth="36.0" />
+                  <Label fx:id="email" prefHeight="77.0" prefWidth="327.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -166,7 +168,8 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label fx:id="notificationLanguage" alignment="CENTER" prefHeight="70.0" prefWidth="153.0">
+                  <HBox prefHeight="70.0" prefWidth="36.0" />
+                  <Label fx:id="notificationLanguage" prefHeight="70.0" prefWidth="153.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -183,7 +186,8 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label fx:id="department" alignment="CENTER" prefHeight="70.0" prefWidth="325.0">
+                  <HBox prefHeight="70.0" prefWidth="36.0" />
+                  <Label fx:id="department" prefHeight="70.0" prefWidth="325.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -191,7 +195,7 @@
             </HBox>
             <HBox prefHeight="35.0" prefWidth="874.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="128.0" text="Phone" textFill="#00000066">
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="187.0" text="Phone Number" textFill="#00000066">
                      <font>
                         <Font name="Microsoft Himalaya" size="29.0" />
                      </font>
@@ -200,7 +204,8 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label fx:id="phoneNum" alignment="CENTER" prefHeight="70.0" prefWidth="218.0">
+                  <HBox prefHeight="70.0" prefWidth="36.0" />
+                  <Label fx:id="phoneNum" prefHeight="70.0" prefWidth="218.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>
@@ -217,7 +222,8 @@
             </HBox>
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
-                  <Label fx:id="nationality" alignment="CENTER" prefHeight="70.0" prefWidth="196.0">
+                  <HBox prefHeight="70.0" prefWidth="36.0" />
+                  <Label fx:id="nationality" prefHeight="70.0" prefWidth="196.0">
                      <font>
                         <Font size="25.0" />
                      </font></Label>

@@ -43,7 +43,16 @@ public class User {
         this.balance=balance;
         this.PL_Points=PL_Points;
     }
-
+    public User(String username, String email, String nationality, int age, String phoneNum,int balance,int PL_Points) {
+        this.username = username;
+        this.email = email;
+        this.nationality = nationality;
+        this.age = age;
+        this.phoneNum = phoneNum;
+        this.balance=balance;
+        this.PL_Points=PL_Points;
+    }
+    
 
 
   

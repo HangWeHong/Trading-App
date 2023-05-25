@@ -8,6 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class DatabaseHandler {
     private static final String JDBC_URL = "jdbc:mysql://34.143.154.148:3306/Testing";
     private static final String USERNAME = "user1";
@@ -73,7 +78,7 @@ public class DatabaseHandler {
                     user.setDepartment(resultSet.getString("Department"));
                 }else if(user.getRole().equals("user")){
                     user.setBalance( resultSet.getInt("Balance"));
-                    user.setRole(resultSet.getString("PL_Points"));
+                    user.setPL_Points(resultSet.getInt("PL_Points"));
                 }
                  
 
@@ -88,6 +93,23 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
         return false;
+    }
+    public boolean deleteUser(String username) {
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+            String deleteQuery = "DELETE FROM users WHERE Username = ?";
+            PreparedStatement statement = connection.prepareStatement(deleteQuery);
+            statement.setString(1, username);
+    
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                return true; // User deleted successfully
+            }
+    
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // User not found or deletion failed
     }
     public String encryptPassword(String password) {
         try {
@@ -115,6 +137,30 @@ public class DatabaseHandler {
             e.printStackTrace();
             return null;
         }
+    }
+    public ObservableList<User> displayUsers(){
+        ObservableList<User> list=FXCollections.observableArrayList();
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+         
+            
+            String selectQuery = "SELECT Username, Age, Email, Nationality, PhoneNumber, Balance, PL_Points  FROM users ";
+
+            PreparedStatement statement = connection.prepareStatement(selectQuery);
+          
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                list.add(new User(resultSet.getString("Username"), resultSet.getString("Email"), resultSet.getString("Nationality"), resultSet.getInt("Age"), resultSet.getString("PhoneNumber"), resultSet.getInt("Balance"), resultSet.getInt("PL_Points")));
+            }
+            resultSet.close();
+            statement.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     public User getUser(){
