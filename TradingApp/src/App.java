@@ -18,7 +18,7 @@ public class App extends Application {
      stage=primaryStage;
     Parent root;
     try {
-      root = FXMLLoader.load(getClass().getResource("RegistrationForm.fxml"));
+      root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
       Scene scene = new Scene(root);
       
       primaryStage.initStyle(StageStyle.UNDECORATED);

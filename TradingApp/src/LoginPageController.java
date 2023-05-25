@@ -26,7 +26,7 @@ public class LoginPageController {
         user = dbh.getUser();
         if (user.getRole().equals("Admin")) {
             App.setRoot("AdministratorInfo.fxml");
-        } else if (user.getRole().equals("User")) {
+        } else if (user.getRole().equals("user")) {
             App.setRoot("TradingDashboard.fxml");
         }
     } else {

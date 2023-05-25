@@ -3,6 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,14 +14,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="gradient-background-admin" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="gradient-background-admin" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserManagementController">
    <children>
       <AnchorPane layoutX="3.0" layoutY="169.0" prefHeight="721.0" prefWidth="433.0" stylesheets="@../resources/stylesheet.css">
          <children>
             <Pane layoutX="63.0" layoutY="14.0" />
             <AnchorPane layoutX="70.0" layoutY="52.0" />
             <HBox layoutX="51.0" layoutY="48.0" />
-            <HBox alignment="CENTER" layoutX="4.0" layoutY="318.0" onMouseClicked="#clickedUserManagement" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+            <HBox alignment="CENTER" layoutX="4.0" layoutY="318.0" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -45,7 +48,7 @@
                         <Image url="@../resources/Image/Icon/settings.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="66.0" prefWidth="135.0" text=" Settings" textFill="#000000ee">
+                  <Label onMouseClicked="#clickedSettings" prefHeight="66.0" prefWidth="135.0" text=" Settings" textFill="#000000ee">
                      <font>
                         <Font name="Cambria" size="25.0" />
                      </font>
@@ -111,7 +114,7 @@
          <children>
             <HBox prefHeight="68.0" prefWidth="869.0">
                <children>
-                  <Label prefHeight="77.0" prefWidth="302.0" text="   Options" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="61.0" prefWidth="297.0" text="Users' Information" textAlignment="CENTER">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="25.0" />
                      </font>
@@ -121,19 +124,54 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="1.0" prefWidth="491.0" styleClass="line-color-admin" stylesheets="@../resources/stylesheet.css" />
-            <HBox prefHeight="70.0" prefWidth="874.0">
+            <HBox prefHeight="2.0" prefWidth="874.0" styleClass="line-color-admin" stylesheets="@../resources/stylesheet.css" />
+            <HBox prefHeight="11.0" prefWidth="874.0" />
+            <TableView fx:id="usersTable" prefHeight="477.0" prefWidth="874.0" styleClass="sidebar-admin" stylesheets="@../resources/stylesheet.css">
+              <columns>
+                <TableColumn fx:id="col_Username" prefWidth="119.0" text="Username" />
+                <TableColumn fx:id="col_Age" prefWidth="61.0" text="Age" />
+                  <TableColumn fx:id="col_Email" prefWidth="172.0" text="Email" />
+                  <TableColumn fx:id="col_Nationality" minWidth="0.0" prefWidth="146.0" text="Nationality" />
+                  <TableColumn fx:id="col_PhoneNumber" prefWidth="163.0" text="PhoneNumber" />
+                  <TableColumn fx:id="col_Balance" minWidth="4.0" prefWidth="103.0" text="Balance" />
+                  <TableColumn fx:id="col_Points" minWidth="0.0" prefWidth="109.0" text="P/L(Points)" />
+              </columns>
+            </TableView>
+            <HBox layoutX="10.0" layoutY="568.0" prefHeight="61.0" prefWidth="874.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#clickedSignOut" prefHeight="31.0" prefWidth="77.0" styleClass="labbtnt-logout" stylesheets="@../resources/stylesheet.css" text="Sign Out">
+                  <HBox prefHeight="106.0" prefWidth="874.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="61.0" prefWidth="234.0" text="Delete User" textAlignment="CENTER" textFill="#bc6363">
+                           <font>
+                              <Font name="Tw Cen MT Condensed Extra Bold" size="26.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="64.0" prefWidth="874.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="61.0" prefWidth="264.0" text="Username:" textAlignment="CENTER" textFill="#bc6363">
+                     <font>
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="inputUsername" prefHeight="28.0" prefWidth="210.0" promptText="Enter Username to Delete">
                      <HBox.margin>
-                        <Insets left="40.0" top="20.0" />
+                        <Insets left="10.0" top="18.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onMouseClicked="#clickedDelete" prefHeight="29.0" prefWidth="69.0" styleClass="labbtnt-delete" stylesheets="@../resources/stylesheet.css" text="Delete">
+                     <HBox.margin>
+                        <Insets left="90.0" top="17.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
          </children>
       </VBox>
-      <Label alignment="CENTER" layoutX="442.0" layoutY="83.0" prefHeight="61.0" prefWidth="156.0" styleClass="labbtn-Title" stylesheets="@../resources/stylesheet.css" text="Settings" textFill="#0009ffe6">
+      <Label alignment="CENTER" layoutX="442.0" layoutY="76.0" prefHeight="68.0" prefWidth="218.0" styleClass="labbtn-Title" stylesheets="@../resources/stylesheet.css" text="User Management" textFill="#0009ffe6">
          <font>
             <Font name="Tw Cen MT Condensed" size="32.0" />
          </font>

@@ -43,5 +43,10 @@ public class AdministratorInfoController {
     void clickedSettings(MouseEvent event) {
         App.setRoot("Settings.fxml");
     }
+    @FXML
+    void clickedUserManagement(MouseEvent event) {
+        App.setRoot("UserManagement.fxml");
+    }
+
 
 }

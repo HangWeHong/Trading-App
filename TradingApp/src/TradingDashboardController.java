@@ -14,7 +14,11 @@ import Model.TradeHistory;
 import Model.User;
 
 public class TradingDashboardController {
-    
+    @FXML
+    private Label balance;
+
+    @FXML
+    private Label points;
     @FXML
     private Label username;
 
@@ -25,12 +29,15 @@ public class TradingDashboardController {
     private VBox tradeHistoryLayout;
 
     private DatabaseHandler dbh=new DatabaseHandler();
-    private User user=dbh.getUser();
+  private User user=dbh.getUser();
     
     @FXML
     void initialize() {
         
-        username.setText(user.getUsername());
+         username.setText(user.getUsername());
+         balance.setText(String.valueOf(user.getBalance()));
+         points.setText(String.valueOf(user.getPL_Points()));
+
        List<TradeHistory> list=new ArrayList<>(tradeHistory());
        //here insert to get balance,points and position
        for(int i=0;i<list.size();i++){
@@ -49,9 +56,10 @@ public class TradingDashboardController {
 
     }
     @FXML
-    void btnClicked(MouseEvent event) {
-       App.setRoot("AdministratorInfo.fxml");
+    void clickedProfileInfo(MouseEvent event) {
+        App.setRoot("ProfileInfo.fxml");
     }
+    
 
     private List<TradeHistory> tradeHistory(){      //use this to set the field other dont care;
         List<TradeHistory> list=new ArrayList<>();
