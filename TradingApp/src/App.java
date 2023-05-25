@@ -1,21 +1,24 @@
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
  
 public class App extends Application {
-      
       private static Stage stage;
     @Override
     public void start(Stage primaryStage) {
      stage=primaryStage;
     Parent root;
     try {
-      root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+      root = FXMLLoader.load(getClass().getResource("RegistrationForm.fxml"));
       Scene scene = new Scene(root);
       
       primaryStage.initStyle(StageStyle.UNDECORATED);

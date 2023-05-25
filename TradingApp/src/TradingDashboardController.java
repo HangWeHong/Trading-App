@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -8,9 +9,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.DatabaseHandler;
 import Model.TradeHistory;
+import Model.User;
 
 public class TradingDashboardController {
+    
+    @FXML
+    private Label username;
 
     @FXML
     private HBox dashboard;
@@ -18,8 +24,13 @@ public class TradingDashboardController {
     @FXML
     private VBox tradeHistoryLayout;
 
+    private DatabaseHandler dbh=new DatabaseHandler();
+    private User user=dbh.getUser();
+    
     @FXML
     void initialize() {
+        
+        username.setText(user.getUsername());
        List<TradeHistory> list=new ArrayList<>(tradeHistory());
        //here insert to get balance,points and position
        for(int i=0;i<list.size();i++){
@@ -33,6 +44,7 @@ public class TradingDashboardController {
         }catch(IOException e){
             e.printStackTrace();
         }
+        
     }
 
     }

@@ -1,54 +1,64 @@
-import javafx.event.ActionEvent;
+import Model.DatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class RegistrationFormController {
+    
+    @FXML
+    private TextField age;
 
     @FXML
-    private TextField inputUsername;
+    private PasswordField confirmPassword;
 
     @FXML
-    private TextField inputPassword;
+    private TextField email;
 
     @FXML
-    private TextField inputEmail;
+    private TextField nationality;
 
     @FXML
-    private TextField inputAge;
+    private Label notMatch;
 
     @FXML
-    private TextField inputPhoneNumber;
+    private PasswordField password;
 
     @FXML
-    private TextField inputNationality;
+    private TextField phoneNumber;
 
     @FXML
-    private Label registrationMessage;
+    private Label statusRegister;
 
     @FXML
-    void clickedRegister(MouseEvent event) {
-        String username = inputUsername.getText();
-        String password = inputPassword.getText();
-        String email = inputEmail.getText();
-        String age = inputAge.getText();
-        String phoneNumber = inputPhoneNumber.getText();
-        String nationality = inputNationality.getText();
+    private TextField username;
 
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        boolean success = databaseHandler.insertUser(username, password, email, age, phoneNumber, nationality);
 
-        if (success) {
-            registrationMessage.setText("Registration successful!");
-        } else {
-            registrationMessage.setText("Registration failed. Please try again.");
-        }
-    }
-
+    private DatabaseHandler dbh=new DatabaseHandler();
     @FXML
     void clickedBack(MouseEvent event) {
         App.setRoot("LoginPage.fxml");
+       
     }
+
+    @FXML
+    void clickedRegister(MouseEvent event) {
+        
+        if(confirmPassword.getText().equals(password.getText())){
+            boolean successfulReg=dbh.insertUser(username.getText(), dbh.encryptPassword(password.getText()), email.getText(), age.getText(), phoneNumber.getText(), nationality.getText());
+            if(successfulReg){
+                statusRegister.setText("You have Successfully Registered!");
+            }else{
+                statusRegister.setText("You have Failed to Register!");
+            }
+        }else{
+            notMatch.setText("Password Does Not Match");
+        }
+        
+        
+    }
+
+    
 }
 
