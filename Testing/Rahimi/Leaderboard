@@ -1,0 +1,483 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package systemlogin;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
+public class User {
+    private String username;
+    private String email;
+    private String password;
+    private int points; // New variable for points
+
+    public User(String username, String email, String password, int points) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.points = points;
+    }
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
+     // Getters for the new variable
+    public int getPoints() {
+        return points;
+    }
+    
+    public void setPoints(int points) {
+        this.points = points;
+    }
+    
+
+}
+
+class RegistrationForm extends JFrame {
+    private JTextField usernameTextField;
+    private JTextField emailTextField;
+    private JPasswordField passwordField;
+    
+
+    public RegistrationForm() {
+        setTitle("Registration Form");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 200);
+        setLocationRelativeTo(null);
+        setLayout(new GridLayout(4, 2));
+
+        JLabel usernameLabel = new JLabel("Username:");
+        JLabel emailLabel = new JLabel("Email:");
+        JLabel passwordLabel = new JLabel("Password:");
+
+        usernameTextField = new JTextField();
+        emailTextField = new JTextField();
+        passwordField = new JPasswordField();
+       
+        JButton registerButton = new JButton("Register");
+        registerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameTextField.getText();
+                String email = emailTextField.getText();
+                String password = new String(passwordField.getPassword());
+
+                User user = new User(username, email, password);
+
+                // Store the user information in the database
+                registerUser(user);
+
+                // Display a confirmation dialog
+                JOptionPane.showMessageDialog(RegistrationForm.this, "Registration successful!");
+
+                // Clear the input fields
+                usernameTextField.setText("");
+                emailTextField.setText("");
+                passwordField.setText("");
+            }
+        });
+
+        add(usernameLabel);
+        add(usernameTextField);
+        add(emailLabel);
+        add(emailTextField);
+        add(passwordLabel);
+        add(passwordField);
+        add(registerButton);
+
+        setVisible(true);
+    }
+
+    private void registerUser(User user) {
+        // Update the database connection URL, username, and password with your own
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String users = "root";
+        String pass = "1234";
+
+        try {
+            // Create the database connection
+            Connection conn = DriverManager.getConnection(url, users, pass);
+
+            // Create the SQL statement
+            String sql = "INSERT INTO users (username, email, password, points) VALUES (?, ?, ?, ?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            // Set the parameter values
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
+            statement.setInt(4, user.getPoints()); // Set the points value
+
+
+            // Execute the SQL statement
+            statement.executeUpdate();
+
+            // Close the resources
+            statement.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Registration failed!");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new RegistrationForm();
+            }
+        });
+    }
+}
+
+class LoginForm extends JFrame {
+    private JTextField usernameTextField;
+    private JPasswordField passwordField;
+    private JLabel messageLabel;
+    private User user;
+
+    public LoginForm() {
+        setTitle("Login Form");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 200);
+        setLocationRelativeTo(null);
+        setLayout(new GridLayout(4, 2));
+
+        JLabel usernameLabel = new JLabel("Username:");
+        JLabel passwordLabel = new JLabel("Password:");
+
+        usernameTextField = new JTextField();
+        passwordField = new JPasswordField();
+
+         JButton loginButton = new JButton("Login");
+        loginButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameTextField.getText();
+                String password = new String(passwordField.getPassword());
+
+                // Check the entered username and password
+                if (validateLogin(username, password)) {
+                    // Get the logged-in user information
+                    user = new User(username, "", "");  // Update with actual user data from the database
+                    user.setPoints(getPointsFromDatabase(username));  // Update points for the user
+
+                    // Display the HomeForm if the login is successful
+                    dispose();
+                    new HomeForm(user);
+                } else {
+                    // Show an error message if the login is unsuccessful
+                    messageLabel.setText("Invalid username/password");
+                    messageLabel.setForeground(Color.RED);
+                }
+            }
+        });
+
+
+        messageLabel = new JLabel();
+        messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        add(usernameLabel);
+        add(usernameTextField);
+        add(passwordLabel);
+        add(passwordField);
+        add(new JLabel()); // Empty cell
+        add(loginButton);
+        add(new JLabel()); // Empty cell
+        add(messageLabel);
+
+        setVisible(true);
+    }
+    
+    private int getPointsFromDatabase(String username) {
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String users = "root";
+        String pass = "1234";
+
+        try {
+            Connection conn = DriverManager.getConnection(url, users, pass);
+
+            String sql = "SELECT points FROM users WHERE username = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, username);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int points = resultSet.getInt("points");
+
+                resultSet.close();
+                statement.close();
+                conn.close();
+
+                return points;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return 0;
+    }
+
+    private boolean validateLogin(String username, String password) {
+        // Update the database connection URL, username, and password with your own
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String users = "root";
+        String pass = "1234";
+
+        try {
+            // Create the database connection
+            Connection conn = DriverManager.getConnection(url, users, pass);
+
+            // Create the SQL statement
+            String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            // Set the parameter values
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            // Execute the SQL statement
+            ResultSet resultSet = statement.executeQuery();
+
+            // Check if the result set has any rows
+            boolean validLogin = resultSet.next();
+            
+            if(validLogin){
+            // Fetch the points value
+                int points = resultSet.getInt("points");
+             // Create the User object with points
+             User user = new User(username, "", "", points);
+            }
+            // Close the resources
+            resultSet.close();
+            statement.close();
+            conn.close();
+
+            return validLogin;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new LoginForm();
+            }
+        });
+    }
+}
+    class LeaderboardPanel extends JPanel {
+    private JTable leaderboardTable;
+
+    public LeaderboardPanel() {
+        setLayout(new BorderLayout());
+
+        // Create the table model
+        DefaultTableModel tableModel = new DefaultTableModel(
+                new Object[]{"Rank", "Username", "Points"}, 0);
+
+        // Fetch the top 10 users with the most points from the database
+        List<User> topUsers = fetchTopUsers(10);
+
+        // Populate the table model with user data
+        for (int i = 0; i < topUsers.size(); i++) {
+            User user = topUsers.get(i);
+            tableModel.addRow(new Object[]{i + 1, user.getUsername(), user.getPoints()});
+        }
+
+        // Create the leaderboard table
+        leaderboardTable = new JTable(tableModel);
+
+        // Set column widths
+        leaderboardTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+        leaderboardTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+        leaderboardTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+
+        // Create the scroll pane for the leaderboard table
+        JScrollPane scrollPane = new JScrollPane(leaderboardTable);
+
+        add(scrollPane, BorderLayout.CENTER);
+    }
+
+    private List<User> fetchTopUsers(int limit) {
+        // Update the database connection URL, username, and password with your own
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String users = "root";
+        String pass = "1234";
+
+        List<User> topUsers = new ArrayList<>();
+
+        try {
+            // Create the database connection
+            Connection conn = DriverManager.getConnection(url, users, pass);
+
+            // Create the SQL statement
+            String sql = "SELECT * FROM users ORDER BY points DESC LIMIT ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, limit);
+
+            // Execute the SQL statement
+            ResultSet resultSet = statement.executeQuery();
+
+            // Fetch the user data and add them to the topUsers list
+            while (resultSet.next()) {
+                String username = resultSet.getString("username");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
+                int points = resultSet.getInt("points");
+
+                User user = new User(username, email, password, points);
+                topUsers.add(user);
+            }
+
+            // Close the resources
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return topUsers;
+    }
+}
+
+
+ class HomeForm extends JFrame {
+    private User user;
+    private JLabel pointsLabel;
+    private JTextField updatePointsTextField;
+
+    public HomeForm(User user) {
+        this.user = user;
+
+        setTitle("Home");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 200);
+        setLocationRelativeTo(null);
+
+        JLabel welcomeLabel = new JLabel("Welcome to the Home Page!");
+        welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JLabel userLabel = new JLabel("Hello, " + user.getUsername());
+        userLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        pointsLabel = new JLabel("Points: " + user.getPoints()); // Initialize pointsLabel
+
+        updatePointsTextField = new JTextField();
+        JButton updatePointsButton = new JButton("Update Points");
+        updatePointsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String inputText = updatePointsTextField.getText();
+                try {
+                    int inputPoints = Integer.parseInt(inputText);
+
+                    // Update points based on input value
+                    int updatedPoints = user.getPoints() + inputPoints;
+                    user.setPoints(updatedPoints);
+                    pointsLabel.setText("Points: " + updatedPoints);
+
+                    // Update the points in the database
+                    updatePointsInDatabase(user.getUsername(), updatedPoints);
+                } catch (NumberFormatException ex) {
+                    // Show an error message for invalid input
+                    JOptionPane.showMessageDialog(null, "Invalid input! Please enter an integer value.");
+                }
+
+                // Clear the text field after updating points
+                updatePointsTextField.setText("");
+            }
+        });
+
+        JButton leaderboardButton = new JButton("Leaderboard");
+        leaderboardButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) { 
+                // Create and display the leaderboard panel
+                JFrame leaderboardFrame = new JFrame("Leaderboard");
+                leaderboardFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                leaderboardFrame.setSize(400, 300);
+                leaderboardFrame.setLocationRelativeTo(null);
+
+                LeaderboardPanel leaderboardPanel = new LeaderboardPanel();
+                leaderboardFrame.add(leaderboardPanel);
+
+                leaderboardFrame.setVisible(true);
+            }
+        });
+
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new LoginForm();
+            }
+        });
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(7, 1));
+        panel.add(welcomeLabel);
+        panel.add(userLabel);
+        panel.add(pointsLabel);
+        panel.add(updatePointsTextField);
+        panel.add(updatePointsButton);
+        panel.add(logoutButton);
+        panel.add(leaderboardButton);
+
+        add(panel);
+
+        setVisible(true);
+    }
+
+    private void updatePointsInDatabase(String username, int points) {
+        // Update the database connection URL, username, and password with your own
+        String url = "jdbc:mysql://localhost:3306/mydatabase";
+        String user = "root";
+        String pass = "1234";
+
+        try {
+            // Create the database connection
+            Connection conn = DriverManager.getConnection(url, user, pass);
+
+            // Create the SQL statement
+            String sql = "UPDATE users SET points = ? WHERE username = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            // Set the parameter values
+            statement.setInt(1, points);
+            statement.setString(2, username);
+
+            // Execute the SQL statement
+            statement.executeUpdate();
+
+            // Close the resources
+            statement.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
