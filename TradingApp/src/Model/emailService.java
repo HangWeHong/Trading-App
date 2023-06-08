@@ -40,7 +40,7 @@ public class emailService {
         String host = "smtp.gmail.com";
         String port = "587";
         String username = "natsuhang@gmail.com";
-        String password = "bmsvmrwizwqowdlb";
+        String password = "xxxxxxxxxxx";
         
         // Sender and recipient email addresses
         String senderEmail = "natsuhang@gmail.com";
