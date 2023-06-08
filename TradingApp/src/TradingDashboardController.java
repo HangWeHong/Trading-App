@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -16,6 +17,9 @@ import Model.User;
 public class TradingDashboardController {
     @FXML
     private Label balance;
+    
+    @FXML
+    private Label position;
 
     @FXML
     private Label points;
@@ -37,6 +41,7 @@ public class TradingDashboardController {
          username.setText(user.getUsername());
          balance.setText(String.valueOf(user.getBalance()));
          points.setText(String.valueOf(user.getPL_Points()));
+         position.setText(String.valueOf(getPosition()));
 
        List<TradeHistory> list=new ArrayList<>(tradeHistory());
        //here insert to get balance,points and position
@@ -59,7 +64,19 @@ public class TradingDashboardController {
     void clickedProfileInfo(MouseEvent event) {
         App.setRoot("ProfileInfo.fxml");
     }
+    @FXML
+    void clickedNews(MouseEvent event) {
+        App.setRoot("News.fxml");
+    }
+    @FXML
+    void clickedLeaderboard(MouseEvent event) {
+        App.setRoot("Leaderboard.fxml");
+    }
     
+    @FXML
+    void clickedHelpNSupport(MouseEvent event) {
+        App.setRoot("HelpSupport.fxml");
+    }
 
     private List<TradeHistory> tradeHistory(){      //use this to set the field other dont care;
         List<TradeHistory> list=new ArrayList<>();
@@ -156,5 +173,16 @@ public class TradingDashboardController {
 
         return list;
 }
-
+private int getPosition() {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("Leaderboard.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            LeaderboardController leaderboardController = fxmlLoader.getController();
+            return leaderboardController.getUserPosition(user.getUsername());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }

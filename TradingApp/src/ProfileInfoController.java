@@ -44,5 +44,19 @@ public class ProfileInfoController {
     void clickedSignOut(MouseEvent event) {
         App.setRoot("LoginPage.fxml");
     }
+    @FXML
+    void clickedNews(MouseEvent event) {
+        App.setRoot("News.fxml");
+    }
+    @FXML
+    void clickedHelpNsupport(MouseEvent event) {
+        App.setRoot("HelpSupport.fxml");
+    }
+
+    @FXML
+    void clickedLeaderboard(MouseEvent event) {
+        App.setRoot("Leaderboard.fxml");
+    }
+
 
 }

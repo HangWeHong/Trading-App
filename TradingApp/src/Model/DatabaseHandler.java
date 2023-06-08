@@ -14,7 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DatabaseHandler {
-    private static final String JDBC_URL = "jdbc:mysql://34.143.154.148:3306/Testing";
+    private static final String JDBC_URL = "jdbc:mysql://34.142.203.161:3306/TradingApp";
     private static final String USERNAME = "user1";
     private static final String PASSWORD = "12345";
     private static User user;
@@ -144,7 +144,7 @@ public class DatabaseHandler {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
          
             
-            String selectQuery = "SELECT Username, Age, Email, Nationality, PhoneNumber, Balance, PL_Points  FROM users ";
+            String selectQuery = "SELECT Username, Age, Email, Nationality, PhoneNumber, Balance, PL_Points  FROM users  WHERE Role = 'user'";
 
             PreparedStatement statement = connection.prepareStatement(selectQuery);
           

@@ -21,6 +21,7 @@ public class LoginPageController {
 
     @FXML
     void clickedLogin(MouseEvent event) {
+
         boolean isValidUser = dbh.checkUser(inputUsername.getText(), dbh.encryptPassword(inputPassword.getText()));
     if (isValidUser) {
         user = dbh.getUser();
@@ -37,6 +38,7 @@ public class LoginPageController {
     @FXML
     void clickedSignUp(MouseEvent event) {
         App.setRoot("RegistrationForm.fxml");
+
     }
     
     @FXML
