@@ -1,13 +1,17 @@
-.sidebar-admin{
-    -fx-background-color: rgba(255,255,255,0.4);
-    -fx-background-radius: 0px 50px 0px 0px;
+.background-admin{
+    -fx-background-color: rgb(240, 240, 240);
 }
+.sidebar-admin{
+    -fx-background-color: rgb(125,146,159);
+    -fx-background-radius: 0px 70px 0px 0px;
+}
+
 .sidebar-user{
     -fx-background-color: rgba(255,255,255,0.2);
     -fx-background-radius: 10;
 }
 .labbtnt-sidebar-title{
-    -fx-text-fill: #2262C6;
+    -fx-text-fill: rgb(125,146,159);
     -fx-background-color: #FEFFFD;
     -fx-background-radius: 100px;
 }
@@ -26,19 +30,19 @@
     -fx-border-radius: 10px;
 }
 .gradient-background-user{
-    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#d807b5,#eee4e0);
+    -fx-background-color: rgb(87,100,112);
 }
 .gradient-background-sign-up-page{
-    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#eae0eb,#e740d1);
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#eae0eb,#6747CD);
 }
 .line-color{
-    -fx-background-color: #F3ABB5;
+    -fx-background-color: #FFFFFF;
 }
 .line-color-user{
     -fx-background-color: #fabec6;
 }
 .line-color-admin{
-    -fx-background-color: #4bf3b3;
+    -fx-background-color: rgb(125,146,159);
 }
 .gradient-background-admin{
     -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#1f9ed9,#8eff4c);
@@ -72,33 +76,33 @@
     -fx-border-radius: 10px;
 }
 .gradient-background-signinpageleft{
-    -fx-background-color: rgba(133, 0, 241, 0.918);
+    -fx-background-color: rgb(60,70,84);
 }
 
 .forgetBtn{
     -fx-text-fill: #00000070;
 }
 .forgetBtn:hover{
-    -fx-text-fill: #6747CD;
+    -fx-text-fill: rgb(60,70,84);
     -fx-underline: true;      
 }
 
 .loginBtn{
-    -fx-background-color: #6747CD;
+    -fx-background-color: rgb(60,70,84);
     -fx-text-fill: #FFF;
     -fx-background-radius: 10px;
 }
 .loginBtn:hover{
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
-    -fx-text-fill: #6747CD;
-    -fx-border-color: #6747CD;
+    -fx-text-fill: rgb(60,70,84);
+    -fx-border-color: rgb(60,70,84);
     -fx-border-width: 3px;
     -fx-border-style: solid;
     -fx-border-radius: 10px;
 }
 .sign-up-Btn{
-    -fx-text-fill: #6747CD;
+    -fx-text-fill: rgb(60,70,84);
 }
 .sign-up-Btn:hover{                 /*have effect when mouse is there*/
     -fx-text-fill: #6744d8;
@@ -106,10 +110,9 @@
 }
 
 .sidebar-options-admin:hover{
-    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.2),10.0, 0.0, 0.0, 10.0);
-    -fx-background-color: transparent;
+    -fx-background-color: rgb(243,243,243);
     -fx-background-radius: 10px;
-    -fx-text-fill: #6747CD;
+    -fx-text-fill: rgb(13,133,245);
     -fx-border-color: transparent;
     -fx-border-width: 3px;
     -fx-border-style: solid;
@@ -117,11 +120,11 @@
 }
 .labbtnt-delete{
     -fx-text-fill: #ebeef1;
-    -fx-background-color: #ec1e16;
+    -fx-background-color: rgb(125,146,159);
     -fx-background-radius: 100px;
 }
 .labbtnt-delete:hover{
-    -fx-background-color: #ec1e16;
+    -fx-background-color: rgb(125,146,159);
     -fx-background-radius: 10px;
     -fx-text-fill: #ebeef1;
     -fx-border-color: transparent;
@@ -143,3 +146,66 @@
     -fx-border-style: solid;
     -fx-border-radius: 10px;
 }
+
+.link-to-browser{
+
+}
+.link-to-browser:hover{
+    -fx-underline: true;      
+}
+.bar-news{
+    -fx-background-color: rgba(255, 253, 253, 0.76);
+    -fx-background-radius: 10;
+}
+
+.pane-with-shadow {
+    -fx-background-color: rgb(243, 243, 243);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 12, 0.5, 0, 1);
+}
+.pane-admin{
+    -fx-border-radius: 50px 50px 50px 50px;
+    -fx-border-color: #F1F2F7;
+
+}
+.my-table-view-leaderboard {
+    -fx-background-color: rgb(87,100,112);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 12, 0.5, 0, 1);
+}
+
+.my-table-view-leaderboard .column-header {
+    -fx-background-color: #a8a8a8;
+    -fx-text-fill: rgb(125,146,159);
+}
+.my-table-view-user-management {
+    -fx-background-color: rgb(243, 243, 243);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 12, 0.5, 0, 1);
+}
+
+.my-table-view-user-management .column-header {
+    -fx-background-color: rgb(125,146,159);
+}
+
+.table-row-cell {
+    -fx-background-color: rgb(125,146,159);
+}
+.my-table-view-user-management .row:hover {
+    -fx-background-color: rgb(125,146,159);
+}
+.combo-box{
+    -fx-border-width:0px;
+    -fx-border-color:#ACACAC;
+    -fx-font-size:12px;
+    -fx-padding:2px;
+
+}
+.combo-box .arrow-button {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-background-radius: 0;
+}
+.combo-box .list-cell {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-padding: 5;
+    -fx-cell-size: 30px;
+    -fx-text-fill: #3c4654;
+}
+

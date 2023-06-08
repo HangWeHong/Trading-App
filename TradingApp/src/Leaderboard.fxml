@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,27 +12,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="gradient-background-user" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProfileInfoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="892.0" prefWidth="1316.0" styleClass="gradient-background-user" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LeaderboardController">
    <top>
       <HBox layoutX="50.0" prefHeight="69.0" prefWidth="1315.0" BorderPane.alignment="TOP_RIGHT">
          <children>
-            <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="69.0" prefWidth="326.0" stylesheets="@Model/stylesheet.css" text="Profile Infomation     " textFill="#fcfcfc">
+            <Label nodeOrientation="RIGHT_TO_LEFT" prefHeight="69.0" prefWidth="288.0" stylesheets="@../resources/stylesheet.css" text="Leaderboard  " textFill="#fcfcfc">
                <font>
                   <Font name="Tw Cen MT Condensed" size="42.0" />
                </font>
             </Label>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1.0" prefWidth="924.0" styleClass="line-color" stylesheets="@Model/stylesheet.css">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="2.0" prefWidth="964.0" styleClass="line-color" stylesheets="@../resources/stylesheet.css">
                <HBox.margin>
                   <Insets top="35.0" />
                </HBox.margin>
             </Pane>
-            <Pane prefHeight="69.0" prefWidth="9.0" />
+            <Pane prefHeight="69.0" prefWidth="20.0" />
             <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" x="50.0" y="50.0">
                <image>
-                  <Image url="@../resources/Image/Icon/%5BCITYPNG.COM%5DProfile%20User%20Round%20White%20Icon%20Symbol%20PNG%20-%201074x1074.png" />
+                  <Image url="@../resources/Image/Icon/icons8-leaderboard-100.png" />
                </image>
                <HBox.margin>
-                  <Insets top="20.0" />
+                  <Insets left="-10.0" top="20.0" />
                </HBox.margin>
             </ImageView>
          </children>
@@ -41,7 +42,7 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="819.0" prefWidth="325.0" styleClass="sidebar-user" stylesheets="@Model/stylesheet.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="819.0" prefWidth="325.0" styleClass="sidebar-user" stylesheets="@../resources/stylesheet.css" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="119.0" prefWidth="324.0">
                <children>
@@ -53,17 +54,17 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="55.0" prefWidth="334.0" text="User" textFill="#ffffffc2">
+                  <Label alignment="CENTER" prefHeight="55.0" prefWidth="334.0" text="User" textFill="#ffffffc1">
                      <font>
                         <Font name="Tw Cen MT Condensed" size="30.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="5.0" prefWidth="324.0" styleClass="line-color" stylesheets="@Model/stylesheet.css" />
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="5.0" prefWidth="324.0" styleClass="line-color" stylesheets="@../resources/stylesheet.css" />
             <VBox prefHeight="708.0" prefWidth="325.0">
                <children>
-                  <HBox onMouseClicked="#clickedDashboard" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@Model/stylesheet.css">
+                  <HBox onMouseClicked="#clickedDashboard" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
                      <children>
                         <HBox prefHeight="80.0" prefWidth="41.0" />
                         <ImageView fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow">
@@ -74,7 +75,7 @@
                               <Insets top="18.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="173.0" stylesheets="@Model/stylesheet.css" text="Dashboard" textFill="#282626">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="173.0" stylesheets="@../../../JavaFxProject/src/resources/stylesheet.css" text="Dashboard" textFill="#282626">
                            <font>
                               <Font name="Tw Cen MT Condensed" size="40.0" />
                            </font>
@@ -84,7 +85,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@Model/stylesheet.css">
+                  <HBox prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
                      <children>
                         <HBox prefHeight="80.0" prefWidth="41.0" />
                         <ImageView fitHeight="48.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
@@ -105,7 +106,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@Model/stylesheet.css">
+                  <HBox prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
                      <children>
                         <HBox prefHeight="80.0" prefWidth="41.0" />
                         <ImageView fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
@@ -126,7 +127,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox onMouseClicked="#clickedLeaderboard" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@Model/stylesheet.css">
+                  <HBox prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
                      <children>
                         <HBox prefHeight="80.0" prefWidth="41.0" />
                         <ImageView fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
@@ -147,7 +148,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox onMouseClicked="#clickedNews" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@Model/stylesheet.css">
+                  <HBox onMouseClicked="#clickedNews" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
                      <children>
                         <HBox prefHeight="80.0" prefWidth="41.0" />
                         <ImageView fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
@@ -168,7 +169,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@Model/stylesheet.css">
+                  <HBox onMouseClicked="#clickedProfileInfo" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
                      <children>
                         <HBox prefHeight="80.0" prefWidth="41.0" />
                         <ImageView fitHeight="50.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
@@ -189,7 +190,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox onMouseClicked="#clickedHelpNsupport" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@Model/stylesheet.css">
+                  <HBox onMouseClicked="#clickedHelpNSupport" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
                      <children>
                         <HBox prefHeight="80.0" prefWidth="41.0" />
                         <ImageView fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
@@ -216,14 +217,12 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="747.0" prefWidth="850.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="20.0" />
-         </BorderPane.margin>
+      <Pane prefHeight="799.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="92.0" prefWidth="960.0">
+            <HBox layoutX="9.0" layoutY="93.0" prefHeight="1.0" prefWidth="980.0" styleClass="line-color" stylesheets="@Model/stylesheet.css" />
+            <HBox layoutY="-3.0" prefHeight="92.0" prefWidth="960.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="72.0" prefWidth="224.0" text="Personal Details" textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" prefHeight="85.0" prefWidth="210.0" text="Rankings" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Tw Cen MT Condensed Extra Bold" size="25.0" />
                      </font>
@@ -233,113 +232,70 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="1.0" prefWidth="491.0" styleClass="line-color" stylesheets="@Model/stylesheet.css" />
-            <HBox prefHeight="42.0" prefWidth="960.0">
+            <TableView fx:id="usersTable" layoutX="16.0" layoutY="107.0" prefHeight="273.0" prefWidth="960.0" styleClass="my-table-view-leaderboard" stylesheets="@../resources/stylesheet.css">
+               <columns>
+                  <TableColumn fx:id="col_Position" prefWidth="63.0" text="Position" />
+                  <TableColumn fx:id="col_Username" prefWidth="171.0" text="Username" />
+                  <TableColumn fx:id="col_Age" prefWidth="53.0" text="Age" />
+                  <TableColumn fx:id="col_Email" prefWidth="146.0" text="Email" />
+                  <TableColumn fx:id="col_Nationality" minWidth="0.0" prefWidth="145.0" text="Nationality" />
+                  <TableColumn fx:id="col_PhoneNumber" prefWidth="127.0" text="PhoneNumber" />
+                  <TableColumn fx:id="col_Balance" minWidth="4.0" prefWidth="96.0" text="Balance" />
+                  <TableColumn fx:id="col_Points" minWidth="0.0" prefWidth="158.0" text="P/L(Points)" />
+               </columns>
+            </TableView>
+            <VBox layoutX="377.0" layoutY="410.0" prefHeight="399.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="155.0" text="Username" textFill="#ffffffc2">
+                  <Label fx:id="username1" alignment="CENTER" prefHeight="179.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
                      <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="54.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="213.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Image/Icon/1st-prize-icon.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="30.0" />
+                     </VBox.margin>
+                  </ImageView>
                </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
+            </VBox>
+            <VBox layoutX="74.0" layoutY="484.0" prefHeight="325.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
                <children>
-                  <HBox prefHeight="70.0" prefWidth="36.0" />
-                  <Label fx:id="name" prefHeight="70.0" prefWidth="242.0" textFill="#151d29">
+                  <Label fx:id="username2" alignment="CENTER" prefHeight="160.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="54.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="155.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Image/Icon/2nd-prize-icon.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </ImageView>
                </children>
-            </HBox>
-            <HBox prefHeight="48.0" prefWidth="960.0">
+            </VBox>
+            <VBox layoutX="671.0" layoutY="555.0" prefHeight="252.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
                <children>
-                  <Label alignment="CENTER" prefHeight="48.0" prefWidth="122.0" text="Email" textFill="#ffffffc2">
+                  <Label fx:id="username3" alignment="CENTER" prefHeight="145.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
                      <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
+                        <Font name="Tw Cen MT Condensed Extra Bold" size="54.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="104.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Image/Icon/3rd-prize-icon.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="74.0" />
+                     </VBox.margin>
+                  </ImageView>
                </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="34.0" />
-                  <Label fx:id="email" prefHeight="70.0" prefWidth="326.0" textFill="#151d29">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="110.0" text="Age" textFill="#ffffffc2">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="82.0" prefWidth="960.0">
-               <children>
-                  <HBox prefHeight="82.0" prefWidth="40.0" />
-                  <Label fx:id="age" prefHeight="82.0" prefWidth="113.0" textFill="#151d29">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="183.0" text="Phone Number" textFill="#ffffffc2">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="34.0" />
-                  <Label fx:id="phoneNum" prefHeight="70.0" prefWidth="218.0" textFill="#151d29">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="161.0" text="Nationality" textFill="#ffffffc2">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="37.0" />
-                  <Label fx:id="nationality" prefHeight="70.0" prefWidth="196.0" textFill="#151d29">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="144.0" prefWidth="960.0">
-               <children>
-                  <HBox prefHeight="100.0" prefWidth="881.0" />
-                  <Button mnemonicParsing="false" onMouseClicked="#clickedSignOut" prefHeight="31.0" prefWidth="77.0" styleClass="labbtnt-delete" stylesheets="@Model/stylesheet.css" text="Sign Out">
-                     <HBox.margin>
-                        <Insets top="100.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
+            </VBox>
          </children>
-      </VBox>
+      </Pane>
    </center>
 </BorderPane>

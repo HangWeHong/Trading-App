@@ -10,14 +10,153 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="gradient-background-admin" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdministratorInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdministratorInfoController">
    <children>
-      <AnchorPane layoutX="3.0" layoutY="169.0" prefHeight="721.0" prefWidth="433.0" stylesheets="@../resources/stylesheet.css">
+      <AnchorPane layoutX="467.0" layoutY="161.0" prefHeight="721.0" prefWidth="826.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
          <children>
+            <VBox prefHeight="721.0" prefWidth="838.0" styleClass="background-admin" stylesheets="@../resources/stylesheet.css">
+               <children>
+                  <HBox prefHeight="68.0" prefWidth="869.0">
+                     <children>
+                        <Label prefHeight="61.0" prefWidth="394.0" text="    Contact Information" textAlignment="CENTER" textFill="#7d929f">
+                           <font>
+                              <Font name="Berlin Sans FB" size="32.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="7.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="874.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="117.0" text="Name" textFill="#7d929f99">
+                           <font>
+                              <Font name="Microsoft Himalaya" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="70.0" prefWidth="874.0">
+                     <children>
+                        <HBox prefHeight="70.0" prefWidth="36.0" />
+                        <Label fx:id="name" prefHeight="70.0" prefWidth="234.0">
+                           <font>
+                              <Font name="Berlin Sans FB" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="874.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="57.0" prefWidth="121.0" text="Email" textFill="#7d929f99">
+                           <font>
+                              <Font name="Microsoft Himalaya" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="70.0" prefWidth="874.0">
+                     <children>
+                        <HBox prefHeight="70.0" prefWidth="36.0" />
+                        <Label fx:id="email" prefHeight="77.0" prefWidth="327.0">
+                           <font>
+                              <Font name="Berlin Sans FB" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="874.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="245.0" text="Notification Language" textFill="#7d929f99">
+                           <font>
+                              <Font name="Microsoft Himalaya" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="70.0" prefWidth="874.0">
+                     <children>
+                        <HBox prefHeight="70.0" prefWidth="36.0" />
+                        <Label fx:id="notificationLanguage" prefHeight="70.0" prefWidth="153.0">
+                           <font>
+                              <Font name="Berlin Sans FB" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="874.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="163.0" text="Department" textFill="#7d929f99">
+                           <font>
+                              <Font name="Microsoft Himalaya" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="70.0" prefWidth="874.0">
+                     <children>
+                        <HBox prefHeight="70.0" prefWidth="36.0" />
+                        <Label fx:id="department" prefHeight="70.0" prefWidth="325.0">
+                           <font>
+                              <Font name="Berlin Sans FB" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="874.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="187.0" text="Phone Number" textFill="#7d929f99">
+                           <font>
+                              <Font name="Microsoft Himalaya" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="70.0" prefWidth="874.0">
+                     <children>
+                        <HBox prefHeight="70.0" prefWidth="36.0" />
+                        <Label fx:id="phoneNum" prefHeight="70.0" prefWidth="218.0">
+                           <font>
+                              <Font name="Berlin Sans FB" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="874.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="170.0" text="Nationality" textFill="#7d929f99">
+                           <font>
+                              <Font name="Microsoft Himalaya" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="70.0" prefWidth="874.0">
+                     <children>
+                        <HBox prefHeight="70.0" prefWidth="36.0" />
+                        <Label fx:id="nationality" prefHeight="70.0" prefWidth="196.0">
+                           <font>
+                              <Font name="Berlin Sans FB" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-4.0" layoutY="152.0" prefHeight="738.0" prefWidth="456.0" styleClass="sidebar-admin" stylesheets="@../resources/stylesheet.css">
+         <children>
+            <Label alignment="CENTER" layoutX="146.0" layoutY="32.0" prefHeight="54.0" prefWidth="163.0" styleClass="labbtnt-sidebar-title" stylesheets="@../resources/stylesheet.css" text="Admin Panel" textAlignment="CENTER">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+            </Label>
             <Pane layoutX="63.0" layoutY="14.0" />
             <AnchorPane layoutX="70.0" layoutY="52.0" />
             <HBox layoutX="51.0" layoutY="48.0" />
-            <HBox alignment="CENTER" layoutX="4.0" layoutY="318.0" onMouseClicked="#clickedUserManagement" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+            <HBox alignment="CENTER" layoutX="4.0" layoutY="343.0" onMouseClicked="#clickedUserManagement" prefHeight="86.0" prefWidth="450.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,7 +168,7 @@
                   </ImageView>
                   <Label prefHeight="45.0" prefWidth="232.0" text=" User Management" textFill="#000000ee">
                      <font>
-                        <Font name="Cambria" size="25.0" />
+                        <Font name="Microsoft Himalaya" size="40.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -37,7 +176,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutY="490.0" onMouseClicked="#clickedSettings" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+            <HBox alignment="CENTER" layoutY="431.0" onMouseClicked="#clickedSettings" prefHeight="86.0" prefWidth="454.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,17 +185,12 @@
                   </ImageView>
                   <Label prefHeight="66.0" prefWidth="135.0" text=" Settings" textFill="#000000ee">
                      <font>
-                        <Font name="Cambria" size="25.0" />
+                        <Font name="Microsoft Himalaya" size="40.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <Label alignment="CENTER" layoutX="122.0" layoutY="21.0" prefHeight="54.0" prefWidth="163.0" styleClass="labbtnt-sidebar-title" stylesheets="@../resources/stylesheet.css" text="Admin Panel" textAlignment="CENTER">
-               <font>
-                  <Font name="Berlin Sans FB" size="25.0" />
-               </font>
-            </Label>
-            <VBox layoutX="101.0" layoutY="98.0" prefHeight="86.0" prefWidth="205.0">
+            <VBox layoutX="126.0" layoutY="120.0" prefHeight="86.0" prefWidth="205.0">
                <children>
                   <Label fx:id="username" alignment="CENTER" prefHeight="25.0" prefWidth="210.0" textFill="WHITE">
                      <font>
@@ -70,7 +204,7 @@
                   </Label>
                </children>
             </VBox>
-            <HBox alignment="CENTER" layoutY="236.0" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
+            <HBox alignment="CENTER" layoutY="259.0" prefHeight="86.0" prefWidth="454.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,7 +216,7 @@
                   </ImageView>
                   <Label prefHeight="47.0" prefWidth="146.0" text=" Admin Info" textFill="#000000ee">
                      <font>
-                        <Font name="Cambria" size="25.0" />
+                        <Font name="Microsoft Himalaya" size="40.0" />
                      </font>
                      <HBox.margin>
                         <Insets />
@@ -90,151 +224,17 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="7.0" layoutY="404.0" prefHeight="86.0" prefWidth="433.0" styleClass="sidebar-options-admin" stylesheets="@../resources/stylesheet.css">
-               <children>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/Image/Icon/1pngwing.com.png" />
-                     </image>
-                  </ImageView>
-                  <Label prefHeight="52.0" prefWidth="143.0" text=" History" textFill="#000000ee">
-                     <font>
-                        <Font name="Cambria" size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
          </children>
       </AnchorPane>
-      <VBox layoutX="442.0" layoutY="169.0" prefHeight="721.0" prefWidth="874.0" styleClass="labbtn-background" stylesheets="@../resources/stylesheet.css">
-         <children>
-            <HBox prefHeight="68.0" prefWidth="869.0">
-               <children>
-                  <Label prefHeight="77.0" prefWidth="302.0" text="    Contact Information" textAlignment="CENTER">
-                     <font>
-                        <Font name="Microsoft YaHei Bold" size="25.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets top="7.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="1.0" prefWidth="491.0" styleClass="line-color-admin" stylesheets="@../resources/stylesheet.css" />
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="117.0" text="Name" textFill="#00000066">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="36.0" />
-                  <Label fx:id="name" prefHeight="70.0" prefWidth="234.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font></Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="57.0" prefWidth="121.0" text="Email" textFill="#00000066">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="36.0" />
-                  <Label fx:id="email" prefHeight="77.0" prefWidth="327.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font></Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="245.0" text="Notification Language" textFill="#00000066">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="36.0" />
-                  <Label fx:id="notificationLanguage" prefHeight="70.0" prefWidth="153.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font></Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="163.0" text="Department" textFill="#00000066">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="36.0" />
-                  <Label fx:id="department" prefHeight="70.0" prefWidth="325.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font></Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="187.0" text="Phone Number" textFill="#00000066">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="36.0" />
-                  <Label fx:id="phoneNum" prefHeight="70.0" prefWidth="218.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font></Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="874.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="170.0" text="Nationality" textFill="#00000066">
-                     <font>
-                        <Font name="Microsoft Himalaya" size="29.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="70.0" prefWidth="874.0">
-               <children>
-                  <HBox prefHeight="70.0" prefWidth="36.0" />
-                  <Label fx:id="nationality" prefHeight="70.0" prefWidth="196.0">
-                     <font>
-                        <Font size="25.0" />
-                     </font></Label>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <Label alignment="CENTER" layoutX="442.0" layoutY="67.0" prefHeight="77.0" prefWidth="285.0" styleClass="labbtn-Title" stylesheets="@../resources/stylesheet.css" text="Administrator Information" textFill="#0009ffe6">
+      <Label alignment="CENTER" layoutX="112.0" layoutY="52.0" prefHeight="77.0" prefWidth="334.0" stylesheets="@../resources/stylesheet.css" text="Administrator Information" textFill="#7d929fe5">
          <font>
-            <Font name="Tw Cen MT Condensed" size="32.0" />
+            <Font name="Tw Cen MT Condensed Bold" size="32.0" />
          </font>
       </Label>
+      <ImageView fitHeight="86.0" fitWidth="97.0" layoutX="28.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/Image/Icon/output-onlinepngtools.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
