@@ -1,6 +1,6 @@
 package Model;
 
-
+import javax.print.DocFlavor.STRING;
 
 public class User {
     public static User user;
@@ -13,8 +13,12 @@ public class User {
     private String role;
     private String notificationLanguage;
     private String department;
-    private int balance;
-    private int PL_Points;
+    private double balance;
+    private double PL_Points;
+    private boolean qualified;
+    private double cost;
+    private double revenue;
+    private double initialBalance;
 
     
     public User() {
@@ -32,7 +36,7 @@ public class User {
         this.notificationLanguage=notificationLanguage;
         this.department=department;
     }
-    public User(String username, String email, String password, String nationality, int age, String phoneNum,String role,int balance,int PL_Points) {
+    public User(String username, String email, String password, String nationality, int age, String phoneNum,String role,double balance,double PL_Points) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -43,7 +47,7 @@ public class User {
         this.balance=balance;
         this.PL_Points=PL_Points;
     }
-    public User(String username, String email, String nationality, int age, String phoneNum,int balance,int PL_Points) {
+    public User(String username, String email, String nationality, int age, String phoneNum,double balance,double PL_Points,boolean qualified) {
         this.username = username;
         this.email = email;
         this.nationality = nationality;
@@ -51,6 +55,7 @@ public class User {
         this.phoneNum = phoneNum;
         this.balance=balance;
         this.PL_Points=PL_Points;
+        this.qualified=qualified;
     }
     
 
@@ -148,22 +153,64 @@ public class User {
     }
 
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
 
-    public int getPL_Points() {
+    public double getPL_Points() {
         return PL_Points;
     }
 
 
-    public void setPL_Points(int pL_Points) {
+    public void setPL_Points(double pL_Points) {
         PL_Points = pL_Points;
     }
+
+
+    public boolean isQualified() {
+        return qualified;
+    }
+
+
+    public void setQualified(boolean qualified) {
+        this.qualified = qualified;
+    }
+
+
+    public double getCost() {
+        return cost;
+    }
+
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+
+    public double getRevenue() {
+        return revenue;
+    }
+
+
+    public void setRevenue(double revenue) {
+        this.revenue = revenue;
+    }
+
+
+    public double getInitialBalance() {
+        return initialBalance;
+    }
+
+
+    public void setInitialBalance(double initialBalance) {
+        this.initialBalance = initialBalance;
+    }
+
+    
 }

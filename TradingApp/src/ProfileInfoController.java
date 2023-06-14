@@ -49,7 +49,7 @@ public class ProfileInfoController {
         App.setRoot("News.fxml");
     }
     @FXML
-    void clickedHelpNsupport(MouseEvent event) {
+    void clickedHelpSupport(MouseEvent event) {
         App.setRoot("HelpSupport.fxml");
     }
 
@@ -57,6 +57,9 @@ public class ProfileInfoController {
     void clickedLeaderboard(MouseEvent event) {
         App.setRoot("Leaderboard.fxml");
     }
-
+    @FXML
+    void clickedTrading(MouseEvent event) {
+        App.setRoot("Trading.fxml");
+    }
 
 }

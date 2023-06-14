@@ -1,5 +1,9 @@
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
+import Model.DatabaseHandler;
+import Model.TradingRestrictions;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,6 +22,7 @@ public class App extends Application {
      stage=primaryStage;
     Parent root;
     try {
+      setScheduler();
       root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
       Scene scene = new Scene(root);
       
@@ -44,5 +49,20 @@ public class App extends Application {
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
+    }
+    public static void setScheduler(){
+       TradingRestrictions tr=new TradingRestrictions();
+        String strStartDate = "2023-06-08";
+        System.out.println(strStartDate);
+        String strEndDate = "2023-06-20";
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate startDate = LocalDate.parse(strStartDate, dateFormatter);
+        LocalDate endDate = LocalDate.parse(strEndDate, dateFormatter);
+
+
+        tr.setTradingPeriod(startDate, endDate, 3);
+        DatabaseHandler.scheduleLotPoolReplenishment();
+        DatabaseHandler.schedulePLPointsUpdate();
+        DatabaseHandler.scheduleUserBalanceCheck();
     }
 }

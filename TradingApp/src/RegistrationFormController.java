@@ -76,7 +76,8 @@ public class RegistrationFormController {
          
        
        
-            if(username.getText().trim().isEmpty()|| password.getText().trim().isEmpty()||email.getText().trim().isEmpty()  ||phoneNumber.getText().trim().isEmpty()|| nationality.getSelectionModel().isEmpty()|| age.getSelectionModel().isEmpty()){ alert.setContentText("Please Fill in All the Infomation Required!");
+            if(username.getText().trim().isEmpty()|| password.getText().trim().isEmpty()||email.getText().trim().isEmpty()  ||phoneNumber.getText().trim().isEmpty()|| nationality.getSelectionModel().isEmpty()|| age.getSelectionModel().isEmpty()){
+                alert.setContentText("Please Fill in All the Infomation Required!");
                 DialogPane dialogPane = alert.getDialogPane();
                 dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
                 dialogPane.getStyleClass().add("gradient-background-sign-up-page");
@@ -91,7 +92,7 @@ public class RegistrationFormController {
                 if(password.getLength()!=5){
                     passwordLength.setText("Password Must Be Length of 5");
                 }else{
-                    password.setText("");
+                    passwordLength.setText("");
                 }
 
                 if(!phoneNumber.getText().startsWith("01")|| phoneNumber.getText().length()<10 || phoneNumber.getText().length()>11){
@@ -107,7 +108,7 @@ public class RegistrationFormController {
                 
             
             }else{
-                password.setText("");
+                passwordLength.setText("");
                 notMatch.setText("");
                 notValidPN.setText("");
                 notValidE.setText("");

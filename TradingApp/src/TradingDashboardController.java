@@ -42,6 +42,7 @@ public class TradingDashboardController {
          balance.setText(String.valueOf(user.getBalance()));
          points.setText(String.valueOf(user.getPL_Points()));
          position.setText(String.valueOf(getPosition()));
+     
 
        List<TradeHistory> list=new ArrayList<>(tradeHistory());
        //here insert to get balance,points and position
@@ -173,7 +174,7 @@ public class TradingDashboardController {
 
         return list;
 }
-private int getPosition() {
+public int getPosition() {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("Leaderboard.fxml"));
         try {

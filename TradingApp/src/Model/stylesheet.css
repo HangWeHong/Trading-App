@@ -33,7 +33,7 @@
     -fx-background-color: rgb(87,100,112);
 }
 .gradient-background-sign-up-page{
-    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#eae0eb,#6747CD);
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%,#eae0eb,rgb(60,70,84));
 }
 .line-color{
     -fx-background-color: #FFFFFF;
@@ -92,6 +92,21 @@
     -fx-text-fill: #FFF;
     -fx-background-radius: 10px;
 }
+.tradingBtn{
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 10px;
+}
+.tradingBtn:hover{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-text-fill: rgb(252,252,252);
+    -fx-border-color: rgba(255,255,255,0.2);
+    -fx-border-width: 3px;
+    -fx-border-style: solid;
+    -fx-border-radius: 10px;
+}
+
 .loginBtn:hover{
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
@@ -208,4 +223,91 @@
     -fx-cell-size: 30px;
     -fx-text-fill: #3c4654;
 }
+.gluon-text-field {
+    -fx-font-size: 25px;
+    -fx-font-family: "Tw Cen MT";
+    -fx-text-fill: rgb(252, 252, 252);
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent transparent white transparent;
+    -fx-border-width: 0 0 1 0;
 
+
+}
+.gluon-text-field:focused {
+    -fx-background-color: transparent, transparent, transparent, transparent;
+    -fx-border-color: transparent transparent rgb(54, 141, 255) transparent;
+}
+.initial-text-field {
+    -fx-font-size: 25px;
+    -fx-font-family: "Tw Cen MT";
+    -fx-text-fill: rgb(0, 0, 0);
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent transparent rgb(60,70,84) transparent;
+    -fx-border-width: 0 0 1 0;
+
+}
+.initial-text-field:focused {
+    -fx-background-color: transparent, transparent, transparent, transparent;
+    -fx-border-color: transparent transparent rgb(54, 141, 255) transparent;
+}
+
+
+.root {
+    -fx-background: #FFFFFF;
+}
+
+.normal-label {
+    -fx-text-fill: #005EB8;
+}
+
+.normal-text-field {
+    -fx-text-fill: #333333;
+}
+
+.combo-box {
+    -fx-background-color: transparent;
+    -fx-font-size: 20px;
+    -fx-font-family: "Tw Cen MT";
+    -fx-text-fill: rgb(0, 0, 0);
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent transparent rgb(60,70,84) transparent;
+    -fx-border-width: 0 0 1 0;
+
+}
+.combo-box:focused {
+    -fx-background-color: transparent, transparent, transparent, transparent;
+    -fx-border-color: transparent transparent rgb(54, 141, 255) transparent;
+}
+.dialog-pane {
+    -fx-background-color: rgb(87, 100, 112);
+    -fx-font-family: "Tw Cen MT";
+}
+
+.dialog-pane > .button-bar > .container > .button {
+    -fx-background-color: rgb(125, 146, 159);
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-font-family: "Tw Cen MT";
+}
+
+.dialog-pane > .button-bar > .container > .button:hover {
+    -fx-background-color: rgb(150, 171, 184);
+    
+}
+
+.dialog-pane > *.label.content{
+    -fx-font-size: 20px;
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-font-family: "Tw Cen MT";
+}
+.dialog-pane:header *.header-panel{
+    -fx-background-color: rgb(87, 100, 112);
+}
+.dialog-pane:header *.header-panel *.label{
+    -fx-font-size: 30px;
+    -fx-font-family: "Tw Cen MT";
+    -fx-fill: rgb(87, 100, 112);
+    -fx-text-fill: rgb(255, 255, 255);
+}

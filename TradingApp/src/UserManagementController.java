@@ -18,7 +18,7 @@ public class UserManagementController {
     private TableColumn<User, Integer> col_Age;
 
     @FXML
-    private TableColumn<User, Integer> col_Balance;
+    private TableColumn<User, Double> col_Balance;
 
     @FXML
     private TableColumn<User, String> col_Email;
@@ -30,7 +30,7 @@ public class UserManagementController {
     private TableColumn<User, String> col_PhoneNumber;
 
     @FXML
-    private TableColumn<User, Integer> col_Points;
+    private TableColumn<User, Double> col_Points;
 
     @FXML
     private TableColumn<User, String> col_Username;
@@ -43,6 +43,9 @@ public class UserManagementController {
     
     @FXML
     private TextField inputUsername;
+
+    @FXML
+    private TableColumn<User,Boolean> col_Qualified;
   
   
     ObservableList<User> listM;
@@ -57,9 +60,10 @@ public class UserManagementController {
       col_Email.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
       col_Nationality.setCellValueFactory(new PropertyValueFactory<User,String>("nationality"));
       col_PhoneNumber.setCellValueFactory(new PropertyValueFactory<User,String>("phoneNum"));
-      col_Balance.setCellValueFactory(new PropertyValueFactory<User,Integer>("balance"));
-      col_Points.setCellValueFactory(new PropertyValueFactory<User,Integer>("PL_Points"));
-      
+      col_Balance.setCellValueFactory(new PropertyValueFactory<User,Double>("balance"));
+      col_Points.setCellValueFactory(new PropertyValueFactory<User,Double>("PL_Points"));
+      col_Qualified.setCellValueFactory(new PropertyValueFactory<User,Boolean>("qualified"));
+
       listM = dbh.displayUsers();
       usersTable.setItems(listM);
     }
