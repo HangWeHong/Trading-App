@@ -7,24 +7,34 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DatabaseHandler {
-    private static final String JDBC_URL = "jdbc:mysql://34.142.203.161:3306/TradingApp";
-    private static final String USERNAME = "user1";
-    private static final String PASSWORD = "12345";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/tradingapp";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root12345";
     private static User user;
 
     public DatabaseHandler() {
 
     }
+    
 
     public boolean insertUser(String username, String password, String email, String age, String phoneNumber,String nationality) {
-        String sql = "INSERT INTO users (Username, Password, Email, Age, PhoneNumber, Nationality, Role, balance, PL_Points) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (Username, Password, Email, Age, PhoneNumber, Nationality, Role, balance, PL_Points, Qualified, Cost, Revenue, InitialBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
                 PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -36,8 +46,12 @@ public class DatabaseHandler {
             statement.setString(5, phoneNumber);
             statement.setString(6, nationality);
             statement.setString(7, "user");
-            statement.setInt(8, 50000);
-            statement.setInt(9, 0);
+            statement.setDouble(8, 50000);
+            statement.setDouble(9, 0);
+            statement.setBoolean(10, true);
+            statement.setDouble(11, 0);
+            statement.setDouble(12, 0);
+            statement.setDouble(13, 50000);
 
             int rowsInserted = statement.executeUpdate();
 
@@ -55,7 +69,7 @@ public class DatabaseHandler {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
          
 
-            String selectQuery = "SELECT Username, Password, Age, Email, Nationality, PhoneNumber, Role, Notification_Language, Department, Balance, PL_Points  FROM users " +
+            String selectQuery = "SELECT Username, Password, Age, Email, Nationality, PhoneNumber, Role, Notification_Language, Department, balance, PL_Points, Qualified  FROM users " +
                                  "WHERE Username = ? AND Password = ?";
 
             PreparedStatement statement = connection.prepareStatement(selectQuery);
@@ -77,8 +91,9 @@ public class DatabaseHandler {
                     user.setNotificationLanguage(resultSet.getString("Notification_Language"));
                     user.setDepartment(resultSet.getString("Department"));
                 }else if(user.getRole().equals("user")){
-                    user.setBalance( resultSet.getInt("Balance"));
-                    user.setPL_Points(resultSet.getInt("PL_Points"));
+                    user.setBalance( resultSet.getDouble("balance"));
+                    user.setPL_Points(resultSet.getDouble("PL_Points"));
+                    user.setQualified(resultSet.getBoolean("Qualified"));
                 }
                  
 
@@ -144,7 +159,7 @@ public class DatabaseHandler {
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
          
             
-            String selectQuery = "SELECT Username, Age, Email, Nationality, PhoneNumber, Balance, PL_Points  FROM users  WHERE Role = 'user'";
+            String selectQuery = "SELECT Username, Age, Email, Nationality, PhoneNumber, balance, PL_Points , Qualified  FROM users  WHERE Role = 'user'";
 
             PreparedStatement statement = connection.prepareStatement(selectQuery);
           
@@ -152,7 +167,7 @@ public class DatabaseHandler {
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()){
-                list.add(new User(resultSet.getString("Username"), resultSet.getString("Email"), resultSet.getString("Nationality"), resultSet.getInt("Age"), resultSet.getString("PhoneNumber"), resultSet.getInt("Balance"), resultSet.getInt("PL_Points")));
+                list.add(new User(resultSet.getString("Username"), resultSet.getString("Email"), resultSet.getString("Nationality"), resultSet.getInt("Age"), resultSet.getString("PhoneNumber"), resultSet.getDouble("balance"), resultSet.getDouble("PL_Points"),resultSet.getBoolean("Qualified")));
             }
             resultSet.close();
             statement.close();
@@ -169,5 +184,377 @@ public class DatabaseHandler {
     public static void setUser(User user1){
         user=user1;
     }
+    public static void insertStockPrice(String Symbol, double price, String date) {
+        String sql = "INSERT INTO StockList (Symbol, Price, Updated_Date) VALUES (?, ?, ?)";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, Symbol);
+            statement.setDouble(2, price);
+            statement.setString(3, date);
+
+            statement.executeUpdate();
+
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Fail to insert");
+        }
+    }
+
+    public static void updateStockPrice(String symbol, double newPrice, String newDate) {
+        String sql = "UPDATE StockList SET Price = ?, Updated_Date = ? WHERE Symbol = ?";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setDouble(1, newPrice);
+            statement.setString(2, newDate);
+            statement.setString(3, symbol);
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Stock price updated successfully.");
+            } else {
+                System.out.println("No matching stock found for the symbol: " + symbol);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void insertStockInfo(String symbol, String name, String currency, String exchange,
+                                     String country, String type) {
+        String sql = "INSERT INTO StockInfo (Symbol, Name, Currency, Exchange, Country, Type) " +
+                     "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, symbol);
+            statement.setString(2, name);
+            statement.setString(3, currency);
+            statement.setString(4, exchange);
+            statement.setString(5, country);
+            statement.setString(6, type);
+
+            int rowsInserted = statement.executeUpdate();
+
+            if (rowsInserted > 0) {
+                System.out.println("Stock data inserted successfully.");
+            } else {
+                System.out.println("Failed to insert stock data.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Fail");
+        }
+    }
+    public static void scheduleLotPoolReplenishment() {
+        Timer timer = new Timer();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+
+        // Set the first execution time to tomorrow 0:00
+        Date firstExecutionTime = calendar.getTime();
+        if (firstExecutionTime.before(new Date())) {
+            // If the first execution time has already passed for today, move it to tomorrow
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            firstExecutionTime = calendar.getTime();
+        }
+
+        // Schedule the task to run daily at 0:00
+        timer.scheduleAtFixedRate(new LotPoolReplenishmentTask(), firstExecutionTime, 24 * 60 * 60 * 1000);
+    }
+
+    // Custom TimerTask implementation for replenishing LotPool
+    static class LotPoolReplenishmentTask extends TimerTask {
+        @Override
+        public void run() {
+            replenishLotPool();
+        }
+    }
+    
+
+    public static void replenishLotPool() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate threeDaysAfterStartDate = TradingRestrictions.getStartDate().plusDays(3);
+
+        int replenishValue = currentDate.isBefore(threeDaysAfterStartDate) ? Integer.MAX_VALUE : 500;
+
+        String sql = "UPDATE StockList SET LotPool = ?";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, replenishValue);
+
+            int rowsUpdated = statement.executeUpdate();
+            System.out.println(rowsUpdated + " rows updated.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+   public static void schedulePLPointsUpdate() {
+    Timer timer = new Timer();
+    Calendar calendar = Calendar.getInstance();
+    calendar.set(Calendar.HOUR_OF_DAY, 0);
+    calendar.set(Calendar.MINUTE, 0);
+    calendar.set(Calendar.SECOND, 0);
+
+
+    Date firstExecutionTime = calendar.getTime();
+   
+        if (firstExecutionTime.before(new Date())) {
+            // If the first execution time has already passed for today, move it to tomorrow
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            firstExecutionTime = calendar.getTime();
+        }
+    
+    // Schedule the task to run daily at 0:00 from Monday to Friday
+    timer.scheduleAtFixedRate(new PLPointsUpdateTask(), firstExecutionTime, 24 * 60 * 60 * 1000);
+}
+// Custom TimerTask implementation for updating PL_Points
+static class PLPointsUpdateTask extends TimerTask {
+    @Override
+    public void run() {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+        // Check if it's a weekday (Monday to Friday)
+        if (currentDate.getDayOfWeek().getValue() >= 1 && currentDate.getDayOfWeek().getValue() <= 5) {
+            // Get the users with Role="user" from the users table
+            List<User> userList = getUsersWithRole("user");
+            for (User user : userList) {
+                // Get the revenue, cost, and initial balance
+                double revenue = user.getRevenue();
+                double cost = user.getCost();
+                double initialBalance = user.getInitialBalance();
+
+                // Calculate profitOrLoss and PL_Points
+                double profitOrLoss = revenue - cost;
+                double PL_Points = (profitOrLoss / initialBalance) * 100;
+                // Update the PL_Points in the users table
+                updatePL_Points(user.getUsername(), PL_Points);
+
+                // Reset cost and revenue to 0, and update the initial balance
+                resetCostAndRevenue(user.getUsername(), user.getBalance());
+            }
+        }
+    }
+
+    private List<User> getUsersWithRole(String role) {
+        List<User> userList = new ArrayList<>();
+        String sql = "SELECT Username, Revenue, Cost, balance, InitialBalance FROM users WHERE Role = ?";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, role);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                User user = new User();
+                user.setUsername(resultSet.getString("Username"));
+                user.setRevenue(resultSet.getDouble("Revenue"));
+                user.setCost(resultSet.getDouble("Cost"));
+                user.setBalance(resultSet.getDouble("balance"));
+                user.setInitialBalance(resultSet.getDouble("InitialBalance"));
+
+                userList.add(user);
+            }
+
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+    }
+
+    private void updatePL_Points(String username, double PL_Points) {
+    String sql = "UPDATE users SET PL_Points = PL_Points + ? WHERE Username = ?";
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+         PreparedStatement statement = connection.prepareStatement(sql)) {
+
+        statement.setDouble(1, PL_Points);
+        statement.setString(2, username);
+
+        int rowsUpdated = statement.executeUpdate();
+        System.out.println(rowsUpdated + " rows updated.");
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    private void resetCostAndRevenue(String username, double currentBalance) {
+        String sql = "UPDATE users SET Revenue = 0, Cost = 0, InitialBalance = ? WHERE Username = ?";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setDouble(1, currentBalance);
+            statement.setString(2, username);
+
+            int rowsUpdated = statement.executeUpdate();
+            System.out.println(rowsUpdated + " rows updated.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+public static void scheduleUserBalanceCheck() {
+    Timer timer = new Timer();
+    Calendar calendar = Calendar.getInstance();
+    calendar.set(Calendar.HOUR_OF_DAY, 17);
+    calendar.set(Calendar.MINUTE, 0);
+    calendar.set(Calendar.SECOND, 0);
+
+    Date firstExecutionTime = calendar.getTime();
+    if (firstExecutionTime.before(new Date())) {
+        // If the first execution time has already passed for today, move it to tomorrow
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        firstExecutionTime = calendar.getTime();
+    }
+
+    // Schedule the task to run daily at 17:00 (5:00 PM) from Monday to Friday
+    timer.schedule(new UserBalanceCheckTask(), firstExecutionTime, 24 * 60 * 60 * 1000);
+}
+
+// Custom TimerTask implementation for checking user balance
+static class UserBalanceCheckTask extends TimerTask {
+    @Override
+    public void run() {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        // Check if it's a weekday (Monday to Friday) and before 17:00
+        if (now.getDayOfWeek().getValue() >= 1 && now.getDayOfWeek().getValue() <= 5 &&
+                now.toLocalTime().isBefore(LocalTime.of(17, 0))) {
+
+            // Get the users with Role="user" from the users table
+            List<User> userList = getUsersWithRole("user");
+            for (User user : userList) {
+                double balance = user.getBalance();
+                double initialBalance = user.getInitialBalance();
+
+                // Check if the balance is non-negative and less than 0.5 * InitialBalance
+                if (balance < 0 || balance >= 0.5 * initialBalance) {
+                     System.out.println("hi4");
+                    // Update the Qualified column to false in the users table
+                    updateQualifiedStatus(user.getUsername(), false);
+                }
+            }
+        }
+    }
+     private List<User> getUsersWithRole(String role) {
+        List<User> userList = new ArrayList<>();
+        String sql = "SELECT Username, balance, InitialBalance FROM users WHERE Role = ?";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, role);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                User user = new User();
+                user.setUsername(resultSet.getString("Username"));
+                user.setBalance(resultSet.getDouble("balance"));
+                user.setInitialBalance(resultSet.getDouble("InitialBalance"));
+
+                userList.add(user);
+            }
+
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+    }
+
+    private void updateQualifiedStatus(String username, boolean qualified) {
+        String sql = "UPDATE users SET Qualified = ? WHERE Username = ?";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setBoolean(1, qualified);
+            statement.setString(2, username);
+
+            int rowsUpdated = statement.executeUpdate();
+            System.out.println(rowsUpdated + " rows updated.");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+   public void increaseAccountBalance(String username, double amount) {
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+        String updateQuery = "UPDATE users SET balance = balance + ?, Revenue = Revenue + ? WHERE Username = ?";
+        PreparedStatement statement = connection.prepareStatement(updateQuery);
+        statement.setDouble(1, amount);
+        statement.setDouble(2, amount);
+        statement.setString(3, username);
+        int rowsAffected = statement.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Account balance increased successfully.");
+        } else {
+            System.out.println("Failed to increase account balance.");
+        }
+        statement.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+public void decreaseAccountBalance(String username, double amount) {
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+        String updateQuery = "UPDATE users SET balance = balance - ?, Cost = Cost + ? WHERE Username = ?";
+        PreparedStatement statement = connection.prepareStatement(updateQuery);
+        statement.setDouble(1, amount);
+        statement.setDouble(2, amount);
+        statement.setString(3, username);
+        int rowsAffected = statement.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Account balance decreased successfully.");
+        } else {
+            System.out.println("Failed to decrease account balance.");
+        }
+        statement.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    
+    public List<String> getCompanyNames() {
+    List<String> companyNames = new ArrayList<>();
+
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+        String selectQuery = "SELECT Name FROM stockinfo";
+        PreparedStatement statement = connection.prepareStatement(selectQuery);
+
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()) {
+            String companyName = resultSet.getString("Name");
+            companyNames.add(companyName);
+        }
+
+        statement.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return companyNames;
+}
+
 
 }

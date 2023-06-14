@@ -2,6 +2,7 @@ import java.util.Comparator;
 
 import Model.DatabaseHandler;
 import Model.User;
+import javafx.animation.TranslateTransition;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class LeaderboardController {
 
@@ -22,7 +25,7 @@ public class LeaderboardController {
     private TableColumn<User, Integer> col_Age;
 
     @FXML
-    private TableColumn<User, Integer> col_Balance;
+    private TableColumn<User, Double> col_Balance;
 
     @FXML
     private TableColumn<User, String> col_Email;
@@ -34,7 +37,7 @@ public class LeaderboardController {
     private TableColumn<User, String> col_PhoneNumber;
 
     @FXML
-    private TableColumn<User, Integer> col_Points;
+    private TableColumn<User, Double> col_Points;
 
     @FXML
     private TableColumn<User, String> col_Username;
@@ -53,6 +56,15 @@ public class LeaderboardController {
 
     @FXML
     private Label username3;
+    
+    @FXML
+    private VBox champion;
+
+    @FXML
+    private VBox firstRunnerUp;
+
+    @FXML
+    private VBox secondRunnerUp;
 
 
     private DatabaseHandler dbh = new DatabaseHandler();
@@ -74,7 +86,7 @@ public class LeaderboardController {
         col_Points.setCellValueFactory(new PropertyValueFactory<>("PL_Points"));
 
         ObservableList<User> sortedList = FXCollections.observableArrayList(dbh.displayUsers());
-        sortedList.sort(Comparator.comparingInt(User::getPL_Points).reversed());
+        sortedList.sort(Comparator.comparingDouble(User::getPL_Points).reversed());
         ObservableList<User> top10Users = FXCollections.observableArrayList(sortedList.subList(0, Math.min(sortedList.size(), 10)));
         usersTable.setItems(top10Users);
         if (!top10Users.isEmpty()) {
@@ -86,12 +98,27 @@ public class LeaderboardController {
                 username3.setText(top10Users.get(2).getUsername());
             }
         }
+        TranslateTransition championAnimation=new TranslateTransition(Duration.millis(1500), champion);
+        TranslateTransition firstRunnerUpAnimation = new TranslateTransition(Duration.millis(3000), firstRunnerUp);
+        TranslateTransition secoondRunnerUpAnimation = new TranslateTransition(Duration.millis(4500), secondRunnerUp);
+        championAnimation.setFromY(0);
+        championAnimation.setToY(-420);
+        // Start the animation
+        firstRunnerUpAnimation.setFromY(0);
+        firstRunnerUpAnimation.setToY(-346);
+        secoondRunnerUpAnimation.setFromY(0);
+        secoondRunnerUpAnimation.setToY(-275);
+        
+        // Start the animation
+        championAnimation.play();
+        firstRunnerUpAnimation.play();
+        secoondRunnerUpAnimation.play();
     }
     
 
     public int getUserPosition(String username) {
         ObservableList<User> sortedList = FXCollections.observableArrayList(dbh.displayUsers());
-        sortedList.sort(Comparator.comparingInt(User::getPL_Points).reversed());
+        sortedList.sort(Comparator.comparingDouble(User::getPL_Points).reversed());
 
         for (int i = 0; i < sortedList.size(); i++) {
             if (sortedList.get(i).getUsername().equals(username)) {
@@ -122,5 +149,10 @@ public class LeaderboardController {
     @FXML
     void clickedProfileInfo(MouseEvent event) {
         App.setRoot("ProfileInfo.fxml");
+    }
+
+     @FXML
+    void clickedTrading(MouseEvent event) {
+        App.setRoot("Trading.fxml");
     }
 }

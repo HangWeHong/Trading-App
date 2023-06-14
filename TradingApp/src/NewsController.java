@@ -124,13 +124,17 @@ public class NewsController {
         App.setRoot("TradingDashboard.fxml");
     }
     @FXML
-    void clickedHelpNSupport(MouseEvent event) {
+    void clickedHelpSupport(MouseEvent event) {
         App.setRoot("HelpSupport.fxml");
     }
 
     @FXML
     void clickedLeaderboard(MouseEvent event) {
         App.setRoot("Leaderboard.fxml");
+    }
+    @FXML
+    void clickedTrading(MouseEvent event) {
+        App.setRoot("Trading.fxml");
     }
 
 }

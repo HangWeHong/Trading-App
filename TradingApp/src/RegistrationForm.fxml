@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegistrationFormController">
    <children>
-      <TextField fx:id="username" layoutX="262.0" layoutY="386.0" prefHeight="43.0" prefWidth="247.0" promptText="Enter Username" />
+      <TextField fx:id="username" layoutX="262.0" layoutY="386.0" prefHeight="43.0" prefWidth="247.0" promptText="Enter Username" styleClass="initial-text-field" stylesheets="@Model/stylesheet.css" />
       <Label alignment="CENTER" layoutX="136.0" layoutY="384.0" prefHeight="43.0" prefWidth="129.0" text="Username:" textFill="#3c4654">
          <font>
             <Font name="Microsoft Himalaya" size="36.0" />
@@ -25,7 +25,7 @@
             <Font name="Microsoft Himalaya" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="email" layoutX="894.0" layoutY="539.0" prefHeight="43.0" prefWidth="247.0" promptText="Enter Email" />
+      <TextField fx:id="email" layoutX="894.0" layoutY="539.0" prefHeight="43.0" prefWidth="247.0" promptText="Enter Email" styleClass="initial-text-field" stylesheets="@Model/stylesheet.css" />
       <Label alignment="CENTER" layoutX="769.0" layoutY="539.0" prefHeight="43.0" prefWidth="129.0" text="Email:" textFill="#3c4654">
          <font>
             <Font name="Microsoft Himalaya" size="36.0" />
@@ -36,7 +36,7 @@
             <Font name="Microsoft Himalaya" size="36.0" />
          </font>
       </Label>
-      <TextField fx:id="phoneNumber" layoutX="894.0" layoutY="386.0" prefHeight="43.0" prefWidth="247.0" promptText="Enter Phone Number" />
+      <TextField fx:id="phoneNumber" layoutX="894.0" layoutY="386.0" prefHeight="43.0" prefWidth="247.0" promptText="Enter Phone Number" styleClass="initial-text-field" stylesheets="@Model/stylesheet.css" />
       <Label alignment="CENTER" layoutX="712.0" layoutY="386.0" prefHeight="46.0" prefWidth="198.0" text="Phone Number:" textFill="#3c4654">
          <font>
             <Font name="Microsoft Himalaya" size="36.0" />
@@ -57,8 +57,8 @@
             <Font name="Microsoft Himalaya" size="36.0" />
          </font>
       </Label>
-      <PasswordField fx:id="password" layoutX="263.0" layoutY="459.0" prefHeight="43.0" prefWidth="247.0" promptText="Enter Password" />
-      <PasswordField fx:id="confirmPassword" layoutX="263.0" layoutY="540.0" prefHeight="43.0" prefWidth="247.0" promptText="Confirm Password" />
+      <PasswordField fx:id="password" layoutX="263.0" layoutY="459.0" prefHeight="43.0" prefWidth="247.0" promptText="Enter Password" styleClass="initial-text-field" stylesheets="@Model/stylesheet.css" />
+      <PasswordField fx:id="confirmPassword" layoutX="263.0" layoutY="540.0" prefHeight="43.0" prefWidth="247.0" promptText="Confirm Password" styleClass="initial-text-field" stylesheets="@Model/stylesheet.css" />
       <Label fx:id="notMatch" alignment="CENTER" layoutX="502.0" layoutY="458.0" prefHeight="43.0" prefWidth="212.0" textFill="#ff0505">
          <font>
             <Font name="Microsoft Himalaya" size="26.0" />
@@ -110,7 +110,7 @@
             <Font name="Microsoft Himalaya" size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="age" layoutX="264.0" layoutY="626.0" prefHeight="31.0" prefWidth="247.0" promptText="Select Age" styleClass="combo-box" stylesheets="@Model/stylesheet.css" />
-      <ComboBox fx:id="nationality" layoutX="897.0" layoutY="468.0" prefHeight="31.0" prefWidth="247.0" promptText="Select Nationality" styleClass="combo-box" stylesheets="@Model/stylesheet.css" />
+      <ComboBox fx:id="age" layoutX="264.0" layoutY="624.0" prefHeight="31.0" prefWidth="247.0" promptText="Select Age" styleClass="combo-box" stylesheets="@Model/stylesheet.css" />
+      <ComboBox fx:id="nationality" layoutX="897.0" layoutY="465.0" prefHeight="38.0" prefWidth="247.0" promptText="Select Nationality" stylesheets="@Model/stylesheet.css" />
    </children>
 </AnchorPane>

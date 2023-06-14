@@ -35,4 +35,13 @@ public class HelpSupportController {
     void clickedGenerate(MouseEvent event) {
 
     }
+    @FXML
+    void clickedLeaderboard(MouseEvent event) {
+        App.setRoot("Leaderboard.fxml");
+    }
+    @FXML
+    void clickedTrading(MouseEvent event) {
+        App.setRoot("Trading.fxml");
+    }
+
 }

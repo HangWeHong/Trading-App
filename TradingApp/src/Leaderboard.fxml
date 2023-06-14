@@ -85,28 +85,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
-                     <children>
-                        <HBox prefHeight="80.0" prefWidth="41.0" />
-                        <ImageView fitHeight="48.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/Image/Icon/ringing.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets top="18.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="184.0" text="   Notifications" textFill="#282626">
-                           <font>
-                              <Font name="Tw Cen MT Condensed" size="40.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="18.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
+                  <HBox onMouseClicked="#clickedTrading" prefHeight="103.0" prefWidth="325.0" styleClass="shadow" stylesheets="@../resources/stylesheet.css">
                      <children>
                         <HBox prefHeight="80.0" prefWidth="41.0" />
                         <ImageView fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
@@ -244,7 +223,7 @@
                   <TableColumn fx:id="col_Points" minWidth="0.0" prefWidth="158.0" text="P/L(Points)" />
                </columns>
             </TableView>
-            <VBox layoutX="377.0" layoutY="410.0" prefHeight="399.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
+            <VBox fx:id="champion" layoutX="377.0" layoutY="830.0" prefHeight="399.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
                <children>
                   <Label fx:id="username1" alignment="CENTER" prefHeight="179.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
                      <font>
@@ -261,7 +240,7 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox layoutX="74.0" layoutY="484.0" prefHeight="325.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
+            <VBox fx:id="firstRunnerUp" layoutX="74.0" layoutY="830.0" prefHeight="325.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
                <children>
                   <Label fx:id="username2" alignment="CENTER" prefHeight="160.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
                      <font>
@@ -278,7 +257,7 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox layoutX="671.0" layoutY="555.0" prefHeight="252.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
+            <VBox fx:id="secondRunnerUp" layoutX="671.0" layoutY="830.0" prefHeight="252.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
                <children>
                   <Label fx:id="username3" alignment="CENTER" prefHeight="145.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
                      <font>
