@@ -127,6 +127,23 @@ public class DatabaseHandler {
         }
         return false; // User not found or deletion failed
     }
+    public boolean checkUsernameExists(String username) {
+    String selectQuery = "SELECT COUNT(*) FROM users WHERE Username = ?";
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+         PreparedStatement statement = connection.prepareStatement(selectQuery)) {
+
+        statement.setString(1, username);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+
     public String encryptPassword(String password) {
         try {
             // Create a SHA-256 MessageDigest instance
@@ -630,7 +647,7 @@ public void decreaseAccountBalance(String username, double amount) {
             e.printStackTrace();
         }
     }
-    public static ArrayList<Transaction> loadTransactionData() {
+     public static ArrayList<Transaction> loadTransactionData(String username) {
         ArrayList<Transaction> list = new ArrayList<>();
         try {
             // Establish a database connection
@@ -640,15 +657,15 @@ public void decreaseAccountBalance(String username, double amount) {
             Statement statement = connection.createStatement();
 
             // Execute a query to retrieve data from the table
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM transaction ORDER BY date_time ASC");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM transactions WHERE Username = '" + username + "' ORDER BY Date_time ASC");
 
             // Populate the list with the retrieved data
             while (resultSet.next()) {
-                String dateTime = resultSet.getString("date_time");
-                String symbol = resultSet.getString("symbol");
-                double price = resultSet.getDouble("price");
-                int quantity = resultSet.getInt("quantity");
-                String Order_Type = resultSet.getString("Order_Type");
+                String dateTime = resultSet.getString("Date_Time");
+                String symbol = resultSet.getString("Symbol");
+                double price = resultSet.getDouble("Price");
+                int quantity = resultSet.getInt("Quantity");
+                String Order_Type = resultSet.getString("Type");
                 String Status = resultSet.getString("Status");
 
                 Transaction transaction = new Transaction(dateTime, symbol, price, quantity, Order_Type, Status);
@@ -665,7 +682,7 @@ public void decreaseAccountBalance(String username, double amount) {
         return list;
     }
 
-    public static ArrayList<PLPoint> loadPLPoint() {
+    public static ArrayList<PLPoint> loadPLPoint(String username) {
         ArrayList<PLPoint> list = new ArrayList<>();
         try {
             // Establish a database connection
@@ -675,12 +692,12 @@ public void decreaseAccountBalance(String username, double amount) {
             Statement statement = connection.createStatement();
 
             // Execute a query to retrieve data from the table
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM Point ORDER BY date ASC");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Point WHERE Username = '" + username + "' ORDER BY DateRetrieved ASC");
 
             // Populate the list with the retrieved data
             while (resultSet.next()) {
                 String Username = resultSet.getString("Username");
-                String date = resultSet.getString("Date");
+                String date = resultSet.getString("DateRetrieved");
                 double PLPoint = resultSet.getDouble("PL_Point");
 
                 PLPoint points = new PLPoint(PLPoint,Username,date);
@@ -696,7 +713,81 @@ public void decreaseAccountBalance(String username, double amount) {
         }
         return list;
     }
+    public ObservableList<Transaction> displayTransactions(String username){
+        ObservableList<Transaction> list=FXCollections.observableArrayList();
 
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+         
+            
+            String selectQuery = "SELECT * FROM transactions WHERE Username = '" + username + "' ORDER BY Date_time ASC";
+
+            PreparedStatement statement = connection.prepareStatement(selectQuery);
+          
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                
+                list.add(new Transaction(resultSet.getString("Date_Time"), resultSet.getString("Symbol"), resultSet.getDouble("Price"), resultSet.getInt("Quantity"), resultSet.getString("Type"), resultSet.getString("Status")));
+            }
+            resultSet.close();
+            statement.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public ObservableList<Holdings> displayHoldings(String username){
+        ObservableList<Holdings> list=FXCollections.observableArrayList();
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+         
+            
+            String selectQuery = "SELECT * FROM holdings WHERE Username = '" + username + "'";
+
+            PreparedStatement statement = connection.prepareStatement(selectQuery);
+          
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                
+                list.add(new Holdings(resultSet.getString("Symbol"), resultSet.getDouble("Price"), resultSet.getInt("Quantity")));
+            }
+            resultSet.close();
+            statement.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public ObservableList<Order> displayOrders(String username){
+        ObservableList<Order> list=FXCollections.observableArrayList();
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+         
+            
+            String selectQuery = "SELECT * FROM orders WHERE Username = '" + username + "'";
+
+            PreparedStatement statement = connection.prepareStatement(selectQuery);
+          
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                
+                list.add(new Order(resultSet.getString("Symbol"), resultSet.getDouble("Price"), resultSet.getInt("Quantity"),resultSet.getString("Type")));
+            }
+            resultSet.close();
+            statement.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
 
 }

@@ -14,6 +14,12 @@ package Model;
         this.quantity = quantity;
         this.type = type;
     }
+    public Order( String symbol, double price, int quantity, String type) {
+        this.symbol = symbol;
+        this.price = price;
+        this.quantity = quantity;
+        this.type = type;
+    }
 
     public String getUsername() {
         return username;

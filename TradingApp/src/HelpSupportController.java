@@ -10,6 +10,7 @@ public class HelpSupportController {
     private Label username;
     private DatabaseHandler dbh=new DatabaseHandler();
     private User user=dbh.getUser();
+    private ReportGenerator rg=new ReportGenerator();
       
       @FXML
       void initialize() {
@@ -33,7 +34,12 @@ public class HelpSupportController {
 
     @FXML
     void clickedGenerate(MouseEvent event) {
-
+        try {
+            rg.generateReport();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     @FXML
     void clickedLeaderboard(MouseEvent event) {
