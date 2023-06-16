@@ -83,7 +83,7 @@ public class RegistrationFormController {
                 dialogPane.getStyleClass().add("gradient-background-sign-up-page");
                 alert.showAndWait();
                 notMatch.setText("");}
-            else if(password.getLength()!=5||!confirmPassword.getText().equals(password.getText())|| !phoneNumber.getText().startsWith("01")|| phoneNumber.getText().length()<10 || phoneNumber.getText().length()>11 || !email.getText().contains(".com") || !email.getText().contains("@")){ 
+            else if(password.getLength()!=5||!confirmPassword.getText().equals(password.getText())|| !phoneNumber.getText().startsWith("01")|| phoneNumber.getText().length()<10 || phoneNumber.getText().length()>11 || (!email.getText().contains(".com") && !email.getText().contains("siswa.um.edu.my")) || !email.getText().contains("@")|| dbh.checkUsernameExists(username.getText())){ 
                 if(!confirmPassword.getText().equals(password.getText())){
                 notMatch.setText("Password Does Not Match");
                 }else{
@@ -100,10 +100,17 @@ public class RegistrationFormController {
                 }else{
                     notValidPN.setText("");
                 }
-                if(!email.getText().contains(".com") || !email.getText().contains("@")){
+                if((!email.getText().contains(".com") && !email.getText().contains("siswa.um.edu.my"))  || !email.getText().contains("@")){
                     notValidE.setText("Invalid Email");
                 }else{
                     notValidE.setText("");
+                }
+                if(dbh.checkUsernameExists(username.getText())){
+                    alert.setContentText("Username Already Exists!");
+                    DialogPane dialogPane = alert.getDialogPane();
+                    dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
+                    dialogPane.getStyleClass().add("gradient-background-sign-up-page");
+                    alert.showAndWait();
                 }
                 
             

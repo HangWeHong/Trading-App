@@ -2,7 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -242,68 +243,76 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox prefHeight="19.0" prefWidth="960.0" styleClass="sidebar-user" stylesheets="@../resources/stylesheet.css">
+            <VBox prefHeight="558.0" prefWidth="960.0" styleClass="sidebar-user" stylesheets="@Model/stylesheet.css">
                <VBox.margin>
-                  <Insets top="50.0" />
+                  <Insets top="30.0" />
                </VBox.margin>
                <children>
-                  <HBox prefHeight="46.0" prefWidth="134.0">
+                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="973.0" text="Transaction History" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Tw Cen MT Condensed" size="40.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="207.0" prefWidth="960.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="46.0" prefWidth="173.0" text="Order No" textFill="WHITE">
-                           <font>
-                              <Font name="Tw Cen MT Condensed" size="40.0" />
-                           </font>
-                        </Label>
+                        <TableView fx:id="transactionsTable" prefHeight="207.0" prefWidth="941.0">
+                          <columns>
+                            <TableColumn fx:id="col_SymbolT" prefWidth="140.0" text="Symbol" />
+                            <TableColumn fx:id="col_PriceT" prefWidth="154.0" text="Price" />
+                              <TableColumn fx:id="col_QuantityT" prefWidth="126.0" text="Quantity" />
+                              <TableColumn fx:id="col_TypeT" prefWidth="143.0" text="Type" />
+                              <TableColumn fx:id="col_StatusT" prefWidth="146.0" text="Status" />
+                              <TableColumn fx:id="col_DateTimeT" prefWidth="219.0" text="Date_Time" />
+                          </columns>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TableView>
                      </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="46.0" prefWidth="249.0">
+                  <Label prefHeight="45.0" prefWidth="973.0" text="                        Holdings                                                Pending Orders" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Tw Cen MT Condensed" size="40.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="226.0" prefWidth="960.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="46.0" prefWidth="267.0" text="Stock Name" textFill="WHITE">
-                           <font>
-                              <Font name="Tw Cen MT Condensed" size="40.0" />
-                           </font>
-                        </Label>
+                        <TableView fx:id="holdingsTable" prefHeight="234.0" prefWidth="426.0">
+                           <columns>
+                              <TableColumn fx:id="col_SymbolH" prefWidth="142.0" text="Symbol" />
+                              <TableColumn fx:id="col_PriceH" prefWidth="154.0" text="Price" />
+                              <TableColumn fx:id="col_QuantityH" prefWidth="117.0" text="Quantity" />
+                           </columns>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TableView>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="125.0" prefWidth="1.0" styleClass="line-color" stylesheets="@../resources/stylesheet.css">
+                           <HBox.margin>
+                              <Insets left="20.0" top="64.0" />
+                           </HBox.margin>
+                        </Pane>
+                        <TableView fx:id="ordersTable" prefHeight="234.0" prefWidth="472.0">
+                           <columns>
+                              <TableColumn fx:id="col_SymbolO" prefWidth="127.0" text="Symbol" />
+                              <TableColumn fx:id="col_PriceO" prefWidth="134.0" text="Price" />
+                              <TableColumn fx:id="col_QuantityO" minWidth="0.0" prefWidth="109.0" text="Quantity" />
+                              <TableColumn fx:id="col_TypeO" prefWidth="90.0" text="Type" />
+                           </columns>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </TableView>
                      </children>
-                  </HBox>
-                  <HBox prefHeight="46.0" prefWidth="158.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="46.0" prefWidth="246.0" text=" Shares" textFill="WHITE">
-                           <font>
-                              <Font name="Tw Cen MT Condensed" size="40.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="46.0" prefWidth="181.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="46.0" prefWidth="246.0" text="   Price" textFill="WHITE">
-                           <font>
-                              <Font name="Tw Cen MT Condensed" size="40.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="46.0" prefWidth="239.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="46.0" prefWidth="244.0" text="Placement Time" textFill="WHITE">
-                           <font>
-                              <Font name="Tw Cen MT Condensed" size="40.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </HBox>
-            <VBox prefHeight="491.0" prefWidth="1004.0">
-               <children>
-                  <HBox prefHeight="492.0" prefWidth="956.0">
-                     <children>
-                        <ScrollPane prefHeight="492.0" prefWidth="963.0">
-                           <content>
-                              <VBox fx:id="tradeHistoryLayout" prefHeight="495.0" prefWidth="960.0" />
-                           </content>
-                        </ScrollPane>
-                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>

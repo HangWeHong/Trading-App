@@ -22,7 +22,7 @@ public class ForgotPasswordController {
 
        alert.setTitle("Successful or nah");
        alert.setHeaderText("Result:");
-       if(inputEmail.getText().contains(".com") && inputEmail.getText().contains("@") && !inputEmail.getText().isEmpty()){
+       if((inputEmail.getText().contains(".com")|| inputEmail.getText().contains("siswa.um.edu.my")) && inputEmail.getText().contains("@") && !inputEmail.getText().isEmpty()){
        alert.setContentText("The Correct Password is Sent to Your Email");
        DialogPane dialogPane = alert.getDialogPane();
         

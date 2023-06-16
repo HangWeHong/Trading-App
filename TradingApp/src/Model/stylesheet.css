@@ -183,39 +183,43 @@
 
 }
 .table-view {
-    -fx-background-color: rgb(255, 255, 255);
-    -fx-border-color: rgb(255, 255, 255);
+    -fx-background-color: rgb(87,100,112);
+    -fx-border-color: rgb(87,100,112);
     -fx-border-width: 0.5px;
     -fx-font-family: "Tw Cen MT";
     -fx-font-size: 9px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.5, 0, 1);
 }
 
 /* Set the background color of the table rows */
 .table-row-cell {
-    -fx-background-color: rgb(249, 249, 249);
+    -fx-background-color: rgba(255,255,255,0.2);
 }
-
-/* Set the border of the table cells */
+.table-view .table-row-cell:hover {
+    -fx-background-color: rgb(125,146,159);
+}
 .table-cell {
-    -fx-border-color: rgb(255, 255, 255);
-    -fx-border-width: 0.5px;
-    -fx-text-fill: rgba(255,255,255,0.2);
+    -fx-border-color: rgba(255,255,255,0.2);
+    -fx-border-width: 0.3px;
+    -fx-text-fill: rgb(255,255,255);
     -fx-alignment: center;
     -fx-font-family: "Tw Cen MT";
-    -fx-font-size: 8px;
+    -fx-font-size: 15px;
 }
 
 /* Set the header color for the table */
 .table-view .column-header {
-    -fx-background-color: rgba(255,255,255,0.2); /* Replace with your desired color */
+    -fx-background-color: rgb(125,146,159);/* Replace with your desired color */
     /* Add any other header styling properties you want to customize */
 }
 
 /* Set the header text color for the table */
 .table-view .column-header .label {
     -fx-text-fill: #ffffff; /* Replace with your desired color */
-    /* Add any other header text styling properties you want to customize */
+    -fx-font-family: "Tw Cen MT";
+    -fx-font-size: 20px;
 }
+
 .combo-box{
     -fx-border-width:0px;
     -fx-border-color:#ACACAC;
@@ -320,4 +324,34 @@
     -fx-font-family: "Tw Cen MT";
     -fx-fill: rgb(87, 100, 112);
     -fx-text-fill: rgb(255, 255, 255);
+}
+.table-report {
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-border-color: rgb(255, 255, 255);
+    -fx-border-width: 0.5px;
+    -fx-font-family: "Arial";
+    -fx-font-size: 9px;
+}
+
+.table-report .table-row-cell {
+    -fx-background-color: rgb(249, 249, 249);
+}
+
+.table-report .table-cell {
+    -fx-border-color: rgb(255, 255, 255);
+    -fx-border-width: 0.5px;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+    -fx-font-family: "Arial";
+    -fx-font-size: 8px;
+}
+
+.table-report .column-header {
+    -fx-background-color: #152238; /* Replace with your desired color */
+    /* Add any other header styling properties you want to customize */
+}
+
+.table-report .column-header .label {
+    -fx-text-fill: #ffffff; /* Replace with your desired color */
+    /* Add any other header text styling properties you want to customize */
 }

@@ -112,16 +112,16 @@
             </HBox>
             <HBox prefHeight="2.0" prefWidth="874.0" styleClass="line-color-admin" stylesheets="@../resources/stylesheet.css" />
             <HBox prefHeight="11.0" prefWidth="874.0" />
-            <TableView fx:id="usersTable" prefHeight="477.0" prefWidth="874.0" styleClass="my-table-view-user-management" stylesheets="@../resources/stylesheet.css">
+            <TableView fx:id="usersTable" prefHeight="477.0" prefWidth="874.0" styleClass="table-view-admin" stylesheets="@../resources/stylesheet.css">
               <columns>
                 <TableColumn fx:id="col_Username" prefWidth="117.0" text="Username" />
                 <TableColumn fx:id="col_Age" prefWidth="53.0" text="Age" />
                   <TableColumn fx:id="col_Email" prefWidth="146.0" text="Email" />
-                  <TableColumn fx:id="col_Nationality" minWidth="0.0" prefWidth="145.0" text="Nationality" />
-                  <TableColumn fx:id="col_PhoneNumber" prefWidth="127.0" text="PhoneNumber" />
-                  <TableColumn fx:id="col_Balance" minWidth="4.0" prefWidth="96.0" text="Balance" />
-                  <TableColumn fx:id="col_Points" minWidth="0.0" prefWidth="78.0" text="P/L(Points)" />
-                  <TableColumn fx:id="col_Qualified" minWidth="0.0" prefWidth="71.0" text="Qualified" />
+                  <TableColumn fx:id="col_Nationality" minWidth="0.0" prefWidth="105.0" text="Nationality" />
+                  <TableColumn fx:id="col_PhoneNumber" prefWidth="129.0" text="PhoneNumber" />
+                  <TableColumn fx:id="col_Balance" minWidth="4.0" prefWidth="123.0" text="Balance" />
+                  <TableColumn fx:id="col_Points" minWidth="0.0" prefWidth="57.0" text="Points" />
+                  <TableColumn fx:id="col_Qualified" minWidth="0.0" prefWidth="103.0" text="Qualified" />
               </columns>
             </TableView>
             <HBox layoutX="10.0" layoutY="568.0" prefHeight="61.0" prefWidth="874.0">

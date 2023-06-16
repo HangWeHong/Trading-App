@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="864.0" prefWidth="609.53" styleClass="myPane" stylesheets="@../Resource/Styling.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReportController">
+   <children>
+      <Rectangle arcHeight="100.0" arcWidth="100.0" fill="#152238" height="210.0" layoutX="430.0" layoutY="-116.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Label layoutX="41.0" layoutY="94.0" lineSpacing="5.0" prefHeight="43.0" prefWidth="417.0" text="PERFORMANCE REPORT" textFill="#152238">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="67.0" fitWidth="64.0" layoutX="448.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/Image/Icon/hexagonWhite.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="43.0" layoutY="184.0" prefHeight="23.0" prefWidth="191.0" text="USER INFORMATION ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" contentDisplay="TOP" graphicTextGap="5.0" layoutX="43.0" layoutY="225.0" lineSpacing="5.0" text="Username:&#10;Email:&#10;Phone Number:&#10;" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TableView fx:id="transactionTable" fixedCellSize="0.0" layoutX="7.0" layoutY="587.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="199.0" prefWidth="597.0" styleClass="table-report" stylesheets="@Model/stylesheet.css">
+        <columns>
+          <TableColumn fx:id="dateTimeColumn" editable="false" prefWidth="149.0" resizable="false" text="Date_Time" />
+          <TableColumn fx:id="SymbolColumn" prefWidth="92.0" resizable="false" text="Symbol" />
+            <TableColumn fx:id="PriceColumn" prefWidth="75.0" resizable="false" text="Price" />
+            <TableColumn fx:id="quantityColumn" prefWidth="86.0" resizable="false" text="Quantity" />
+            <TableColumn fx:id="OrderTypeColumn" prefWidth="108.0" resizable="false" text="Order Type " />
+            <TableColumn fx:id="StatusColumn" prefWidth="74.0" resizable="false" text="Status" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="ImageViewer" fitHeight="250.0" fitWidth="400.0" layoutX="34.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="Name" layoutX="108.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="147.20001220703114">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="Email" layoutX="88.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="166.4000244140625">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="PhoneNumber" layoutX="139.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="132.79998779296875">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

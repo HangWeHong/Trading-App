@@ -211,21 +211,21 @@
                   </Label>
                </children>
             </HBox>
-            <TableView fx:id="usersTable" layoutX="16.0" layoutY="107.0" prefHeight="273.0" prefWidth="960.0" styleClass="my-table-view-leaderboard" stylesheets="@../resources/stylesheet.css">
+            <TableView fx:id="usersTable" layoutX="16.0" layoutY="107.0" prefHeight="273.0" prefWidth="960.0" styleClass="table-view-user" stylesheets="@../resources/stylesheet.css">
                <columns>
-                  <TableColumn fx:id="col_Position" prefWidth="63.0" text="Position" />
-                  <TableColumn fx:id="col_Username" prefWidth="171.0" text="Username" />
+                  <TableColumn fx:id="col_Position" prefWidth="73.0" text="Position" />
+                  <TableColumn fx:id="col_Username" prefWidth="161.0" text="Username" />
                   <TableColumn fx:id="col_Age" prefWidth="53.0" text="Age" />
                   <TableColumn fx:id="col_Email" prefWidth="146.0" text="Email" />
                   <TableColumn fx:id="col_Nationality" minWidth="0.0" prefWidth="145.0" text="Nationality" />
                   <TableColumn fx:id="col_PhoneNumber" prefWidth="127.0" text="PhoneNumber" />
-                  <TableColumn fx:id="col_Balance" minWidth="4.0" prefWidth="96.0" text="Balance" />
-                  <TableColumn fx:id="col_Points" minWidth="0.0" prefWidth="158.0" text="P/L(Points)" />
+                  <TableColumn fx:id="col_Balance" minWidth="4.0" prefWidth="139.0" text="Balance" />
+                  <TableColumn fx:id="col_Points" minWidth="0.0" prefWidth="112.0" text="Points" />
                </columns>
             </TableView>
-            <VBox fx:id="champion" layoutX="377.0" layoutY="830.0" prefHeight="399.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
+            <VBox fx:id="champion" layoutX="377.0" layoutY="830.0" prefHeight="399.0" prefWidth="238.0" styleClass="sidebar-user" stylesheets="@Model/stylesheet.css">
                <children>
-                  <Label fx:id="username1" alignment="CENTER" prefHeight="179.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
+                  <Label fx:id="username1" alignment="CENTER" prefHeight="179.0" prefWidth="238.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Tw Cen MT Condensed Extra Bold" size="54.0" />
                      </font>
@@ -240,9 +240,9 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox fx:id="firstRunnerUp" layoutX="74.0" layoutY="830.0" prefHeight="325.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
+            <VBox fx:id="firstRunnerUp" layoutX="74.0" layoutY="830.0" prefHeight="325.0" prefWidth="238.0" styleClass="sidebar-user" stylesheets="@Model/stylesheet.css">
                <children>
-                  <Label fx:id="username2" alignment="CENTER" prefHeight="160.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
+                  <Label fx:id="username2" alignment="CENTER" prefHeight="160.0" prefWidth="238.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Tw Cen MT Condensed Extra Bold" size="54.0" />
                      </font>
@@ -257,9 +257,9 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox fx:id="secondRunnerUp" layoutX="671.0" layoutY="830.0" prefHeight="252.0" prefWidth="238.0" styleClass="pane-with-shadow" stylesheets="@Model/stylesheet.css">
+            <VBox fx:id="secondRunnerUp" layoutX="671.0" layoutY="830.0" prefHeight="252.0" prefWidth="238.0" styleClass="sidebar-user" stylesheets="@Model/stylesheet.css">
                <children>
-                  <Label fx:id="username3" alignment="CENTER" prefHeight="145.0" prefWidth="238.0" textAlignment="CENTER" textFill="#282626" wrapText="true">
+                  <Label fx:id="username3" alignment="CENTER" prefHeight="145.0" prefWidth="238.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Tw Cen MT Condensed Extra Bold" size="54.0" />
                      </font>

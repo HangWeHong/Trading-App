@@ -1,4 +1,4 @@
-package Model;
+
 
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
@@ -22,6 +22,11 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import Model.DatabaseHandler;
+import Model.PLPoint;
+import Model.User;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -31,16 +36,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class ReportGenerator extends Application {
-    public static void main(String[] args) {
-        
-        launch(args);
-        
-    }
-    
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+public class ReportGenerator  {
+
+
+    public void generateReport() throws Exception {
         LineChartGenerator();
         // Load the FXML file
        
@@ -74,9 +74,10 @@ public class ReportGenerator extends Application {
     
 
     public static void LineChartGenerator() {
-
+         DatabaseHandler dbh=new DatabaseHandler();
+        User user=dbh.getUser();
         ArrayList<PLPoint> list = new ArrayList<>();
-        list = DatabaseHandler.loadPLPoint();
+        list = DatabaseHandler.loadPLPoint(user.getUsername());
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -146,7 +147,7 @@ public class ReportGenerator extends Application {
         String imagePath = "exported_image.png";
         
         // Path to the output PDF file
-        String pdfPath = "test.pdf";
+        String pdfPath = "PerformanceReport.pdf";
 
         // Create a new Document
         Document document = new Document(PageSize.A4);

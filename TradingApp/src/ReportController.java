@@ -1,4 +1,4 @@
-package Model;
+
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -9,6 +9,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import java.io.File;
 import java.util.ArrayList;
+
+import Model.DatabaseHandler;
+import Model.Transaction;
+import Model.User;
 
 public class ReportController {
 
@@ -47,6 +51,10 @@ public class ReportController {
 
     ArrayList<Transaction> list = new ArrayList<>();
 
+    DatabaseHandler dbh=new DatabaseHandler();
+
+    User user=dbh.getUser();
+
     public void initialize() {
         transactionTable.getItems().clear();
 
@@ -59,19 +67,19 @@ public class ReportController {
         StatusColumn.setCellValueFactory(new PropertyValueFactory<>("Status"));
 
         // Load data from the database and populate the TableView
-        loadTransactionData();
+        loadTransactionData(user.getUsername());
         // Set Image
         setImage();
 
-        Name.setText("user.getUsername");
-        PhoneNumber.setText("user.getPhoneNumber");
-        Email.setText("user.getEmail");
+        Name.setText(user.getUsername());
+        PhoneNumber.setText(user.getPhoneNum());
+        Email.setText(user.getEmail());
 
     }
 
-    private void loadTransactionData() {
+    private void loadTransactionData(String username) {
 
-        list = DatabaseHandler.loadTransactionData();
+        list = DatabaseHandler.loadTransactionData(username);
         for (Transaction transaction : list) {
             transactionTable.getItems().add(transaction);
         }
@@ -79,7 +87,7 @@ public class ReportController {
 
     private void setImage() {
 
-        File backendImageFile = new File("C:/Users/acer/Desktop/JavaFX/JavaFx/line_chart.png");
+        File backendImageFile = new File("D:/TradingApp/TradingApp/line_chart.png");
         Image image = new Image(backendImageFile.toURI().toString());
         ImageViewer.setImage(image);
 
