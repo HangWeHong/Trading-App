@@ -98,9 +98,9 @@ public class LeaderboardController {
                 username3.setText(top10Users.get(2).getUsername());
             }
         }
-        TranslateTransition championAnimation=new TranslateTransition(Duration.millis(1500), champion);
+        TranslateTransition championAnimation=new TranslateTransition(Duration.millis(4500), champion);
         TranslateTransition firstRunnerUpAnimation = new TranslateTransition(Duration.millis(3000), firstRunnerUp);
-        TranslateTransition secoondRunnerUpAnimation = new TranslateTransition(Duration.millis(4500), secondRunnerUp);
+        TranslateTransition secoondRunnerUpAnimation = new TranslateTransition(Duration.millis(1500), secondRunnerUp);
         championAnimation.setFromY(0);
         championAnimation.setToY(-420);
         // Start the animation

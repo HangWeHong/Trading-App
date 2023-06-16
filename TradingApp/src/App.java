@@ -64,5 +64,6 @@ public class App extends Application {
         DatabaseHandler.scheduleLotPoolReplenishment();
         DatabaseHandler.schedulePLPointsUpdate();
         DatabaseHandler.scheduleUserBalanceCheck();
+        DatabaseHandler.refreshStockPrice();
     }
 }

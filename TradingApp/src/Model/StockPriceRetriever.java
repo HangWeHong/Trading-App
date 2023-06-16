@@ -13,10 +13,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
-public class StockAPI {
+public class StockPriceRetriever {
     private static final String API_KEY = "UM-3b63b32b4332a782a2c7e0fb511b71240c08cd8f57f2627515692a0a55baa83a";
 
     private static Map<String, Double> latestPrices = new TreeMap<>();
@@ -27,7 +26,7 @@ public class StockAPI {
     }
 
     public static void updateTable() throws Exception {
-        ArrayList<StockWrapper> symbols = getStockList();
+        ArrayList<StockWrapper> symbols = StockInfoRetriever.retrieveStockInfo();
 
         for (StockWrapper symbol : symbols) {
             String temp = symbol.getSymbol();
@@ -77,7 +76,7 @@ public class StockAPI {
     }
 
     public static void insertTable() throws Exception {
-        ArrayList<StockWrapper> symbols = getStockList();
+        ArrayList<StockWrapper> symbols = StockInfoRetriever.retrieveStockInfo();
 
         for (StockWrapper symbol : symbols) {
             String temp = symbol.getSymbol();
@@ -125,35 +124,4 @@ public class StockAPI {
         }
     }
 
-    public static ArrayList<StockWrapper> getStockList() throws Exception {
-        ArrayList<StockWrapper> stockList = new ArrayList<>();
-        String apiUrl = "https://wall-street-warriors-api-um.vercel.app/mylist?apikey=" + API_KEY;
-
-        URL url = new URL(apiUrl);
-        URLConnection conn = url.openConnection();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-        String line;
-        StringBuilder result = new StringBuilder();
-        while ((line = reader.readLine()) != null) {
-            result.append(line);
-        }
-        reader.close();
-
-        JSONArray jsonArray = new JSONArray(result.toString());
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject stockJson = jsonArray.getJSONObject(i);
-            String symbol = stockJson.getString("symbol");
-            String name = stockJson.getString("name");
-            String currency = stockJson.getString("currency");
-            String exchange = stockJson.getString("exchange");
-            String country = stockJson.getString("country");
-            String type = stockJson.getString("type");
-            StockWrapper stockWrapper = new StockWrapper(symbol, name, currency, exchange, country, type);
-            stockList.add(stockWrapper);
-        }
-
-        return stockList;
-    }
 }
