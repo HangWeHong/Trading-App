@@ -111,7 +111,6 @@ public class TradingController {
     @FXML
     void initialize() {
              username.setText(user.getUsername());
-            companyNames.remove("AGES-PA");
             TextFields.bindAutoCompletion(companyName, companyNames);
             // // Disable the action text field initially
             price.setDisable(true);
@@ -199,7 +198,7 @@ public class TradingController {
                 double highestPrice = stockSearched.getPrice() * 1.01;
                 String highestlPriceFormatted = String.format("%.2f", highestPrice);
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Successful or nah");
+                alert.setTitle("Price Out of Range");
                 alert.setHeaderText("Warning:");
                 alert.setContentText("Price Should be Between "+lowestPriceFormatted+" - "+highestlPriceFormatted);
                 DialogPane dialogPane = alert.getDialogPane();
@@ -225,7 +224,7 @@ public class TradingController {
             
             if(!tr.isWithinTradingHours(currentDateTime)){
                   Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Successful or nah");
+                alert.setTitle("Out of Operating Hours");
                 alert.setHeaderText("Warning:");
                 alert.setContentText("Market is Closed!");
                 DialogPane dialogPane = alert.getDialogPane();
@@ -233,9 +232,9 @@ public class TradingController {
                 alert.showAndWait();
             }else{
               if(action.getText().equals("BUY")){
-                    if(user.getBalance()<(Double.parseDouble(price.getText())*Integer.parseInt(quantity.getText()))){
+                    if(user.getBalance()<(Double.parseDouble(price.getText())*Integer.parseInt(quantity.getText()))*100){
                          Alert alert = new Alert(AlertType.INFORMATION);
-                        alert.setTitle("Successful or nah");
+                        alert.setTitle("Insufficient Balance");
                         alert.setHeaderText("Warning:");
                         alert.setContentText("You Do Not Have Enough Balance!");
                         DialogPane dialogPane = alert.getDialogPane();
@@ -260,13 +259,13 @@ public class TradingController {
                             successfulDialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
                             successfulDialogPane.setPrefSize(450, 200);
                             successfulAlert.showAndWait();
+                            user.setBalance(dbh.getLatestBalance(user.getUsername()));
 
                     }
                 }else if(action.getText().equals("SELL")){
-                    // Check if the user has the stock and enough quantity in holdings
                         if (!oh.checkHoldings(user.getUsername(),stockSearched.getSymbol() ,Integer.parseInt(quantity.getText()))) {
                             Alert alert = new Alert(AlertType.INFORMATION);
-                            alert.setTitle("Successful or nah");
+                            alert.setTitle("Insufficient Number of Stock");
                             alert.setHeaderText("Warning:");
                             alert.setContentText("You Do Not Have Enough/Any Lots for this Stock!");
                             DialogPane dialogPane = alert.getDialogPane();
@@ -291,6 +290,7 @@ public class TradingController {
                             successfulDialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
                             successfulDialogPane.setPrefSize(450, 200);
                             successfulAlert.showAndWait();
+                            user.setBalance(dbh.getLatestBalance(user.getUsername()));
                         }           
                 }
             }
@@ -332,6 +332,8 @@ public class TradingController {
                             successfulDialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
                             successfulDialogPane.setPrefSize(450, 200);
                             successfulAlert.showAndWait();
+                            user.setBalance(dbh.getLatestBalance(user.getUsername()));
+
                 }
             } else if (buttonType == sellButtonType) {
                  if(!oh.cancelOrder(user.getUsername(),"Sell")){
@@ -352,6 +354,8 @@ public class TradingController {
                             successfulDialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
                             successfulDialogPane.setPrefSize(450, 200);
                             successfulAlert.showAndWait();
+                            user.setBalance(dbh.getLatestBalance(user.getUsername()));
+
                 }
             } else {
                 // Cancel button or closed dialog

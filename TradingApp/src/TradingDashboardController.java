@@ -40,8 +40,9 @@ public class TradingDashboardController {
         
          username.setText(user.getUsername());
          balance.setText(String.valueOf(user.getBalance()));
-         points.setText(String.valueOf(user.getPL_Points()));
+         points.setText(String.valueOf(dbh.getLatestPoints(user.getUsername())));
          position.setText(String.valueOf(getPosition()));
+
      
 
        List<TradeHistory> list=new ArrayList<>(tradeHistory());
@@ -73,9 +74,12 @@ public class TradingDashboardController {
     void clickedLeaderboard(MouseEvent event) {
         App.setRoot("Leaderboard.fxml");
     }
-    
     @FXML
-    void clickedHelpNSupport(MouseEvent event) {
+     void clickedTrading(MouseEvent event) {
+        App.setRoot("Trading.fxml");
+    }
+    @FXML
+    void clickedHelpSupport(MouseEvent event) {
         App.setRoot("HelpSupport.fxml");
     }
 

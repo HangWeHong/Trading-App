@@ -225,9 +225,9 @@
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
                   <HBox prefHeight="70.0" prefWidth="36.0" />
-                  <Label fx:id="name" prefHeight="70.0" prefWidth="242.0" textFill="#151d29">
+                  <Label fx:id="name" prefHeight="70.0" prefWidth="242.0" textFill="WHITE">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="Tw Cen MT" size="25.0" />
                      </font>
                   </Label>
                </children>
@@ -244,9 +244,9 @@
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
                   <HBox prefHeight="70.0" prefWidth="34.0" />
-                  <Label fx:id="email" prefHeight="70.0" prefWidth="326.0" textFill="#151d29">
+                  <Label fx:id="email" prefHeight="70.0" prefWidth="326.0" textFill="WHITE">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="Tw Cen MT" size="25.0" />
                      </font>
                   </Label>
                </children>
@@ -263,9 +263,9 @@
             <HBox prefHeight="82.0" prefWidth="960.0">
                <children>
                   <HBox prefHeight="82.0" prefWidth="40.0" />
-                  <Label fx:id="age" prefHeight="82.0" prefWidth="113.0" textFill="#151d29">
+                  <Label fx:id="age" prefHeight="82.0" prefWidth="113.0" textFill="WHITE">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="Tw Cen MT" size="25.0" />
                      </font>
                   </Label>
                </children>
@@ -282,9 +282,9 @@
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
                   <HBox prefHeight="70.0" prefWidth="34.0" />
-                  <Label fx:id="phoneNum" prefHeight="70.0" prefWidth="218.0" textFill="#151d29">
+                  <Label fx:id="phoneNum" prefHeight="70.0" prefWidth="218.0" textFill="WHITE">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="Tw Cen MT" size="25.0" />
                      </font>
                   </Label>
                </children>
@@ -301,9 +301,9 @@
             <HBox prefHeight="70.0" prefWidth="874.0">
                <children>
                   <HBox prefHeight="70.0" prefWidth="37.0" />
-                  <Label fx:id="nationality" prefHeight="70.0" prefWidth="196.0" textFill="#151d29">
+                  <Label fx:id="nationality" prefHeight="70.0" prefWidth="196.0" textFill="WHITE">
                      <font>
-                        <Font size="25.0" />
+                        <Font name="Tw Cen MT" size="25.0" />
                      </font>
                   </Label>
                </children>

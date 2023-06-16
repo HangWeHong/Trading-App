@@ -219,23 +219,23 @@
                      <children>
                         <HBox prefHeight="257.0" prefWidth="488.0">
                            <children>
-                              <Label fx:id="title1" alignment="CENTER" contentDisplay="CENTER" prefHeight="269.0" prefWidth="488.0" textAlignment="CENTER" textFill="#070606" wrapText="true">
+                              <Label fx:id="title1" alignment="CENTER" contentDisplay="CENTER" prefHeight="269.0" prefWidth="488.0" text="v" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
-                                    <Font name="Century Gothic Bold" size="26.0" />
+                                    <Font name="Tw Cen MT Bold" size="26.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Label fx:id="time1" alignment="CENTER" prefHeight="43.0" prefWidth="488.0" textFill="#00000066">
+                        <Label fx:id="time1" alignment="CENTER" prefHeight="43.0" prefWidth="488.0" text="v" textFill="#ffffff66">
                            <font>
                               <Font name="Microsoft Himalaya" size="25.0" />
                            </font>
                         </Label>
                         <HBox prefHeight="404.0" prefWidth="488.0">
                            <children>
-                              <Label fx:id="description1" alignment="CENTER" prefHeight="382.0" prefWidth="505.0" textAlignment="CENTER" textFill="#070606" wrapText="true">
+                              <Label fx:id="description1" alignment="CENTER" prefHeight="382.0" prefWidth="505.0" text="v" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
-                                    <Font name="Century Gothic" size="24.0" />
+                                    <Font name="Tw Cen MT" size="24.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets left="10.0" />
@@ -258,9 +258,9 @@
                      <children>
                         <HBox prefHeight="116.0" prefWidth="455.0">
                            <children>
-                              <Label fx:id="title2" alignment="CENTER" contentDisplay="CENTER" prefHeight="105.0" prefWidth="449.0" textAlignment="CENTER" textFill="#070606" wrapText="true">
+                              <Label fx:id="title2" alignment="CENTER" contentDisplay="CENTER" prefHeight="105.0" prefWidth="449.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
-                                    <Font name="Century Gothic Bold" size="26.0" />
+                                    <Font name="Tw Cen MT Bold" size="26.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets left="3.0" />
@@ -268,16 +268,16 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Label fx:id="time2" alignment="CENTER" prefHeight="40.0" prefWidth="455.0" textFill="#00000066">
+                        <Label fx:id="time2" alignment="CENTER" prefHeight="40.0" prefWidth="455.0" textFill="#ffffff66">
                            <font>
                               <Font name="Microsoft Himalaya" size="25.0" />
                            </font>
                         </Label>
                         <HBox prefHeight="228.0" prefWidth="434.0">
                            <children>
-                              <Label fx:id="description2" alignment="CENTER" prefHeight="226.0" prefWidth="467.0" textAlignment="CENTER" textFill="#070606" wrapText="true">
+                              <Label fx:id="description2" alignment="CENTER" prefHeight="226.0" prefWidth="467.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
-                                    <Font name="Century Gothic" size="24.0" />
+                                    <Font name="Tw Cen MT" size="24.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets left="10.0" />
@@ -300,23 +300,23 @@
                      <children>
                         <HBox prefHeight="113.0" prefWidth="459.0">
                            <children>
-                              <Label fx:id="title3" alignment="CENTER" contentDisplay="CENTER" prefHeight="92.0" prefWidth="478.0" textAlignment="CENTER" textFill="#070606" wrapText="true">
+                              <Label fx:id="title3" alignment="CENTER" contentDisplay="CENTER" prefHeight="92.0" prefWidth="478.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
-                                    <Font name="Century Gothic Bold" size="26.0" />
+                                    <Font name="Tw Cen MT Bold" size="26.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Label fx:id="time3" alignment="CENTER" prefHeight="31.0" prefWidth="474.0" textFill="#00000066">
+                        <Label fx:id="time3" alignment="CENTER" prefHeight="31.0" prefWidth="474.0" textFill="#ffffff66">
                            <font>
                               <Font name="Microsoft Himalaya" size="25.0" />
                            </font>
                         </Label>
                         <HBox prefHeight="186.0" prefWidth="452.0">
                            <children>
-                              <Label fx:id="description3" alignment="CENTER" prefHeight="182.0" prefWidth="465.0" textAlignment="CENTER" textFill="#070606" wrapText="true">
+                              <Label fx:id="description3" alignment="CENTER" prefHeight="182.0" prefWidth="465.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
-                                    <Font name="Century Gothic" size="24.0" />
+                                    <Font name="Tw Cen MT" size="24.0" />
                                  </font>
                                  <HBox.margin>
                                     <Insets left="10.0" />

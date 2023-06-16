@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -302,10 +303,10 @@ public class DatabaseHandler {
    public static void schedulePLPointsUpdate() {
     Timer timer = new Timer();
     Calendar calendar = Calendar.getInstance();
-    calendar.set(Calendar.HOUR_OF_DAY, 0);
-    calendar.set(Calendar.MINUTE, 0);
+    calendar.set(Calendar.HOUR_OF_DAY, 10);
+    calendar.set(Calendar.MINUTE, 19);
     calendar.set(Calendar.SECOND, 0);
-
+    
 
     Date firstExecutionTime = calendar.getTime();
    
@@ -324,6 +325,7 @@ static class PLPointsUpdateTask extends TimerTask {
     public void run() {
         // Get the current date
         LocalDate currentDate = LocalDate.now();
+        double PL_Points=0;
         // Check if it's a weekday (Monday to Friday)
         if (currentDate.getDayOfWeek().getValue() >= 1 && currentDate.getDayOfWeek().getValue() <= 5) {
             // Get the users with Role="user" from the users table
@@ -336,14 +338,17 @@ static class PLPointsUpdateTask extends TimerTask {
 
                 // Calculate profitOrLoss and PL_Points
                 double profitOrLoss = revenue - cost;
-                double PL_Points = (profitOrLoss / initialBalance) * 100;
+                 PL_Points = (profitOrLoss / initialBalance) * 100;
                 // Update the PL_Points in the users table
                 updatePL_Points(user.getUsername(), PL_Points);
-
+                 insertPoints(user.getUsername(),PL_Points);
                 // Reset cost and revenue to 0, and update the initial balance
                 resetCostAndRevenue(user.getUsername(), user.getBalance());
+                
             }
         }
+           
+
     }
 
     private List<User> getUsersWithRole(String role) {
@@ -496,6 +501,24 @@ static class UserBalanceCheckTask extends TimerTask {
         }
     }
 }
+public static void refreshStockPrice(){
+      Timer timer = new Timer();
+
+        // Schedule the task to run every 5 minutes
+        timer.schedule(new RefreshDataTask(), 0, 5 * 60 * 1000);
+}
+  static class RefreshDataTask extends TimerTask {
+        @Override
+        public void run() {
+            try {
+                // Fetch and display the data from the API
+                StockPriceRetriever.updateTable();
+
+            } catch (Exception e) {
+                System.out.println("Error fetching data from the API: " + e.getMessage());
+            }
+        }
+    }
    public void increaseAccountBalance(String username, double amount) {
     try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
         String updateQuery = "UPDATE users SET balance = balance + ?, Revenue = Revenue + ? WHERE Username = ?";
@@ -555,6 +578,125 @@ public void decreaseAccountBalance(String username, double amount) {
 
     return companyNames;
 }
+ public double  getLatestBalance(String username) {
+        String sql = "SELECT balance FROM users WHERE Username = ?";
+        Double balance=0.0;
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, username);
+                
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+            balance = resultSet.getDouble("balance");
+            }
+
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return balance;
+    }
+     public double getLatestPoints(String username) {
+        String sql = "SELECT PL_Points FROM users WHERE Username = ?";
+        Double points=0.0;
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, username);
+                
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+            points = resultSet.getDouble("PL_Points");
+            }
+
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return points;
+    }
+    public static void insertPoints(String username,Double points){
+        String sql="INSERT INTO Point (Username, PL_Point) VALUES (?, ?)";
+         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, username);
+            statement.setDouble(2,points);
+            statement.executeUpdate(); 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static ArrayList<Transaction> loadTransactionData() {
+        ArrayList<Transaction> list = new ArrayList<>();
+        try {
+            // Establish a database connection
+            Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+
+            // Create a statement
+            Statement statement = connection.createStatement();
+
+            // Execute a query to retrieve data from the table
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM transaction ORDER BY date_time ASC");
+
+            // Populate the list with the retrieved data
+            while (resultSet.next()) {
+                String dateTime = resultSet.getString("date_time");
+                String symbol = resultSet.getString("symbol");
+                double price = resultSet.getDouble("price");
+                int quantity = resultSet.getInt("quantity");
+                String Order_Type = resultSet.getString("Order_Type");
+                String Status = resultSet.getString("Status");
+
+                Transaction transaction = new Transaction(dateTime, symbol, price, quantity, Order_Type, Status);
+                list.add(transaction);
+            }
+
+            // Close the resources
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static ArrayList<PLPoint> loadPLPoint() {
+        ArrayList<PLPoint> list = new ArrayList<>();
+        try {
+            // Establish a database connection
+            Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+
+            // Create a statement
+            Statement statement = connection.createStatement();
+
+            // Execute a query to retrieve data from the table
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Point ORDER BY date ASC");
+
+            // Populate the list with the retrieved data
+            while (resultSet.next()) {
+                String Username = resultSet.getString("Username");
+                String date = resultSet.getString("Date");
+                double PLPoint = resultSet.getDouble("PL_Point");
+
+                PLPoint points = new PLPoint(PLPoint,Username,date);
+                list.add(points);
+            }
+
+            // Close the resources
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 
 
 }

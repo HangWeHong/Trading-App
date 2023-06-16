@@ -12,6 +12,8 @@ import javax.mail.internet.MimeMessage;
 public class emailService {
     public static void sendEmail(StockWrapper stockSearched,String type,int quantity,Double price,String email,int position)throws InterruptedException {
         try {
+           double totalPrice=price*quantity*100;
+        String totalPriceFormatted = String.format("%.2f", totalPrice);
             String content = "<!DOCTYPE html>\n" +
             "<html>\n" +
             "<head>\n" +
@@ -24,10 +26,10 @@ public class emailService {
             "  <div class=\"content\" style=\"margin-top: 30px;\">\n" +
             "    <p>Company Name: "+stockSearched.getName()+"</p>\n" +
             "    <p>Stock Symbol: "+stockSearched.getSymbol()+"</p>\n" +
-            "    <p>Stock Price: RM"+stockSearched.getPrice()+"</p>\n" +
-            "    <p>"+type+"ing Price: RM"+price+"</p>\n" +
-            "    <p>Volume: "+quantity+"</p>\n" +
-            "    <p>Total Price: RM"+price*quantity+"</p>\n" +
+            "    <p>Stock Price: RM"+stockSearched.getPrice()+"/shares</p>\n" +
+            "    <p>"+type+"ing Price: RM"+price+"/shares</p>\n" +
+            "    <p>Volume: "+quantity*100+"</p>\n" +
+            "    <p>Total Price: RM"+totalPriceFormatted+"</p>\n" +
             "    <p>You Are in Position "+position+"</p>\n" +
             "  </div>\n" +
             "  <div class=\"line\" style=\"width: 80%; margin: 20px auto; border-top: 1px solid #ccc;\"></div>\n" +
