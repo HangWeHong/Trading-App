@@ -24,8 +24,9 @@ public class ForgotPasswordController {
 
        alert.setTitle("Successful or nah");
        alert.setHeaderText("Result:");
-       if(!(inputEmail.getText().contains(".com")|| inputEmail.getText().contains("siswa.um.edu.my")) && !inputEmail.getText().contains("@") && inputEmail.getText().isEmpty() && !DatabaseHandler.checkEmailExists(inputEmail.getText())){
-      if(!(inputEmail.getText().contains(".com")|| inputEmail.getText().contains("siswa.um.edu.my")) && !inputEmail.getText().contains("@") && inputEmail.getText().isEmpty()){
+       if((!inputEmail.getText().contains(".com")&& !inputEmail.getText().contains("siswa.um.edu.my")) || !inputEmail.getText().contains("@") || inputEmail.getText().isEmpty() || !DatabaseHandler.checkEmailExists(inputEmail.getText())){
+      
+        if((!inputEmail.getText().contains(".com") && !inputEmail.getText().contains("siswa.um.edu.my")) || !inputEmail.getText().contains("@") || inputEmail.getText().isEmpty()){
         alert.setContentText("Please Enter a Valid Email!");
         DialogPane dialogPane = alert.getDialogPane();
         
