@@ -1,4 +1,6 @@
+import Model.DatabaseHandler;
 import Model.User;
+import Model.emailService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
@@ -22,7 +24,30 @@ public class ForgotPasswordController {
 
        alert.setTitle("Successful or nah");
        alert.setHeaderText("Result:");
-       if((inputEmail.getText().contains(".com")|| inputEmail.getText().contains("siswa.um.edu.my")) && inputEmail.getText().contains("@") && !inputEmail.getText().isEmpty()){
+       if(!(inputEmail.getText().contains(".com")|| inputEmail.getText().contains("siswa.um.edu.my")) && !inputEmail.getText().contains("@") && inputEmail.getText().isEmpty() && !DatabaseHandler.checkEmailExists(inputEmail.getText())){
+      if(!(inputEmail.getText().contains(".com")|| inputEmail.getText().contains("siswa.um.edu.my")) && !inputEmail.getText().contains("@") && inputEmail.getText().isEmpty()){
+        alert.setContentText("Please Enter a Valid Email!");
+        DialogPane dialogPane = alert.getDialogPane();
+        
+       dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
+       dialogPane.getStyleClass().add("gradient-background-sign-up-page");
+    alert.showAndWait();
+      }else if(!DatabaseHandler.checkEmailExists(inputEmail.getText())){
+        alert.setContentText("This Email is Not A Registered Email!");
+        DialogPane dialogPane = alert.getDialogPane();
+        
+       dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
+       dialogPane.getStyleClass().add("gradient-background-sign-up-page");
+    alert.showAndWait();
+      }
+    }else{
+        
+        try {
+            emailService.sendPassword(inputEmail.getText());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
        alert.setContentText("The Correct Password is Sent to Your Email");
        DialogPane dialogPane = alert.getDialogPane();
         
@@ -30,13 +55,6 @@ public class ForgotPasswordController {
        dialogPane.getStyleClass().add("gradient-background-sign-up-page");
       alert.showAndWait();
         App.setRoot("LoginPage.fxml");
-    }else{
-        alert.setContentText("Please Enter a Valid Email!");
-        DialogPane dialogPane = alert.getDialogPane();
-        
-       dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
-       dialogPane.getStyleClass().add("gradient-background-sign-up-page");
-    alert.showAndWait();
        }
     }
 

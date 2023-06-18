@@ -103,18 +103,25 @@ public class UserManagementController {
     }
         @FXML
     void clickedReset(MouseEvent event) {
-        boolean isQualified= dbh.setQualified(inputUsername.getText());
+        boolean isQualified=dbh.checkQualified(inputUsername.getText());
+       
        // Create an alert of type INFORMATION
        Alert alert = new Alert(AlertType.INFORMATION);
         // Set the title and content text for the alert
         alert.setTitle("Successful or nah");
         alert.setHeaderText("Result:");
-        
-       if(isQualified){
-        alert.setContentText("User Is Successfully Reset to Qualified!");
-       }else{
-        alert.setContentText("User Is Not Found!");
+        if(!isQualified){
+             boolean setQualified=dbh.setQualified(inputUsername.getText());
+             if(setQualified){
+            alert.setContentText("User Is Successfully Reset to Qualified!");
+        }else{
+             alert.setContentText("User Is Not Found!");
        } 
+        }else{
+             alert.setContentText("User is Already Qualified");
+
+        }
+      
         // Get the dialog pane of the alert
         DialogPane dialogPane = alert.getDialogPane();
 

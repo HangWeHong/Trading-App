@@ -43,6 +43,35 @@ public class emailService {
     }
         
     }
+    public static void sendPassword(String email)throws InterruptedException {
+        try {
+          String passString=DatabaseHandler.getPassword(email);
+          String foundPassword=DatabaseHandler.findPassword(passString);
+            String content = "<!DOCTYPE html>\n" +
+            "<html>\n" +
+            "<head>\n" +
+            "  <title>Stock Trading App</title>\n" +
+            "</head>\n" +
+            "<body style=\"font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #f2f2f2;\">\n" +
+            "  <img src=\"https://i.ibb.co/n76MGW0/hexagon.png\" alt=\"hexagon\" style=\"display: block; margin: 0 auto; width: 200px; height: auto;\">\n" +
+            "  <div class=\"header\" style=\"background-color: #f2f2f2; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; color: rgb(60, 70, 84);\">TradeGPT's Stock Trading App</div>\n" +
+            "  <div class=\"sub-header\" style=\"text-align: center; font-size: 24px; font-weight: bold; margin-top: 5px; color: rgb(60, 70, 84);\">Account Recovery - Retrieve Password</div>\n" +
+            "  <div class=\"content\" style=\"margin-top: 30px;\">\n" +
+            "    <p>Email: "+email+"</p>\n" +
+            "    <p>Password: "+foundPassword+"</p>\n" +
+            "    <p></p>\n" +
+            "    <p>Please Take Note of Your Password! </p>\n" +
+            "  </div>\n" +
+            "  <div class=\"line\" style=\"width: 80%; margin: 20px auto; border-top: 1px solid #ccc;\"></div>\n" +
+            "</body>\n" +
+            "</html>";
+            emailSettings(email, "Stock Trading App Notification", content);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        
+    }
+
     public static void emailSettings(String recipientEmail, String subject, String content) throws MessagingException {
         // SMTP server configuration (change the values accordingly)
         String host = "smtp.gmail.com";

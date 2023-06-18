@@ -127,7 +127,7 @@ public class RegistrationFormController {
                 dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
                 dialogPane.getStyleClass().add("gradient-background-sign-up-page");
                 alert.showAndWait();
-                App.setRoot("RegistrationForm.fxml");
+                App.setRoot("LoginPage.fxml");
             }else{
                 alert.setContentText("Unexpected Error Occured");
                 DialogPane dialogPane = alert.getDialogPane();
