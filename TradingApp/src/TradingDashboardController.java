@@ -99,7 +99,7 @@ public class TradingDashboardController {
     void initialize() {
         
          username.setText(user.getUsername());
-         balance.setText(String.valueOf(user.getBalance()));
+         balance.setText(String.valueOf(dbh.getLatestBalance(user.getUsername())));
          points.setText(String.valueOf(dbh.getLatestPoints(user.getUsername())));
          position.setText(String.valueOf(getPosition()));
          

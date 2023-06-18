@@ -5,8 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 import javax.lang.model.element.QualifiedNameable;
+
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
 import javafx.scene.chart.PieChart.Data;
 
@@ -27,21 +30,23 @@ public class OrderHandler {
     String stockName=stockSearched.getName();
     double stockPrice = stockSearched.getPrice();
     String stockSymbol = stockSearched.getSymbol();
-    insertTransaction(username, "Buy", stockSymbol, quantity,desiredPrice);
+    
 
 
     // Check if desired price matches the fetched price
     if (desiredPrice == stockPrice) {
         // Check for matching sell orders
         Order matchingSellOrder = findMatchingSellOrder(stockSymbol,desiredPrice);
-        
+        while(matchingSellOrder!=null){
         if (matchingSellOrder != null && matchingSellOrder.getQuantity() <= quantity) {
-            
             int boughtQuantity = matchingSellOrder.getQuantity();
             // Remove sell order from orders table
             removeOrder(matchingSellOrder);
             dbh.decreaseAccountBalance(username, boughtQuantity*desiredPrice*100);  //*100 as 1 lot = 100 shares 
             dbh.increaseAccountBalance(matchingSellOrder.getUsername(),boughtQuantity*desiredPrice*100);
+            insertTransaction(username, "Buy", stockSymbol, boughtQuantity,desiredPrice,"Successful");   
+            updateTransaction(matchingSellOrder.getUsername(), "Sell", stockSymbol, boughtQuantity, stockPrice);  
+            
             // Update holdings table with purchased stock
             updateHoldings(username, stockSymbol, stockPrice, boughtQuantity);
             quantity -= boughtQuantity;
@@ -52,20 +57,26 @@ public class OrderHandler {
             dbh.increaseAccountBalance(matchingSellOrder.getUsername(),quantity*desiredPrice*100);
             // Update holdings table with purchased stock
             updateHoldings(username, stockSymbol, stockPrice, quantity);
+            insertTransaction(username, "Buy", stockSymbol, quantity,desiredPrice,"Successful");
+            updateTransaction(matchingSellOrder.getUsername(), "Sell", stockSymbol, quantity, desiredPrice);  
+
+
             quantity = 0;
         }
-
+        matchingSellOrder = findMatchingSellOrder(stockSymbol,desiredPrice);
+    }
         // Check if there is enough quantity in lot pool
         if (quantity > 0 && checkLotPool(stockSymbol)) {
-             int all=numLotPool(stockSymbol);
-             if(all<=quantity){
+             int limit=5;
+             if(limit<=quantity){
             // Subtract purchased quantity from lot pool
-            subtractLotPool(stockSymbol, all);
+            subtractLotPool(stockSymbol, limit);
             // Update holdings table with purchased stock
-            updateHoldings(username, stockSymbol, stockPrice, all);
-            dbh.decreaseAccountBalance(username, all*desiredPrice*100);
-            quantity-=all;
-           
+            updateHoldings(username, stockSymbol, stockPrice, limit);
+            dbh.decreaseAccountBalance(username, limit*desiredPrice*100);
+            quantity-=limit;
+            insertTransaction(username, "Buy", stockSymbol, limit,desiredPrice,"Successful");
+
              }else{
                 
                 // Subtract purchased quantity from lot pool
@@ -74,15 +85,24 @@ public class OrderHandler {
                  updateHoldings(username, stockSymbol, stockPrice, quantity);
                  dbh.decreaseAccountBalance(username, quantity*desiredPrice*100);
                  quantity=0;
+                insertTransaction(username, "Buy", stockSymbol, quantity,desiredPrice,"Successful");
+
              }
              if (quantity > 0) {
             // Create buy order in orders table
             createOrder(username, stockSymbol, stockPrice, quantity, "Buy");
             dbh.decreaseAccountBalance(username, quantity*desiredPrice*100);
+            insertTransaction(username, "Buy", stockSymbol, quantity,desiredPrice,"Pending");
+
         }
             
+        }else{
+              createOrder(username, stockSymbol, stockPrice, quantity, "Buy");
+            dbh.decreaseAccountBalance(username, quantity*desiredPrice*100);
+            insertTransaction(username, "Buy", stockSymbol, quantity,desiredPrice,"Pending");
+
         }
-    } else  {
+        } else  {
         // Check for matching sell orders
         Order matchingSellOrder = findMatchingSellOrder(stockSymbol,desiredPrice);
         if (matchingSellOrder != null && matchingSellOrder.getQuantity() <= quantity) {
@@ -94,6 +114,10 @@ public class OrderHandler {
             // Update holdings table with purchased stock
             updateHoldings(username, stockSymbol, desiredPrice, boughtQuantity);
             quantity -= boughtQuantity;
+            insertTransaction(username, "Buy", stockSymbol, boughtQuantity,desiredPrice,"Successful");
+            updateTransaction(matchingSellOrder.getUsername(), "Sell", stockSymbol, boughtQuantity, desiredPrice);  
+
+
         } else if (matchingSellOrder != null && matchingSellOrder.getQuantity() > quantity) {
             // Reduce the quantity of the matching sell order
             reduceOrderQuantity(matchingSellOrder, quantity);
@@ -101,11 +125,17 @@ public class OrderHandler {
             dbh.increaseAccountBalance(matchingSellOrder.getUsername(),quantity*desiredPrice*100);
             // Update holdings table with purchased stock
             updateHoldings(username, stockSymbol, desiredPrice, quantity);
+            insertTransaction(username, "Buy", stockSymbol, quantity,desiredPrice,"Successful");
+            updateTransaction(matchingSellOrder.getUsername(), "Sell", stockSymbol, quantity, desiredPrice);  
+
+
             quantity = 0;
         } else if (quantity > 0) {
             // Create buy order in orders table
             createOrder(username, stockSymbol, desiredPrice, quantity, "Buy");
-             dbh.decreaseAccountBalance(username, quantity*desiredPrice*100);
+            dbh.decreaseAccountBalance(username, quantity*desiredPrice*100);
+            insertTransaction(username, "Buy", stockSymbol, quantity,desiredPrice,"Pending");
+
         }
     }
 }
@@ -116,8 +146,8 @@ public void handleSellScenario(String username, double desiredPrice, int quantit
     
         // Check for matching buy orders
         Order matchingBuyOrder = findMatchingBuyOrder(stockSymbol,desiredPrice);
-        insertTransaction(username, "Sell", stockSymbol, quantity, desiredPrice);
         
+        while(matchingBuyOrder!=null){
         if (matchingBuyOrder != null && matchingBuyOrder.getQuantity() <= quantity) {
              
             int boughtQuantity = matchingBuyOrder.getQuantity();
@@ -131,6 +161,10 @@ public void handleSellScenario(String username, double desiredPrice, int quantit
                  removeHoldings(username, stockSymbol);
             }
             updateHoldings(matchingBuyOrder.getUsername(), stockSymbol, desiredPrice, boughtQuantity);
+            insertTransaction(username, "Sell", stockSymbol, boughtQuantity, desiredPrice,"Successful");
+            updateTransaction(matchingBuyOrder.getUsername(), "Buy", stockSymbol, quantity, desiredPrice);  
+
+
           
         } else if (matchingBuyOrder != null && matchingBuyOrder.getQuantity() > quantity) {
             // Reduce the quantity of the matching buy order
@@ -143,8 +177,14 @@ public void handleSellScenario(String username, double desiredPrice, int quantit
             }else{
                  removeHoldings(username, stockSymbol);
             }
+            insertTransaction(username, "Sell", stockSymbol, quantity, desiredPrice,"Successful");
+            updateTransaction(matchingBuyOrder.getUsername(), "Buy", stockSymbol, quantity, desiredPrice);  
+
+
             quantity = 0;
-        }else if (quantity > 0) {
+        }matchingBuyOrder = findMatchingBuyOrder(stockSymbol,desiredPrice);
+    }
+     if (quantity > 0) {
             // Create sell order in orders table
               if(getHoldingsQuantity(username, stockSymbol)>quantity){
                 subtractHoldings(username, stockSymbol,quantity);
@@ -152,6 +192,8 @@ public void handleSellScenario(String username, double desiredPrice, int quantit
                  removeHoldings(username, stockSymbol);
             }
             createOrder(username, stockSymbol, desiredPrice, quantity, "Sell");
+            insertTransaction(username, "Sell", stockSymbol, quantity, desiredPrice,"Pending");
+
         }
     }
     
@@ -329,8 +371,27 @@ public int numLotPool(String stockSymbol) {
     // Function to create an order in the orders table
     private void createOrder(String username, String stockSymbol, double price, int quantity, String type) {
         // Insert a new order into the orders table
-        String query = "INSERT INTO orders (Username, Symbol, Price, Quantity, Type) VALUES (?, ?, ?, ?, ?)";
+         boolean orderExists = checkOrderExists(username, stockSymbol, price,type);
+         if (orderExists) {
+        // Update the existing holding with the purchased stock
+        String query = "UPDATE orders SET Quantity = Quantity + ? WHERE Username = ? AND Symbol = ? AND Price = ? AND Type = ?";
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, quantity);
+            statement.setString(2, username);
+            statement.setString(3, stockSymbol);
+            statement.setDouble(4, price);
+            statement.setString(5, type);
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    } else {
+        // Create a new holding for the user and stock
+        String query = "INSERT INTO orders (Username, Symbol, Price, Quantity, Type) VALUES (?, ?, ?, ?, ?)";
+
+           try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, username);
             statement.setString(2, stockSymbol);
@@ -342,6 +403,30 @@ public int numLotPool(String stockSymbol) {
             e.printStackTrace();
         }
     }
+     
+    }
+  
+
+// Function to check if a holding exists for the user and stock
+private boolean checkOrderExists(String username, String stockSymbol, double price,String type) {
+    // Query the holdings table to check if a holding exists
+     String query = "SELECT COUNT(*) AS Count FROM orders WHERE Username = ? AND Symbol = ? AND Price = ? AND Type=?";
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+         PreparedStatement statement = connection.prepareStatement(query)) {
+        statement.setString(1, username);
+        statement.setString(2, stockSymbol);
+         statement.setDouble(3, price);
+         statement.setString(4, type);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            int count = resultSet.getInt("Count");
+            return count > 0;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+}
     // Check if the user has the stock and enough quantity in holdings
     public boolean checkHoldings(String username, String stockSymbol, int quantity) {
         // Query the holdings table to check if the user has the stock and enough quantity
@@ -439,7 +524,11 @@ public boolean cancelOrder(String username, String orderType) {
 
             if (resultSet.next()) {
                 double highestAmount = resultSet.getDouble("Price") * resultSet.getInt("Quantity");
-
+                DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        
+            // Format the double value
+                String formattedHighestNumber = decimalFormat.format(highestAmount);
+                highestAmount=Double.parseDouble(formattedHighestNumber);
                 // Delete the order with the highest amount
                 deleteOrder(username, orderType, highestAmount);
                 if(orderType.equals("Buy")){
@@ -448,7 +537,7 @@ public boolean cancelOrder(String username, String orderType) {
                     updateHoldings(username, resultSet.getString("Symbol"), resultSet.getDouble("Price")  , resultSet.getInt("Quantity"));
                 }
                 
-                updateTransaction(username, orderType,resultSet.getString("Symbol"), resultSet.getDouble("Price"));
+                cancelTransaction(username, orderType,resultSet.getString("Symbol"), resultSet.getDouble("Price"),resultSet.getInt("Quantity"));
 
                 return true;
             } else {
@@ -484,7 +573,7 @@ public boolean cancelOrder(String username, String orderType) {
             e.printStackTrace();
         }
     }
-    private boolean insertTransaction(String username, String orderType, String stockSymbol,int quantity,double price) {
+    private boolean insertTransaction(String username, String orderType, String stockSymbol,int quantity,double price,String status) {
         String sql = "INSERT INTO transactions (Username, Symbol, Price, Quantity, Type, Status) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
@@ -495,7 +584,7 @@ public boolean cancelOrder(String username, String orderType) {
             statement.setDouble(3, price);
             statement.setInt(4, quantity);
             statement.setString(5, orderType);
-            statement.setString(6, "Successful");
+            statement.setString(6, status);
 
             int rowsInserted = statement.executeUpdate();
 
@@ -505,9 +594,30 @@ public boolean cancelOrder(String username, String orderType) {
             return false;
         }
     }
-     private void updateTransaction(String username, String orderType, String stockSymbol,double price) {
-        // Update the holdings table by subtracting the sold quantity
+    private boolean updateTransaction(String username, String orderType, String stockSymbol,int quantity,double price) {
         String query = "UPDATE transactions SET Status = ? WHERE Username = ? AND Symbol = ? AND Price = ? AND Type = ? AND Status = ?";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, "Successful");
+            statement.setString(2, username);
+            statement.setString(3, stockSymbol);
+            statement.setDouble(4, price);
+            statement.setString(5, orderType);
+            statement.setString(6, "Pending");
+            statement.executeUpdate();
+            int rowsInserted = statement.executeUpdate();
+
+            return rowsInserted > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+     private void cancelTransaction(String username, String orderType, String stockSymbol,double price,int quantity) {
+        // Update the holdings table by subtracting the sold quantity
+        String query = "UPDATE transactions SET Status = ? WHERE Username = ? AND Symbol = ? AND Price = ? AND Type = ? AND Status = ? AND Quantity = ?";
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, "Cancelled");
@@ -515,7 +625,8 @@ public boolean cancelOrder(String username, String orderType) {
             statement.setString(3, stockSymbol);
             statement.setDouble(4, price);
             statement.setString(5, orderType);
-            statement.setString(6, "Successful");
+            statement.setString(6, "Pending");
+            statement.setInt(7, quantity);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

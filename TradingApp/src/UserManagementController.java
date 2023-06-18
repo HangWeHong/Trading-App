@@ -87,6 +87,31 @@ public class UserManagementController {
         
        if(isDeleted){
         alert.setContentText("User Is Successfully Deleted!");
+        dbh.deleteOrderDisqualified(inputUsername.getText());
+    }else{
+        alert.setContentText("User Is Not Found!");
+       } 
+        // Get the dialog pane of the alert
+        DialogPane dialogPane = alert.getDialogPane();
+
+        // Apply CSS styles to the dialog pane
+        dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
+        dialogPane.getStyleClass().add("gradient-background-admin");
+       // Display the prompt and wait for user response
+       alert.showAndWait();
+       App.setRoot("UserManagement.fxml");
+    }
+        @FXML
+    void clickedReset(MouseEvent event) {
+        boolean isQualified= dbh.setQualified(inputUsername.getText());
+       // Create an alert of type INFORMATION
+       Alert alert = new Alert(AlertType.INFORMATION);
+        // Set the title and content text for the alert
+        alert.setTitle("Successful or nah");
+        alert.setHeaderText("Result:");
+        
+       if(isQualified){
+        alert.setContentText("User Is Successfully Reset to Qualified!");
        }else{
         alert.setContentText("User Is Not Found!");
        } 
@@ -99,6 +124,7 @@ public class UserManagementController {
        // Display the prompt and wait for user response
        alert.showAndWait();
        App.setRoot("UserManagement.fxml");
+        
     }
     
    

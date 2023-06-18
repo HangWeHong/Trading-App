@@ -176,7 +176,7 @@ public class TradingController {
 
         @FXML
     void clickedSubmitOrder(MouseEvent event) {
-        if(!action.getText().equals("BUY") && !action.getText().equals("SELL") || !isNumeric(price.getText())|| !isNumeric(quantity.getText())|| !isPriceWithinRange(stockSearched.getPrice(),price.getText())|| !isInteger(quantity.getText())){
+        if(!action.getText().equals("BUY") && !action.getText().equals("SELL") || !isNumeric(price.getText())|| !isNumeric(quantity.getText())|| !isPriceWithinRange(stockSearched.getPrice(),price.getText())|| !isInteger(quantity.getText())|| Integer.parseInt(quantity.getText())<=0||!isDecimal(price.getText())){
             if(!action.getText().equals("BUY") && !action.getText().equals("SELL")){
                 notValidAction.setText("Invalid Action");
             }else{
@@ -201,6 +201,24 @@ public class TradingController {
                 alert.setTitle("Price Out of Range");
                 alert.setHeaderText("Warning:");
                 alert.setContentText("Price Should be Between "+lowestPriceFormatted+" - "+highestlPriceFormatted);
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
+                alert.showAndWait();
+            }
+            if(Integer.parseInt(quantity.getText())<=0){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Invalid Quantity");
+                alert.setHeaderText("Warning:");
+                alert.setContentText("Quantity Must be More than 0");
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
+                alert.showAndWait();
+            }
+            if(!isDecimal(price.getText())){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Invalid Price");
+                alert.setHeaderText("Warning:");
+                alert.setContentText("Price should be Within 2 Decimal Place");
                 DialogPane dialogPane = alert.getDialogPane();
                 dialogPane.getStylesheets().add(getClass().getResource("/Model/stylesheet.css").toExternalForm());
                 alert.showAndWait();
@@ -411,6 +429,11 @@ public boolean isInteger(String value) {
     } catch (NumberFormatException e) {
         return false;
     }
+}
+public boolean isDecimal(String value){
+    String pattern = "\\d+(\\.\\d{1,2})?";
+        return value.matches(pattern);
+
 }
 
 }
