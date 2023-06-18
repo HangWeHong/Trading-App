@@ -127,6 +127,20 @@ public class DatabaseHandler {
         }
         return false; // User not found or deletion failed
     }
+     public void deleteOrderDisqualified(String username) {
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
+            String deleteQuery = "DELETE FROM orders WHERE Username = ?";
+            PreparedStatement statement = connection.prepareStatement(deleteQuery);
+            statement.setString(1, username);
+    
+          statement.executeUpdate();
+          
+    
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public boolean checkUsernameExists(String username) {
     String selectQuery = "SELECT COUNT(*) FROM users WHERE Username = ?";
     try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
@@ -320,8 +334,8 @@ public class DatabaseHandler {
    public static void schedulePLPointsUpdate() {
     Timer timer = new Timer();
     Calendar calendar = Calendar.getInstance();
-    calendar.set(Calendar.HOUR_OF_DAY, 10);
-    calendar.set(Calendar.MINUTE, 19);
+    calendar.set(Calendar.HOUR_OF_DAY, 0);
+    calendar.set(Calendar.MINUTE, 0);
     calendar.set(Calendar.SECOND, 0);
     
 
@@ -518,6 +532,28 @@ static class UserBalanceCheckTask extends TimerTask {
         }
     }
 }
+public boolean setQualified(String username) {
+        String sql = "UPDATE users SET Qualified = ? WHERE Username = ?";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setBoolean(1, true);
+            statement.setString(2, username);
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                return true; // User is reset to qualified successfully
+            }
+    
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;  //User failed to reset or not found
+
+}
+
 public static void refreshStockPrice(){
       Timer timer = new Timer();
 
@@ -788,6 +824,8 @@ public void decreaseAccountBalance(String username, double amount) {
         }
         return list;
     }
+    
+
 
 
 }

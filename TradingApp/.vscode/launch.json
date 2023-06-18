@@ -6,6 +6,83 @@
     "configurations": [
         {
             "type": "java",
+            "name": "StockPriceRetriever",
+            "request": "launch",
+            "mainClass": "Model.StockPriceRetriever",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "ReportGenerator",
+            "request": "launch",
+            "mainClass": "Model.ReportGenerator",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "StockInfoRetriever",
+            "request": "launch",
+            "mainClass": "Model.StockInfoRetriever",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "Model.test",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "RefreshService",
+            "request": "launch",
+            "mainClass": "Model.RefreshService",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "StockInfo",
+            "request": "launch",
+            "mainClass": "Model.StockInfo",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "StockSearch",
+            "request": "launch",
+            "mainClass": "Model.StockSearch",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "StockAPI",
+            "request": "launch",
+            "mainClass": "Model.StockAPI",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "PriceSuggestionService",
+            "request": "launch",
+            "mainClass": "PriceSuggestionService",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "emailService",
+            "request": "launch",
+            "mainClass": "Model.emailService",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
+            "name": "newsService",
+            "request": "launch",
+            "mainClass": "Model.newsService",
+            "projectName": "TradingApp_ef392496"
+        },
+        {
+            "type": "java",
             "name": "Test",
             "request": "launch",
             "mainClass": "Test",
@@ -23,7 +100,7 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "TradingApp_ef392496",
-            "vmArgs": "--module-path \"D:/JavaFX/javafx-sdk-20.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"D:/JavaFX/javafx-sdk-20.0.1/lib\" --add-modules javafx.controls,javafx.fxml,org.controlsfx.controls --add-exports=javafx.base/com.sun.javafx.event=org.controlsfx.controls --add-opens=javafx.controls/javafx.scene.control.skin=ALL-UNNAMED"
         }
     ]
 }

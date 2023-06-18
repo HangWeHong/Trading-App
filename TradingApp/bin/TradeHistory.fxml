@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="54.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TradeHistoryController">
+<HBox prefHeight="54.0" prefWidth="960.0" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TradeHistoryController">
    <children>
       <Label fx:id="orderNo" alignment="CENTER" prefHeight="55.0" prefWidth="128.0" text="1">
          <font>
             <Font name="Tw Cen MT Condensed" size="50.0" />
          </font>
       </Label>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="2.0" styleClass="line-color" stylesheets="@../resources/stylesheet.css">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="2.0" styleClass="line-color" stylesheets="@Model/stylesheet.css">
          <HBox.margin>
             <Insets top="12.0" />
          </HBox.margin>

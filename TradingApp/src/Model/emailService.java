@@ -30,6 +30,7 @@ public class emailService {
             "    <p>"+type+"ing Price: RM"+price+"/shares</p>\n" +
             "    <p>Volume: "+quantity*100+"</p>\n" +
             "    <p>Total Price: RM"+totalPriceFormatted+"</p>\n" +
+            "    <p></p>\n" +
             "    <p>You Are in Position "+position+"</p>\n" +
             "  </div>\n" +
             "  <div class=\"line\" style=\"width: 80%; margin: 20px auto; border-top: 1px solid #ccc;\"></div>\n" +

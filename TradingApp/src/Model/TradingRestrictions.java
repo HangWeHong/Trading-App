@@ -15,31 +15,7 @@ public class TradingRestrictions {
         this.initialTradingHoursDays = initialTradingHoursDays;
     }
 
-    // Check if a user is allowed to place an order based on trading restrictions
-    // public boolean canPlaceOrder(User user, Stock stock, Order.Type type, int quantity, LocalDateTime dateTime) {
-    //     boolean withinTradingHours = isWithinTradingHours(dateTime);
-    //     boolean notTradingOnMargin = !isTradingOnMargin(user, quantity, stock.getCurrentPrice());
-    //     boolean notShortSelling = !isShortSelling(user, stock, quantity, type);
-    //     boolean notDisqualified = !isParticipantDisqualified(user, dateTime.toLocalTime());
 
-    //     return withinTradingHours && notTradingOnMargin && notShortSelling && notDisqualified;
-    // }
-
-
-    // Check if a user is trading on margin (insufficient account balance)
-    // public boolean isTradingOnMargin(User user, int quantity, double price) {
-    //     double requiredAccountBalance = quantity * price;
-    //     return requiredAccountBalance > user.getAccountBalance();
-    // }
-
-    // // Check if a user is short selling (selling more stocks than owned)
-    // public boolean isShortSelling(User user, Stock stock, int quantity, Order.Type type) {
-    //     if (type == Order.Type.SELL) {
-    //         int ownedQuantity = user.getPortfolio().getStockQuantity(stock);
-    //         return ownedQuantity < quantity;
-    //     }
-    //     return false;
-    // }
 
     // Check if a given date and time is within the trading hours
     public boolean isWithinTradingHours(LocalDateTime dateTime) {
@@ -69,24 +45,7 @@ public class TradingRestrictions {
                         (time.isAfter(marketStartTime2) && time.isBefore(marketEndTime2)));
     }
 
-    // Check if a participant is disqualified based on their account balance
-    // public boolean isParticipantDisqualified(User user, LocalTime currentTime) {
-    //     double accountBalance = user.getAccountBalance();
-    //     double initialBalance = user.getInitialFunds();
 
-    //     if (currentTime.isBefore(LocalTime.of(17, 0))) {
-    //         return false; // Not disqualified (balance check not performed yet)
-    //     }
-    //     // Account balance must be less than or equal to 50% of initial balance
-    //     if (accountBalance >= (0.5 * initialBalance)) {
-    //         return true; // Disqualified
-    //     }
-    //     // Account balance must be greater than 0
-    //     if (accountBalance < 0) {
-    //         return true; // Disqualified (negative balance)
-    //     }
-    //     return false; // Not disqualified
-    // }
 
     public static LocalDate getStartDate() {
         return startDate;

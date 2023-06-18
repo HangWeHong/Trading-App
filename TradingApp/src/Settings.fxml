@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" stylesheets="@Model/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsController">
    <children>
-      <AnchorPane layoutX="3.0" layoutY="169.0" prefHeight="738.0" prefWidth="456.0" styleClass="sidebar-admin" stylesheets="@../resources/stylesheet.css">
+      <AnchorPane layoutX="-3.0" layoutY="169.0" prefHeight="738.0" prefWidth="456.0" styleClass="sidebar-admin" stylesheets="@../resources/stylesheet.css">
          <children>
             <Pane layoutX="63.0" layoutY="14.0" />
             <AnchorPane layoutX="70.0" layoutY="52.0" />
@@ -30,7 +30,7 @@
                   </ImageView>
                   <Label prefHeight="45.0" prefWidth="232.0" text=" User Management" textFill="#000000ee">
                      <font>
-                        <Font name="Cambria" size="25.0" />
+                        <Font name="Microsoft Himalaya" size="40.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -47,7 +47,7 @@
                   </ImageView>
                   <Label prefHeight="66.0" prefWidth="135.0" text=" Settings" textFill="#000000ee">
                      <font>
-                        <Font name="Cambria" size="25.0" />
+                        <Font name="Microsoft Himalaya" size="40.0" />
                      </font>
                   </Label>
                </children>
@@ -83,7 +83,7 @@
                   </ImageView>
                   <Label prefHeight="47.0" prefWidth="146.0" text=" Admin Info" textFill="#000000ee">
                      <font>
-                        <Font name="Cambria" size="25.0" />
+                        <Font name="Microsoft Himalaya" size="40.0" />
                      </font>
                      <HBox.margin>
                         <Insets />
