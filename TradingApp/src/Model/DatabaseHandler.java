@@ -157,8 +157,39 @@ public class DatabaseHandler {
     }
     return false;
 }
+public static boolean checkEmailExists(String email) {
+    String selectQuery = "SELECT COUNT(*) FROM users WHERE Email = ? Limit 1";
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+         PreparedStatement statement = connection.prepareStatement(selectQuery)) {
 
-    public String encryptPassword(String password) {
+        statement.setString(1, email);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+public static String getPassword(String email) {
+    String selectQuery = "SELECT Password FROM users WHERE Email = ? Limit 1";
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+         PreparedStatement statement = connection.prepareStatement(selectQuery)) {
+
+        statement.setString(1, email);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString("Password");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return "";
+}
+
+    public static String encryptPassword(String password) {
         try {
             // Create a SHA-256 MessageDigest instance
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -184,6 +215,15 @@ public class DatabaseHandler {
             e.printStackTrace();
             return null;
         }
+    }
+    public static String findPassword(String password){
+        for (int i = 0; i <= 99999; i++) {
+        String paddedNumber = String.format("%05d", i);
+        if (encryptPassword(paddedNumber).equals(password)){
+            return paddedNumber;
+        }
+        }
+        return "Password Not Found";
     }
     public ObservableList<User> displayUsers(){
         ObservableList<User> list=FXCollections.observableArrayList();
@@ -553,6 +593,27 @@ public boolean setQualified(String username) {
         return false;  //User failed to reset or not found
 
 }
+public boolean checkQualified(String username) {
+    String sql = "SELECT Qualified FROM users WHERE Username = ?";
+
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+         PreparedStatement statement = connection.prepareStatement(sql)) {
+
+        statement.setString(1, username);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            boolean qualified = resultSet.getBoolean("Qualified");
+            return qualified;
+        }
+
+        statement.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+
 
 public static void refreshStockPrice(){
       Timer timer = new Timer();
@@ -824,6 +885,7 @@ public void decreaseAccountBalance(String username, double amount) {
         }
         return list;
     }
+
     
 
 
