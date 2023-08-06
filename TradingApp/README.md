@@ -6,6 +6,7 @@
 <br>
 <img src="Image/LoginPage.jpg" width="600" height="405.79" />
 <br>
+<br>
 ### Validation:
 - If the username and password are not found in the SQL database, which means the user has input an invalid username or password which are not from registered accounts.
 - Or the user trying to log in with empty space in the username input field or password input field or both.
