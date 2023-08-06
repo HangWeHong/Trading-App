@@ -20,6 +20,7 @@ An error would occur:
 - If any of the field is left empty 
 An error would occur:
 <img src="Image/RegistrationPageEmptyInvalid.jpg" width="600" height="405.79" />
+
 - Password is set to follow the length of 5
 - Phone Number is set to follow the format of Malaysia Phone Number format (Phone number starting with 011/015 will have a total of 11 digits ,while others will have a total of 10 digits.)
 - Email is set to follow the format where "@" , ".com" and ".my" should exists.
