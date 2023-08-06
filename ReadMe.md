@@ -1,6 +1,6 @@
 # Group10
 
-This is a repository of Data Structure Assignment for Group 10 students ❤❤
+This is a repository of Data Structure Assignment for Group 10 students ❤❤<br>
 (Kindly access the "Trading App" folders to view previews and demonstrations of the trading app.)
 
 ```java
