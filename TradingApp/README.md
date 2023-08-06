@@ -1,18 +1,14 @@
-## Getting Started
+#Trading App
+##Login Page
+-In the Login Page, users may choose to register themselves by clicking "Sign Up" if they do not have any registered accounts.
+-For users who forgot their password, they may click "Forgot Password" to retrieve their password.
+-For users with registered accounts, they may sign in using the correct password and username.
+![LoginPage](Image/LoginPage.jpg)
+###Validation:
+-If the username and password are not found in the SQL database, which means the user has input an invalid username or password which are not from registered accounts.
+-Or the user trying to log in with empty space in the username input field or password input field or both.
+An error would occur:
+![LoginPageError](Image/LoginPageInvalid.jpg)
+##Registration Page
+-In the Registration Page, personal details should be filled in by users to register an account
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
