@@ -1,6 +1,5 @@
 # Trading App
-## Login Page
-<<<<<<< HEAD
+## Login Page<a name="login-page"></a>
 - In the Login Page, users may choose to register themselves by clicking "Sign Up" if they do not have any registered accounts.
 - For users who forgot their password, they may click "Forgot Password" to retrieve their password.
 - For users with registered accounts, they may sign in using the correct password and username.
@@ -28,12 +27,32 @@ An error would occur:
   <br>
   **If any of this is not followed**
   Errors would occur:
+  
   <img src="Image/RegistrationPageAllInvalid.jpg" width="600" height="405.79" />
 
 - If the input username is already used to register an account
   An error would occur:
   <img src="Image/RegistrationPageUsedUsername.jpg" width="600" height="405.79" />
   
+## Forgot Password Page
+- User may enter their email used to register the account to retrieve their password.
 
+  <img src="Image/ForgotPasswordPage.jpg" width="600" height="405.79" />
 
+- An email will be sent automatically to the user with the details of their password.
 
+  <img src="Image/PasswordEmail.jpg" width="600" height="405.79" />
+
+### Validation:
+
+- If the email is not found in our database as a registered account.
+
+  <img src="Image/EmailNotRegistered.jpg" width="600" height="405.79" />
+
+- If the email is invalid
+
+   <img src="Image/InvalidEmail.jpg" width="600" height="405.79" />
+
+## Admin Panel
+  - When the username and password entered by the user in [Login Page](#login-page) are with the roles of "Admin", Administrator are brought to the Admin Panel
+  - The default page for Admin Panel is the Contact Information of the Administrator that logged in
