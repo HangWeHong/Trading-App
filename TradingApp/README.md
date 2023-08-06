@@ -17,14 +17,20 @@ An error would occur:
 <img src="Image/RegistrationPage.jpg" width="600" height="405.79" />
 
 ### Validation:
-- If any of the field is left empty 
+- If any of the fields is left empty 
 An error would occur:
 <img src="Image/RegistrationPageEmptyInvalid.jpg" width="600" height="405.79" />
 
 - Password is set to follow the length of 5
 - Phone Number is set to follow the format of Malaysia Phone Number format (Phone number starting with 011/015 will have a total of 11 digits ,while others will have a total of 10 digits.)
-- Email is set to follow the format where "@" , ".com" and ".my" should exists.
+- Email is set to follow the format where "@", ".com" and ".my" should exist.<br>
 **If any of this is not followed**
-  An error would occur:
+  Errors would occur:
   <img src="Image/RegistrationPageAllInvalid.jpg" width="600" height="405.79" />
+
+- If the input username is already used to register an account
+  An error would occur:
+  <img src="Image/RegistrationPageUsedUsername.jpg" width="600" height="405.79" />
   
+### 
+
