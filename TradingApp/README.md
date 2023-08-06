@@ -41,7 +41,7 @@ An error would occur:
 
 - An email will be sent automatically to the user with the details of their password.
 
-  <img src="Image/PasswordEmail.jpg" width="600" height="405.79" />
+  <img src="Image/PasswordEmail.jpg" width="800" height="405.79" />
 
 ### Validation:
 
@@ -99,7 +99,7 @@ An error would occur:
 
   - A prompt will appear to notify the user that the trade is successfully done and an receipt in the form of email is sent
 
-    <img src="Image/SuccessfullyTraded.jpg" width="600" height="405.79" />
+    <img src="Image/SucessfullyTraded.jpg" width="600" height="405.79" />
 
      <img src="Image/TradeReceipt.jpg" width="600" height="405.79" />
 
@@ -124,7 +124,7 @@ An error would occur:
 
   - The Input price is set to follow the rules within 1% of the market price, if the input price is outside of the range, an error occurs
 
-      <img src="Image/TradingInputPrice.jpg" width="600" height="405.79" />
+      <img src="Image/TradingInvalidPrice.jpg" width="600" height="405.79" />
 
   - The Input quantity is set to follow the logic rules > 0 (but < the balance(meaning having enough money to buy) or < the quantity of stock that the participant hold and trying to sell) or else an error occurs
 
@@ -154,4 +154,4 @@ An error would occur:
 
     <img src="Image/HelpSupport.jpg" width="600" height="405.79" />
 
-    <img src="Image/PerformanceReport.jpg" width="600" height="405.79" />
+    <img src="Image/PerformanceReport.jpg" width="600" height="900" />
