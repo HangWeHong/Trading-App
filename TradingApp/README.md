@@ -10,7 +10,8 @@
 - If the username and password are not found in the SQL database, which means the user has input an invalid username or password which are not from registered accounts.
 - Or the user trying to log in with empty space in the username input field or password input field or both.
 An error would occur:
-![LoginPageError](Image/LoginPageInvalid.jpg)
+<img src="Image/LoginPageInvalid.jpg" width="600" height="405.79" />
+
 ## Registration Page
 - In the Registration Page, personal details should be filled in by users to register an account
 
